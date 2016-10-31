@@ -1,12 +1,17 @@
 
 module.exports = {
 
-	entry: './js/app',
+	entry: './app',
     output: {
-        // path: __dirname + "/js",
         filename: "build.js",
-        library: 'app'
     },
     target: 'electron',
-    watch: true
+    watch: true,
+
+
+    resolve: {
+        alias: {
+            jquery: "./lib/jquery-3.1.0"
+        }
+    }
 }

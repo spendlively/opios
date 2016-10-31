@@ -16,6 +16,11 @@
     list-style: none;
 }
 
+.tnb .tnb-li-a, .tnb .tnb-li-a:active, .tnb-li-a:hover{
+	color: #bbb;
+	text-decoration: none;
+}
+
 .tnb ul li{
 	height: 50px;
 	padding-left: 8px;
@@ -25,13 +30,19 @@
 	position: relative;
 }
 
-.tnb ul li.tnb-li-home{
+.tnb ul li.tnb-li{
+	cursor: pointer;
+	/*border: 1px solid #000;*/
+}
+
+.tnb ul li.tnb-li.home{
 	padding-left: 16px;
 }
 
 .tnb ul li.active-btn{
 	border-top: 3px solid red;
 	font-weight: bold;
+	/*font-stretch: wider;*/
 }
 
 .tnb-logo{
