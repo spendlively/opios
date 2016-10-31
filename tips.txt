@@ -1,0 +1,216 @@
+//Вопросы
+- Иконки для ярлыка, пункт меню "главная", иконка при нажатии (alt + tab)
+- Рабочее название проекта
+
+//Разбор полетов
+- события компонентов react, вызов/обработка, dom/пользовательские
+- получение компонента react в jquery, получение модели данных компонента в jquery
+- подгрузка файлов компонентов, requirejs
+- redux
+- как отправить данные из javascript в nodejs
+- сборка проекта react
+
+
+//Что дальше
+- Разобраться с webpack для сборки js и использования модулей
+- Просмотреть примеры по react, чтобы понять как правильно вставлять/удалять элементы dom
+(по какому событию, как именно вставлять/удалять, как возобновлять вставленные при загрузке)
+    - Thinking in React
+    https://facebook.github.io/react/docs/thinking-in-react.html
+
+    - React Tutorial
+    https://www.youtube.com/watch?v=IR6smI_YJDE
+
+    - 5 практических примеров для изучения фреймворка React
+    https://habrahabr.ru/post/229629/
+
+
+(+) Дефолтное имя для сервиса
+(+) Enter в input поле name
+(+) focus в input поле name
+(+) сохранение сессии во вкладках сервисов
+(+) Открытие edit по нажатию только на кнопку
+(+) Иконки
+(+) XSS уязвимость при вводе скрипта в поле имя
+(+) Не заполнено поля имя в окне редактирования
+
+(+) Длина строки с именем
+(+) Фокус поля с именем сервиса
+(+) Корректное сохранение формы редактирования
+(+) Отображение сервисов в верхней панели
+(+) Задизейбливание
+( ) Редактирование сервисов в верхней панели
+( ) Отключение звука <webview>.setAudioMuted(muted) <webview>.isAudioMuted()
+( ) Обновление из верхней панели
+( ) Разворачивание окна сервиса на весь экран
+( ) Copy/paste
+
+( ) Нотификации сервиса
+( ) Подсказка с количеством новых сообщений
+( ) Обфускация
+( ) Сборка в asar
+( ) Автозапуск
+
+
+
+npm i electron-installer-dmg --save-dev
+
+
+
+//Зависимости
+auto-launch
+windowStateKeeper
+node-notifier
+asar
+
+
+npm install --save auto-launch
+
+npm install path, remote, menu, tray
+
+
+npm -v
+3.10.3
+
+node -v
+v6.5.0
+
+npm list
+electron@1.3.5 extraneous
+electron-packager@8.0.0 extraneous
+UNMET DEPENDENCY electron-prebuilt@^1.3.4
+
+//Переустановка 1
+rm -rf node_modules/
+sudo npm cache clean
+
+//Переустановка 2
+rm -rf node_modules/
+sudo npm update -g npm
+npm install
+
+//Переустановка 3
+npm update -g
+
+//Переустановка 4
+rm -rf node_modules/
+sudo npm cache clean
+npm install --dev
+npm update --dev
+
+//Tray
+https://github.com/electron/electron/blob/master/docs/api/tray.md
+
+
+
+
+
+
+
+
+//1. Установка исходников
+mkdir opios && cd opios
+git clone git@github.com:spendlively/messenger.git
+cd messenger/
+npm install
+
+//2. Запустить проект (из папки messenger/)
+npm start
+
+//3. Сборка проекта (из папки messenger/ в папку messenger/dist/)
+npm run build
+
+//4. Сборка dmg (из папки messenger/ в папку messenger/dist/ - проект должен быть собран)
+electron-installer-dmg dist/Opios-darwin-x64/Opios.app/ Opios
+
+
+
+
+
+
+
+
+
+
+
+
+wv.addEventListener('load-commit', function(event){console.log("load-commit");});
+wv.addEventListener('did-finish-load', function(event){console.log("did-finish-load");});
+wv.addEventListener('did-fail-load', function(event){console.log("did-fail-load");});
+wv.addEventListener('did-frame-finish-load', function(event){console.log("did-frame-finish-load");});
+wv.addEventListener('did-start-loading', function(event){console.log("did-start-loading");});
+wv.addEventListener('did-stop-loading', function(event){console.log("did-stop-loading");});
+wv.addEventListener('did-get-response-details', function(event){console.log("did-get-response-details");});
+wv.addEventListener('did-get-redirect-request', function(event){console.log("did-get-redirect-request");});
+wv.addEventListener('dom-ready', function(event){console.log("dom-ready");});
+wv.addEventListener('page-title-updated', function(event){console.log("page-title-updated");});
+wv.addEventListener('page-favicon-updated', function(event){console.log("page-favicon-updated");});
+wv.addEventListener('enter-html-full-screen', function(event){console.log("enter-html-full-screen");});
+wv.addEventListener('leave-html-full-screen', function(event){console.log("leave-html-full-screen");});
+wv.addEventListener('console-message', function(event){console.log("console-message");});
+wv.addEventListener('found-in-page', function(event){console.log("found-in-page");});
+wv.addEventListener('new-window', function(event){console.log("new-window");});
+wv.addEventListener('will-navigate', function(event){console.log("will-navigate");});
+wv.addEventListener('did-navigate', function(event){console.log("did-navigate");});
+wv.addEventListener('did-navigate-in-page', function(event){console.log("did-navigate-in-page");});
+wv.addEventListener('close', function(event){console.log("close");});
+wv.addEventListener('ipc-message', function(event){console.log("ipc-message");});
+wv.addEventListener('crashed', function(event){console.log("crashed");});
+wv.addEventListener('gpu-crashed', function(event){console.log("gpu-crashed");});
+wv.addEventListener('plugin-crashed', function(event){console.log("plugin-crashed");});
+wv.addEventListener('destroyed', function(event){console.log("destroyed");});
+wv.addEventListener('media-started-playing', function(event){console.log("media-started-playing");});
+wv.addEventListener('media-paused', function(event){console.log("media-paused");});
+wv.addEventListener('did-change-theme-color', function(event){console.log("did-change-theme-color");});
+wv.addEventListener('update-target-url', function(event){console.log("update-target-url");});
+wv.addEventListener('devtools-opened', function(event){console.log("devtools-opened");});
+wv.addEventListener('devtools-closed', function(event){console.log("devtools-closed");});
+wv.addEventListener('devtools-focused', function(event){console.log("devtools-focused");});
+
+
+
+
+Требования к дизайну
+1. Карта экранов
+ - т.е. по нажатию на какую кнопку открывается какое окно, можно указать стрелочками
+2. Карта цветов
+- например
+ (цвет) -> #ff0000
+ (цвет) -> #00ff00
+ и т.д.
+3. Список шрифтов
+- для нестандартных шрифтов - соответствующий файл
+
+
+4. Размеченные состояния каждого из экранов,
+
+5. Нарезка элементов для всех экранов,
+6. Видео/gif со всеми нестандартными анимациями,
+7. Иконки приложения.
+
+
+
+Лишнее убрать из конфига
+Добавить name, по которому находить нужные настройки
+
+При загрузке использовать конфиг по умолчанию, для создания основного конфига
+
+Добавить команду как обязательное поле
+Добавть {} в урл
+
+
+Немного переделал команды для сборки:
+npm run build - сборка для всех архитектур
+npm run build:linux - сборка для linux x64
+npm run build:darwin - сборка для мас x64
+npm run build:win32 - сборка для windows x86
+npm run build:win64 - сборка для windows x64
+
+
+//Ссылки
+//Сокрытие
+https://discuss.atom.io/t/how-to-catch-the-event-of-clicking-the-app-windows-close-button-in-electron-app/21425/8
+
+//wechat
+https://github.com/geeeeeeeeek/electronic-wechat.git 
+

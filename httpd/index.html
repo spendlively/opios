@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>OPIOS</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0">
+
+        <!-- React -->
+        <script src="lib/react.js"></script>
+        <script src="lib/react-dom.js"></script>
+        <script src="lib/browser.min.js"></script>
+        <script src="lib/remarkable.min.js"></script>
+
+        <!--Bootstrap's JavaScript requires jQuery-->
+        <!--http://stackoverflow.com/questions/32621988/electron-jquery-is-not-defined-->
+        <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+        <script src="lib/jquery-3.1.0.js"></script>
+
+        <!-- Сборка config.js и localization.js -->
+        <script src="build.js"></script>
+        <!-- <script>
+            app.componentsObserver.test();
+        </script> -->
+
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+        <script src="lib/bootstrap.min.js"></script>
+        <script src="lib/popover.js"></script>
+        <!-- <script src="js/common.js"></script> -->
+
+        <!-- Нотификатор -->
+        <script src="lib/bootstrap-notify.js"></script>
+        <link rel="stylesheet" href="css/bootstrap-notify.css">
+
+        <link rel="stylesheet" href="css/dashboard.css">
+        <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="css/media.css">
+
+        <!-- Кнопочки switcher -->
+        <link rel="stylesheet" href="css/bootstrap-switch.css">
+        <script src="lib/bootstrap-switch.js"></script>
+        
+
+        <!--Bootstrap's JavaScript requires jQuery-->
+        <script>if (window.module) module = window.module;</script>
+    </head>
+    <body>
+
+    <nav class="navbar navbar-fixed-top" id="top-navbar">
+        <div class="container-fluid">
+
+            <!-- Верхнее горизонтальное меню -->
+            <div id="navbar-left" class="navbar-header-menu">
+
+
+            </div>
+        </div>
+    </nav>
+
+    <!-- Popover верхнего меню вкл/выкл сервисов -->
+    <div id="popover-content" class="hide"></div>
+
+    <!-- Placeholder'ы для нотификатора -->
+    <div class='notifications top-right'></div>
+    <div class='notifications bottom-right'></div>
+    <div class='notifications top-left'></div>
+    <div class='notifications bottom-left'></div>
+
+    <!-- ГЛАВНАЯ СТРАНИЦА -->
+    <div class="tab-content" id="tabs-container">
+        <div role="tabpanel" class="tab-pane active" id="home">
+            <div class="container-fluid">
+                <div class="row">
+
+                    <!-- ЛЕВОЕ МЕНЮ -->
+                    <div id="left-menu-target"></div>
+
+                    <!-- КОНТЕНТ -->
+                    <div class="col-xs-offset-4 col-sm-offset-3 col-md-offset-2 main col-xs-8 col-sm-9 col-md-10">
+
+                        <!-- Управление сервисами -->
+                        <div id="enabled-services-target"></div>
+
+                        <!-- Добавление сервисов -->
+                        <div id="add-service-target"></div>
+
+                        <!-- Настройка приложения -->
+                        <div id="settings-block" class="settings-block"></div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Модальное окно "Поделиться"-->
+   <div class="modal fade" id="modal-like" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"></div>
+
+    <!--Модальное окно "Редактировать сервес"-->
+    <div id="editServiceModalTarget"></div>
+
+    <!--Модальное окно "Добавить сервис"-->
+    <div id="addServiceModalTarget"></div>
+
+    <script type="text/babel" src="js/components/headerMenu.js"></script>
+    <script type="text/babel" src="js/components/settings.js"></script>
+    <script type="text/babel" src="js/components/leftmenu.js"></script>
+    <script type="text/babel" src="js/components/enabledServices.js"></script>
+    <script type="text/babel" src="js/components/servicesPopup.js"></script>
+    <script type="text/babel" src="js/components/addService.js"></script>
+    <script type="text/babel" src="js/components/modalLike.js"></script>
+    <script type="text/babel" src="js/components/addServiceModal.js"></script>
+    <script type="text/babel" src="js/components/editServiceModal.js"></script>
+
+    <script src="js/common.js"></script>
+
+</body>
+</html>
+

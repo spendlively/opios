@@ -1,0 +1,66 @@
+{
+	"settingsBlock": {
+		"title": "Settings",
+		"account": "Account",
+		"email": "Email",
+		"subscribeText": "Please subscribe me the Opios newslater",
+		"useText": "I use Opios for",
+		"personalText": "Personal use",
+		"commercialText": "Commercial use",
+		"nonProfitText": "Non profit/NGO use",
+		"app": "App",
+		"general": "General",
+		"leaveRunningText": "Leave Opios running in the noification area when window is closed",
+		"launchText": "Launch Opios on start",
+		"language": "Language",
+        "languages": [
+            {"id": 1, "value": "Russian - Russian", "code": "ru-RU"},
+            {"id": 2, "value": "English - English", "code": "en-EN"}
+        ],        
+		"cache": "Cache",
+		"clearCache": "Clear the Opios cache"
+	},
+    "leftMenu": {
+        "enabledServices": "Enabled services",
+        "addService": "Add a new service",
+        "settings": "Settings"
+    },
+    "enabledServices": {
+        "title": "Enabled services"
+    },
+    "addService": {
+        "title": "Add a new service"
+    },
+    "modalLike": {
+    	"title": "Opios - keep calm & get things done!",
+    	"description": "Tell your friends and colleagues how awesome Opios is and help us to spread the world."
+    },
+    "addServiceModal": {
+    	"add": "Add",
+        "nameLabel": "Name",
+        "teamLabel": "Team",
+    	"emptyTeamAlert": "Please provide a team name",
+    	"showNotices": "Show notifications",
+    	"disableSounds": "Mute all sounds",
+    	"notice": "Remember to enable desktop notifications in your settings",
+    	"closeBtn": "Close",
+    	"addBtn": "Add"
+    },
+    "editServiceModal": {
+    	"edit": "Edit",
+    	"nameLabel": "Name",
+        "teamLabel": "Team",
+        "emptyTeamAlert": "Please provide a team name",
+    	"enableService": "Enable service",
+    	"showNotices": "Show notifications",
+    	"disableSounds": "Mute all sounds",
+    	"notice": "Remember to enable desktop notifications in your settings",
+    	"removeBtn": "Delete service",
+    	"saveBtn": "Save",
+    	"closeBtn": "Close"
+    },
+    "notice": {
+    	"enabled": "Enabled all notifications!",
+    	"disabled": "Disabled all notifications!"
+    }    
+}
