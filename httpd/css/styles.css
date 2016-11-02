@@ -131,3 +131,54 @@ aside.aside-left{
 .aside-tag.violet{
 	background: violet;
 }
+
+/*Блок добавление новых сервисов*/
+.services-list{
+	padding: 15px;
+	text-align: center;
+}
+
+.services-list h1{
+
+}
+
+.services-list ul{	list-style-type: none;
+    list-style: none;
+}
+
+.services-list ul li{
+	display: inline-block;
+	padding: 5px 5px 2px 5px;
+}
+
+.services-list ul li a, .services-list ul li a:hover, .services-list ul li a:active{
+	color: #999;
+	text-decoration: none;
+	font-size: 20px;
+}
+
+.services-list-li.active{
+	border-bottom: 3px solid red;	
+}
+
+.service-icons{
+
+	text-align: left;
+	padding: 40px;
+}
+
+.service-img-container{
+	display: inline-block;
+	padding: 40px;
+}
+
+.service-img-container img{
+	width: 120px;
+}
+
+.service-img-container p{
+	margin-top: 10px;
+	font-size: 20px;
+	text-align: center;
+	color: #000;
+}

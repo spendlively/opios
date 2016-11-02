@@ -68,7 +68,8 @@
 				$(this).addClass('active-btn');
 
 				var service = $(this).children('.tnb-text').text();
-				$('.webview').css('display', 'none');
+
+				$('.content-block').css('display', 'none');
 
 				switch(service){
 					case 'Messenger':
@@ -84,6 +85,7 @@
 						$('#foo4').css('display', 'inline-flex');
 						break;
 					default:
+						$('#services-list').css('display', 'block');
 						break;
 				}
 			});
