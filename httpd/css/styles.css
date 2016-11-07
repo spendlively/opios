@@ -1,12 +1,17 @@
 * {
 	padding: 0;
 	margin: 0;
+	font-family: Helvetica;
+}
+
+h1{
+    font-size: 26px;
 }
 
 .tnb{
-	height: 50px;
+	height: 46px;
 	/*background-color: red;*/
-	box-shadow: 0 0 26px #999;
+	box-shadow: 0 0 24px #999;
 	color: #bbb;
 	font-size: 16px;
 }
@@ -25,7 +30,7 @@
 	height: 50px;
 	padding-left: 8px;
 	padding-right: 8px;
-	padding-top: 10px;
+	padding-top: 7px;
 	display: inline-block;
 	position: relative;
 }
@@ -41,7 +46,7 @@
 
 .tnb ul li.active-btn{
 	border-top: 3px solid red;
-	font-weight: bold;
+	/*font-weight: bold;*/
 	/*font-stretch: wider;*/
 }
 
@@ -50,12 +55,17 @@
 	top: -3px;
 }
 
+.tnb-li-right .tnb-logo{
+	top: 0px;
+}
+
 .tnb-logo img{
 	height: 32px;
 }
 
 .tnb-text{
 	position: relative;
+	color: #000;
 }
 
 .tnb-logo-new img{
@@ -82,11 +92,11 @@
 }
 
 article{
-	margin-top: 35px;
+	margin-top: 24px;
 	margin-left: 50px;
 	margin-right: 50px;
-	margin-bottom: 50px;
-	height: 900px;
+	margin-bottom: 20px;
+	min-height: 900px;
 	box-shadow: 5px 5px 26px #999;
 	/*background-color: green;*/
 }
@@ -107,13 +117,11 @@ aside.aside-left{
 }
 
 .aside-tag {
-	width: 35px;
+	width: 15px;
 	height: 200px;
-	border-radius: 0 15px 15px 0;
+	border-radius: 0 8px 8px 0;
 	margin-top: 10px;
-
-
-	padding-right: 10px;
+	padding-left: 17px;
 	padding-top: 80px;
 	writing-mode: tb-rl;
 	/*transform: rotate(90deg);
@@ -134,7 +142,7 @@ aside.aside-left{
 
 /*Блок добавление новых сервисов*/
 .services-list{
-	padding: 15px;
+	padding: 5px 15px 15px 15px;
 	text-align: center;
 }
 
@@ -144,17 +152,18 @@ aside.aside-left{
 
 .services-list ul{	list-style-type: none;
     list-style: none;
+    color: 999;
 }
 
 .services-list ul li{
 	display: inline-block;
-	padding: 5px 5px 2px 5px;
+	padding: 5px 5px 1px 5px;
 }
 
 .services-list ul li a, .services-list ul li a:hover, .services-list ul li a:active{
 	color: #999;
 	text-decoration: none;
-	font-size: 20px;
+	font-size: 16px;
 }
 
 .services-list-li.active{
@@ -162,23 +171,32 @@ aside.aside-left{
 }
 
 .service-icons{
-
 	text-align: left;
-	padding: 40px;
+	padding: 15px 10px 40px 10px;
 }
 
 .service-img-container{
 	display: inline-block;
-	padding: 40px;
+	width: 100px;
+	height: 100px;
+	border: 1px solid #d5d8d8;
+	text-align: center;
+	margin: 20px;
 }
 
 .service-img-container img{
-	width: 120px;
+	margin: 13px 25px 0px 25px;
+	width: 50px;
+	height: 50px;
 }
 
 .service-img-container p{
-	margin-top: 10px;
-	font-size: 20px;
+	margin-top: 9px;
+	font-size: 14px;
 	text-align: center;
 	color: #000;
+}
+
+.services-list-delimitter{
+	color: #999;
 }

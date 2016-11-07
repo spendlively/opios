@@ -119,10 +119,10 @@ function initWindow(){
 
    // Создаем окно браузера.
     mainWindow = new BrowserWindow({
-        width: 800, 
-        height: 580,
-        minWidth: 600,
-        minHeight: 480,
+        width: 1000, 
+        height: 700,
+        minWidth: 1000,
+        minHeight: 700,
         icon: __dirname + '/icons/opios.png'
         // closable: false
     });
@@ -132,7 +132,7 @@ function initWindow(){
     mainWindow.loadURL('file://' + __dirname + '/httpd/newDesign.html');
 
     //DevTools
-   mainWindow.webContents.openDevTools();
+   // mainWindow.webContents.openDevTools();
 
     // Этот метод будет выполнен когда генерируется событие закрытия окна.
     mainWindow.on('closed', function() {
