@@ -13,28 +13,28 @@ Launcher.prototype.init = function(){
 
 			var service = $(this).children('.tnb-text').text();
 
-			$('.content-block').css('display', 'none');
+			$('.content-block.opios-webview').css('visibility', 'hidden').css('position', 'absolute').css('top', '0px');
+			$('#services-list').css('display', 'none');
 
 			switch(service){
 				case 'Messenger':
-					$('#foo1').css('display', 'inline-flex');
-					correctSize('foo1');
+					$('#foo1').css('position', 'inherit').css('visibility', 'visible');
+					resize();
 					break;
 				case 'Telegram':
-					$('#foo2').css('display', 'inline-flex');
-					correctSize('foo2');
+					$('#foo2').css('position', 'inherit').css('visibility', 'visible');
+					resize();
 					break;
 				case 'WhatsApp':
-					$('#foo3').css('display', 'inline-flex');
-					correctSize('foo3');
+					$('#foo3').css('position', 'inherit').css('visibility', 'visible');
+					resize();
 					break;
 				case 'Skype':
-					$('#foo4').css('display', 'inline-flex');
-					correctSize('foo4');
+					$('#foo4').css('position', 'inherit').css('visibility', 'visible');
+					resize();
 					break;
 				default:
 					$('#services-list').css('display', 'block');
-					resize();
 					break;
 			}
 		});
@@ -48,25 +48,12 @@ Launcher.prototype.init = function(){
 	});
 }
 
-function correctSize(id){
-
-	var wv = document.getElementById(id);
-    setTimeout(function(){
-        if(wv.style.height === '99%'){
-            wv.style.height = '98%';
-        }
-        else{
-            wv.style.height = '99%';
-        }
-    }, 500);		
-}
-
 function resize(){
   	var win = $(window),
   		width = win.width(),
   		height = win.height();
   	
-  	$('.opios-webview').css('height', height - 100 + 'px').css('width', '100%');	
+  	$('.content-block.opios-webview').css('height', height - 100 + 'px').css('width', '100%');	
 }
 
 module.exports = Launcher;
