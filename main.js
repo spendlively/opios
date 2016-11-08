@@ -119,7 +119,7 @@ function initWindow(){
 
    // Создаем окно браузера.
     mainWindow = new BrowserWindow({
-        width: 1000, 
+        width: 1030, 
         height: 700,
         minWidth: 1000,
         minHeight: 700,
