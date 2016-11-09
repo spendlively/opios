@@ -121,7 +121,7 @@ function initWindow(){
     mainWindow = new BrowserWindow({
         width: 1030, 
         height: 700,
-        minWidth: 1000,
+        minWidth: 1030,
         minHeight: 700,
         icon: __dirname + '/icons/opios.png'
         // closable: false
@@ -132,7 +132,7 @@ function initWindow(){
     mainWindow.loadURL('file://' + __dirname + '/httpd/newDesign.html');
 
     //DevTools
-   mainWindow.webContents.openDevTools();
+   // mainWindow.webContents.openDevTools();
 
     // Этот метод будет выполнен когда генерируется событие закрытия окна.
     mainWindow.on('closed', function() {
