@@ -107,8 +107,8 @@ article{
 	margin-top: 70px;
 	margin-left: 50px;
 	margin-right: 50px;
-	margin-bottom: 20px;
-	/*min-height: 900px;*/
+	margin-bottom: 10px;
+	/*height:100%;*/
 	box-shadow: 5px 5px 26px #999;
 	/*background-color: green;*/
 }
@@ -130,7 +130,7 @@ aside.aside-left{
 
 .aside-tag {
 	width: 15px;
-	height: 200px;
+	height: 190px;
 	border-radius: 0 8px 8px 0;
 	margin-top: 10px;
 	padding-left: 17px;
