@@ -8,6 +8,7 @@ Launcher.prototype.init = function(){
 	$(document).ready(function(){
 
 		// resizeArticle();
+		smartResize();
 
 		$('.tnb-li.service').click(function(e){
 			$('.tnb-li.service').removeClass('active-btn');
@@ -39,6 +40,7 @@ Launcher.prototype.init = function(){
 					$('#services-list').css('display', 'block');
 					break;
 			}
+			smartResize();
 		});
 	});
 
@@ -46,7 +48,8 @@ Launcher.prototype.init = function(){
 
 	$(window).on('resize', function(e){
 
-		resize();
+		// resize();
+		smartResize();
 	});
 }
 
@@ -93,6 +96,49 @@ function resizeArticle(){
 // console.log(articleStyle.height);
 
 	// $('#main-article').css('height', newHeight + 'px');
+}
+
+function smartResize(){
+
+	var b = document.body,
+		bStyle = b.currentStyle || window.getComputedStyle(b),
+		bHeight = parseInt(bStyle.height),
+
+		article = document.getElementById("main-article"),
+		articleStyle = article.currentStyle || window.getComputedStyle(article),
+		articleHeight = parseInt(articleStyle.height),
+		articleMarginTop = parseInt(articleStyle.marginTop),
+		articleMarginBottom = parseInt(articleStyle.marginBottom),
+
+		articleBody = document.getElementById("main-article-body"),
+		articleBodyStyle = articleBody.currentStyle || window.getComputedStyle(articleBody);
+		articleBodyHeight = parseInt(articleBodyStyle.height),
+
+		newArticleHeight = 100;
+
+	// console.log(bHeight);
+	// console.log(articleHeight);
+	// console.log(articleBodyHeight);
+
+	if(articleBodyHeight <= bHeight){
+
+		newArticleHeight = bHeight - articleMarginTop - articleMarginBottom;
+		// $('.content-block.opios-webview').css('height', newArticleHeight + 'px').css('width', '100%'); 
+		// console.log('true');
+	}
+	else{
+
+		newArticleHeight = articleBodyHeight;
+		// console.log('false');
+	}
+
+	$('#main-article').css('height', newArticleHeight + 'px');
+	// if($('#services-list').is(":visible") === false){
+		// $('.content-block.opios-webview').css('height', newArticleHeight + 'px').css('width', '100%'); 
+	// }
+
+	// console.log(newArticleHeight);
+	console.log("==========================================");
 }
 
 module.exports = Launcher;
