@@ -120,9 +120,9 @@ function initWindow(){
    // Создаем окно браузера.
     mainWindow = new BrowserWindow({
         width: 1030, 
-        height: 700,
+        height: 705,
         minWidth: 1030,
-        minHeight: 700,
+        minHeight: 705,
         icon: __dirname + '/icons/opios.png'
         // closable: false
     });

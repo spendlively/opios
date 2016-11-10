@@ -73,7 +73,7 @@ function smartResize(){
 	}
 
 	$('#main-article').css('height', newArticleHeight + 'px');
-	$('.content-block.opios-webview').css('height', bHeight - 80 + 'px').css('width', '100%'); 
+	$('.content-block.opios-webview').css('height', bHeight - 85 + 'px').css('width', '100%'); 
 }
 
 module.exports = Launcher;
