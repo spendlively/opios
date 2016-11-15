@@ -7,6 +7,32 @@ Launcher.prototype.init = function(){
 	
 	$(document).ready(function(){
 
+
+
+		//Открывание модального окна добавления сервиса
+		$('.service-img-container').click(function(){
+			$('#addServiceModal').modal();
+		});
+
+		//Открывание модального окна настроек
+		$('#opios-right-logo').click(function(){
+			$('#settingsModal').modal();
+		});
+
+		//Контекстное меню сервиса
+		var $contextMenu = $("#contextMenu");
+		$("body").on("contextmenu", ".tnb-li-a", function(e) {
+			$contextMenu.css({
+				display: "block",
+				left: e.pageX,
+				top: e.pageY
+			});
+			return false;
+		});
+		$contextMenu.on("click", "a", function() {
+			$contextMenu.hide();
+		});
+
 		smartResize();
 
 		$('.tnb-li.service').click(function(e){

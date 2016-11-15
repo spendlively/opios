@@ -56,7 +56,7 @@
   <div>
 
     <ul class="tnb">
-        <a href="#" class="tnb-li-a">
+        <a href="#" class="tnb-li-a" id='opios-home-btn'>
             <li class="tnb-li home">
                 <span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span>
         </li>
@@ -93,7 +93,7 @@
             </li>
         </a>
 
-<li class="tnb-li-right">
+<li class="tnb-li-right" id="opios-right-logo">
     <span class="tnb-logo opios-logo"><img src="services/opios.png" /></span>
 </li>
 <li class="tnb-li-right">
@@ -187,6 +187,128 @@
     <div class="aside-tag red">TAG 2</div>
     <div class="aside-tag violet">TAG 2</div>
 </aside>
+
+<div id="contextMenu" class="dropdown clearfix">
+    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display:block;position:static;margin-bottom:5px;">
+        <li><a tabindex="-1" href="#"><div class="red-square"></div>Highlight Color</a></li>
+        <li class="divider"></li>
+        <li><a tabindex="-1" href="#">Add to favorite</a></li>
+        <li><a tabindex="-1" href="#">Remove from Recents</a></li>
+        <li><a tabindex="-1" href="#">Add to Dashboard</a></li>
+        <li><a tabindex="-1" href="#">Copy Project...</a></li>
+        <li><a tabindex="-1" href="#">Archive Project</a></li>
+        <li><a tabindex="-1" href="#">Delete Project</a></li>
+    </ul>
+</div>
+
+<!-- Модальное окно для создания сервиса -->
+<div class="modal fade opios-modal" id="addServiceModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <img width="100px" src="services/messenger.svg" />
+        <h2>Messenger</h2>
+        <div class="form">
+
+          <div class="checkbox">
+            <label><input type="checkbox">Desktop Notifications</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox">Local PIN password</label>
+            <label class="red">10 min idle</label>
+            <label class="blue">Change PIN activation time</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox">Application ShortCut</label>
+            <label class="grey">cmd-1</label>
+            <label class="grey">Change ShortCut</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox">Standart image</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox">Color $ Short name image</label>
+            <label class="blue">Edit image color</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox">Main Tag</label>
+            <label class="blue">Change tag</label>
+          </div>
+          <div class="checkbox">
+            <label class="grey"><input type="checkbox">Delete Application</label>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary ">Save</button>
+        <button type="button" class="btn btn-default " data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Модальное окно настроек -->
+<div class="modal fade opios-modal" id="settingsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+        <div class="float-right">
+            <img width="100px" src="services/settings-logo.svg" />
+            <p class="blue">Edit avatar</p>
+        </div>
+
+        <h2>Settings</h2>
+        <span class="grey">Ilia Shershnev</span>
+
+        <div class="group">
+            <span>Notifications</span>        
+            <div class="checkbox">
+                <label><input type="checkbox">Desktop Notifications</label>
+            </div>
+            <div class="checkbox">
+                <label><input type="checkbox">Play Sound</label>
+            </div>            
+        <div>
+
+        <div class="group">
+            <span>General</span>        
+            <div class="checkbox">
+                <label><input type="checkbox">Auto update (version 0.10.10)</label>
+                <label class="blue">Check for updates</label>
+            </div>
+            <div class="checkbox">
+                <label><input type="checkbox">Tray icon</label>
+            </div>
+            <div class="checkbox">
+                <label><input type="checkbox">Left tag menu</label>
+            </div>
+            <div class="checkbox">
+                <label><input type="checkbox">Right tag menu</label>
+            </div>
+        <div>        
+
+        <div class="group">
+            <span>Language</span>        
+        <div>    
+
+        <div class="group">
+            <span>English</span>        
+            <span class="blue">Change language</span>        
+        <div>            
+
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary ">Save</button>
+        <button type="button" class="btn btn-default " data-dismiss="modal">Cancel</button>
+      </div>
+
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
