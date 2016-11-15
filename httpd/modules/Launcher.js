@@ -29,7 +29,8 @@ Launcher.prototype.init = function(){
 			});
 			return false;
 		});
-		$contextMenu.on("click", "a", function() {
+		// $contextMenu.on("click", "a", function() {
+		$('body').click(function() {
 			$contextMenu.hide();
 		});
 
