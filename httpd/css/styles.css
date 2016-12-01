@@ -20,6 +20,18 @@ h1{
     font-size: 26px;
 }
 
+h3{
+    font-size: 26px;
+    margin-top: 0;
+    /*margin-bottom: 50px;*/
+}
+
+h4{
+	font-size: 16px;
+	font-weight: medium;
+}
+
+
 .tnb{
 	height: 46px;
 	box-shadow: 0 0 24px #999;
@@ -218,9 +230,37 @@ aside.aside-left{
 	color: #999;
 }
 
-/*Модальное окно для добавления сервиса*/
-.opios-modal .modal-content{
 
+
+
+/*Модальное окно*/
+.opios-modal .modal-content{
+    width: 650px;
+    /*height: 500px;*/
+}
+
+.opios-modal .modal-content h3{
+	display: inline-block;
+	margin-right: 40px;
+	margin-bottom: 15px;
+}
+
+.opios-modal .modal-content h4{
+	/*display: inline-block;*/
+	/*margin-right: 40px;*/
+	margin-top: 10px;
+	margin-bottom: 12px;
+	font-weight: bolder;
+}
+
+
+.opios-modal .modal-body{
+	padding: 40px 60px 40px 60px;
+}
+
+.opios-modal .close-wrapper{
+	padding: 10px;	
+	float: right;
 }
 
 .opios-modal .modal-content .form{
@@ -249,7 +289,7 @@ aside.aside-left{
 }
 
 .opios-modal .group{
-	padding-top: 20px;
+	padding-top: 0;
 }
 
 .opios-modal .modal-footer{
@@ -271,3 +311,68 @@ aside.aside-left{
 	margin-right: 5px;
 	border: 1px solid #fff;
 }
+
+.opios-modal .checkbox input{ 
+	color: #fff; 
+	/*background-color: #0084FF;*/
+	width: 18px; 
+	height: 18px;
+	position: relative;
+	top: 3px;
+	margin-right: 15px;
+
+
+	/*-ms-transform: scale(2); 
+	-moz-transform: scale(2); 
+	-o-transform: scale(2); 
+	height: 18px; 
+	width: 18px;*/
+}
+
+/*.opios-modal .qwerty{
+    background-color: #0084FF;
+}*/
+
+/*Центрирование*/
+.modal {
+  text-align: center;
+}
+@media screen and (min-width: 768px) { 
+  .modal:before {
+    display: inline-block;
+    vertical-align: middle;
+    content: " ";
+    height: 100%;
+  }
+}
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
+/*END Центрирование*/
+
+/*END Модальное окно*/
+
+
+
+/*Маска модального окна*/
+.modal-backdrop{
+	background-color: #ffdf00;
+}
+.modal-backdrop.in{
+	opacity: 0.75;
+}
+/*END Маска модального окна*/
+
+
+
+
+
+
+
+
+
+
+
+

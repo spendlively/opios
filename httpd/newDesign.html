@@ -117,7 +117,7 @@
     <div id="main-article-body" class="service-body">
         <webview autosize="on" class="content-block opios-webview" id="foo1" src="https://messenger.yahoo.com/"  style="position: absolute; display:inline-flex; visibility:hidden; width:100%; height:600px;"></webview>
         <webview autosize="on" class="content-block opios-webview" id="foo2" src="https://web.telegram.org/#/im" style="position: absolute; display:inline-flex; visibility:hidden; width:100%; height:600px;"></webview>
-        <webview autosize="on" class="content-block opios-webview" id="foo3" src="https://web.whatsapp.com/"     style="position: absolute; display:inline-flex; visibility:hidden; width:100%; height:600px;"></webview>
+        <!-- <webview autosize="on" class="content-block opios-webview" id="foo3" src="https://web.whatsapp.com/"     style="position: absolute; display:inline-flex; visibility:hidden; width:100%; height:600px;"></webview> -->
         <webview autosize="on" class="content-block opios-webview" id="foo4" src="https://web.skype.com/"        style="position: absolute; display:inline-flex; visibility:hidden; width:100%; height:600px;"></webview>
 
         <div class="content-block" id="services-list" style="display:block; width:100%;">
@@ -205,8 +205,13 @@
 <div class="modal fade opios-modal" id="addServiceModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
+
+        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
+        <div class="close-wrapper">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+        
       <div class="modal-body">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <img width="100px" src="services/messenger.svg" />
         <h2>Messenger</h2>
         <div class="form">
@@ -252,19 +257,22 @@
 <div class="modal fade opios-modal" id="settingsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-body">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 
+        <div class="close-wrapper">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+
+      <div class="modal-body">
         <div class="float-right">
             <img width="100px" src="services/settings-logo.svg" />
             <p class="blue">Edit avatar</p>
         </div>
 
-        <h2>Settings</h2>
+        <h3>Settings</h3>
         <span class="grey">Ilia Shershnev</span>
 
         <div class="group">
-            <span>Notifications</span>        
+            <h4>Notifications</h4>        
             <div class="checkbox">
                 <label><input type="checkbox">Desktop Notifications</label>
             </div>
@@ -274,7 +282,7 @@
         <div>
 
         <div class="group">
-            <span>General</span>        
+            <h4>General</h4>        
             <div class="checkbox">
                 <label><input type="checkbox">Auto update (version 0.10.10)</label>
                 <label class="blue">Check for updates</label>
@@ -291,11 +299,11 @@
         <div>        
 
         <div class="group">
-            <span>Language</span>        
+            <h4>Language</h4>        
         <div>    
 
         <div class="group">
-            <span>English</span>        
+            <h4>English</h4>        
             <span class="blue">Change language</span>        
         <div>            
 
