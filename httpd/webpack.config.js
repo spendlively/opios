@@ -1,17 +1,21 @@
-
 module.exports = {
-
-	entry: './app',
-    output: {
-        filename: "build.js",
-    },
-    target: 'electron',
-    watch: true,
-
-
+    entry: "./index",
     resolve: {
-        alias: {
-            jquery: "./lib/jquery-3.1.0"
-        }
-    }
-}
+        modulesDirectories: [
+            "."
+        ]
+    },
+    output: {
+        filename: "build.js"
+    },
+    module: {
+        loaders: [
+            { 
+                test: /\.js$/, 
+                exclude: /node_modules/, 
+                loader: "babel-loader"
+            }
+        ]       
+    },
+    watch: true
+};

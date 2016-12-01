@@ -49,42 +49,36 @@
 	var launcher = new Launcher();
 	launcher.init();
 
-
-
 /***/ },
 /* 1 */
 /***/ function(module, exports) {
 
-	function Launcher(){
-	    this.text = "Launch";
+	function Launcher() {
+		this.text = "Launch";
 	}
 
-	Launcher.prototype.init = function(){
-		
-		
-		$(document).ready(function(){
+	Launcher.prototype.init = function () {
 
+		$(document).ready(function () {
 
-	// setTimeout(function(){
-		//Открывание модального окна блокировки
-		$('#opios-phone').click(function(){
-			$('#codeModal').modal();
-		});
-	// }, 3000);
+			//Открывание модального окна блокировки
+			$('#opios-phone').click(function () {
+				$('#codeModal').modal();
+			});
 
 			//Открывание модального окна добавления сервиса
-			$('.service-img-container').click(function(){
+			$('.service-img-container').click(function () {
 				$('#addServiceModal').modal();
 			});
 
 			//Открывание модального окна настроек
-			$('#opios-right-logo').click(function(){
+			$('#opios-right-logo').click(function () {
 				$('#settingsModal').modal();
 			});
 
 			//Контекстное меню сервиса
 			var $contextMenu = $("#contextMenu");
-			$("body").on("contextmenu", ".tnb-li-a", function(e) {
+			$("body").on("contextmenu", ".tnb-li-a", function (e) {
 				$contextMenu.css({
 					display: "block",
 					left: e.pageX,
@@ -93,13 +87,13 @@
 				return false;
 			});
 			// $contextMenu.on("click", "a", function() {
-			$('body').click(function() {
+			$('body').click(function () {
 				$contextMenu.hide();
 			});
 
 			smartResize();
 
-			$('.tnb-li.service').click(function(e){
+			$('.tnb-li.service').click(function (e) {
 				$('.tnb-li.service').removeClass('active-btn');
 				$(this).addClass('active-btn');
 
@@ -108,7 +102,7 @@
 				$('.content-block.opios-webview').css('visibility', 'hidden').css('position', 'absolute').css('top', '0px');
 				$('#services-list').css('display', 'none');
 
-				switch(service){
+				switch (service) {
 					case 'Messenger':
 						$('#foo1').css('position', 'inherit').css('visibility', 'visible');
 						break;
@@ -129,46 +123,39 @@
 			});
 		});
 
-		$(window).on('resize', function(e){
+		$(window).on('resize', function (e) {
 
 			smartResize();
 		});
-	}
+	};
 
-	function smartResize(){
+	function smartResize() {
 
 		var b = document.body,
-			bStyle = b.currentStyle || window.getComputedStyle(b),
-			bHeight = parseInt(bStyle.height),
+		    bStyle = b.currentStyle || window.getComputedStyle(b),
+		    bHeight = parseInt(bStyle.height),
+		    article = document.getElementById("main-article"),
+		    articleStyle = article.currentStyle || window.getComputedStyle(article),
+		    articleHeight = parseInt(articleStyle.height),
+		    articleMarginTop = parseInt(articleStyle.marginTop),
+		    articleMarginBottom = parseInt(articleStyle.marginBottom),
+		    articleBody = document.getElementById("main-article-body"),
+		    articleBodyStyle = articleBody.currentStyle || window.getComputedStyle(articleBody);
+		articleBodyHeight = parseInt(articleBodyStyle.height), newArticleHeight = 100;
 
-			article = document.getElementById("main-article"),
-			articleStyle = article.currentStyle || window.getComputedStyle(article),
-			articleHeight = parseInt(articleStyle.height),
-			articleMarginTop = parseInt(articleStyle.marginTop),
-			articleMarginBottom = parseInt(articleStyle.marginBottom),
-
-			articleBody = document.getElementById("main-article-body"),
-			articleBodyStyle = articleBody.currentStyle || window.getComputedStyle(articleBody);
-			articleBodyHeight = parseInt(articleBodyStyle.height),
-
-			newArticleHeight = 100;
-
-		if(articleBodyHeight <= bHeight){
+		if (articleBodyHeight <= bHeight) {
 
 			newArticleHeight = bHeight - articleMarginTop - articleMarginBottom;
-		}
-		else{
+		} else {
 
 			newArticleHeight = articleBodyHeight;
 		}
 
 		$('#main-article').css('height', newArticleHeight + 'px');
-		$('.content-block.opios-webview').css('height', bHeight - 85 + 'px').css('width', '100%'); 
+		$('.content-block.opios-webview').css('height', bHeight - 85 + 'px').css('width', '100%');
 	}
 
 	module.exports = Launcher;
-
-		
 
 /***/ }
 /******/ ]);
