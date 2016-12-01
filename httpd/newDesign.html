@@ -96,7 +96,7 @@
 <li class="tnb-li-right" id="opios-right-logo">
     <span class="tnb-logo opios-logo"><img src="services/opios.png" /></span>
 </li>
-<li class="tnb-li-right">
+<li class="tnb-li-right" id="opios-phone">
     <span class="tnb-logo"><img src="services/phone.svg" /></span>
 </li>
     </ul>
@@ -201,12 +201,14 @@
     </ul>
 </div>
 
+
+
+
 <!-- Модальное окно для создания сервиса -->
 <div class="modal fade opios-modal" id="addServiceModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
 
-        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
         <div class="close-wrapper">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         </div>
@@ -258,65 +260,106 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
 
+
         <div class="close-wrapper">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         </div>
 
-      <div class="modal-body">
-        <div class="float-right">
-            <img width="100px" src="services/settings-logo.svg" />
-            <p class="blue">Edit avatar</p>
+        <div class="modal-body">
+            <div class="float-right">
+                <img width="100px" src="services/settings-logo.svg" />
+                <p class="blue">Edit avatar</p>
+            </div>
+
+            <h3>Settings</h3>
+            <span class="grey">Ilia Shershnev</span>
+
+            <div class="group">
+                <h4>Notifications</h4>        
+                <div class="checkbox">
+                    <label><input type="checkbox">Desktop Notifications</label>
+                </div>
+                <div class="checkbox">
+                    <label><input type="checkbox">Play Sound</label>
+                </div>            
+            </div>
+
+            <div class="group">
+                <h4>General</h4>        
+                <div class="checkbox">
+                    <label><input type="checkbox">Auto update (version 0.10.10)</label>
+                    <label class="blue">Check for updates</label>
+                </div>
+                <div class="checkbox">
+                    <label><input type="checkbox">Tray icon</label>
+                </div>
+                <div class="checkbox">
+                    <label><input type="checkbox">Left tag menu</label>
+                </div>
+                <div class="checkbox">
+                    <label><input type="checkbox">Right tag menu</label>
+                </div>
+            </div>        
+
+            <div class="group">
+                <h4>Language</h4>        
+            </div>    
+
+            <div class="group">
+                <h4>English</h4>        
+                <span class="blue">Change language</span>        
+            </div>            
+
         </div>
 
-        <h3>Settings</h3>
-        <span class="grey">Ilia Shershnev</span>
-
-        <div class="group">
-            <h4>Notifications</h4>        
-            <div class="checkbox">
-                <label><input type="checkbox">Desktop Notifications</label>
-            </div>
-            <div class="checkbox">
-                <label><input type="checkbox">Play Sound</label>
-            </div>            
-        <div>
-
-        <div class="group">
-            <h4>General</h4>        
-            <div class="checkbox">
-                <label><input type="checkbox">Auto update (version 0.10.10)</label>
-                <label class="blue">Check for updates</label>
-            </div>
-            <div class="checkbox">
-                <label><input type="checkbox">Tray icon</label>
-            </div>
-            <div class="checkbox">
-                <label><input type="checkbox">Left tag menu</label>
-            </div>
-            <div class="checkbox">
-                <label><input type="checkbox">Right tag menu</label>
-            </div>
-        <div>        
-
-        <div class="group">
-            <h4>Language</h4>        
-        <div>    
-
-        <div class="group">
-            <h4>English</h4>        
-            <span class="blue">Change language</span>        
-        <div>            
-
-      </div>
-
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary ">Save</button>
-        <button type="button" class="btn btn-default " data-dismiss="modal">Cancel</button>
-      </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary">Save</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        </div>
 
     </div>
   </div>
 </div>
+
+
+
+
+
+<!-- Модальное окно блокировки -->
+<div class="modal fade opios-modal" id="codeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+
+        <div class="close-wrapper">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+        
+        <div class="modal-body">
+            <div class="modal-body-center">
+                <div class="opios-code-header">
+                    <img width="95px" src="services/opios.svg" />
+                    <p class="code-header-title">OPIOS ACCESS CODE</p>
+                </div>
+                <div class="opios-code-digits">
+                    <div class="opios-code-digit"></div>
+                    <div class="opios-code-digit"></div>
+                    <div class="opios-code-digit"></div>
+                    <div class="opios-code-digit"></div>
+                    <div class="opios-code-digit"></div>
+                    <div class="opios-code-digit"></div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Start New</button>
+        </div>
+    </div>
+  </div>  
+</div>
+
+
+
+
 
 </body>
 </html>

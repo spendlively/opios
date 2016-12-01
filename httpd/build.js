@@ -65,6 +65,12 @@
 		$(document).ready(function(){
 
 
+	// setTimeout(function(){
+		//Открывание модального окна блокировки
+		$('#opios-phone').click(function(){
+			$('#codeModal').modal();
+		});
+	// }, 3000);
 
 			//Открывание модального окна добавления сервиса
 			$('.service-img-container').click(function(){

@@ -255,7 +255,34 @@ aside.aside-left{
 
 
 .opios-modal .modal-body{
-	padding: 40px 60px 40px 60px;
+	padding: 40px 60px 20px 60px;
+}
+
+.modal-body-center{
+	text-align: center;
+}
+
+.code-header-title{
+	margin-top: 14px;
+}
+
+.opios-code-digits{
+	margin-top: 14px;
+}
+
+.opios-code-digit{
+	display: inline-block;
+	width: 36px;
+	height: 36px;
+	margin-right: 11px;
+	background: #FFFFFF;
+	border: 0px solid #979797;
+	box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.50);
+	border-radius: 5.76px;
+}
+
+.opios-code-digit.last{
+	margin-right: 0px;
 }
 
 .opios-modal .close-wrapper{
