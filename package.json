@@ -18,7 +18,7 @@
     "win": {},
     "linux": {}
   },
-  "dependencies": {
+  "dependencies1": {
     "auto-launch": "^5.0.1",
     "babel-core": "^6.18.2",
     "babel-loader": "^6.2.8",
@@ -27,6 +27,22 @@
     "sanitizer": "^0.1.3",
     "webpack": "^1.13.3"
   },
+  "dependencies": {
+    "auto-launch": "^5.0.1",
+    "sanitizer": "^0.1.3",
+
+    "babel-core": "~5.1.10",
+    "babel-loader": "~5.0.0",
+    "install": "^0.8.2",
+    "lodash": "^4.3.0",
+    "react": "^15.3.0",
+    "react-dom": "^15.3.0",
+    "react-redux": "^4.4.6",
+    "redux": "^3.6.0",
+    "redux-logger": "^2.7.4",
+    "redux-thunk": "^2.1.0",
+    "webpack": "^1.13.3"
+  },  
   "description": "Opios - keep calm & get things done!",
   "author": "spendlively",
   "repository": {},
