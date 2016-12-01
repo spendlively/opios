@@ -89,7 +89,7 @@ function smartResize(){
 		articleMarginBottom = parseInt(articleStyle.marginBottom),
 
 		articleBody = document.getElementById("main-article-body"),
-		articleBodyStyle = articleBody.currentStyle || window.getComputedStyle(articleBody);
+		articleBodyStyle = articleBody.currentStyle || window.getComputedStyle(articleBody),
 		articleBodyHeight = parseInt(articleBodyStyle.height),
 
 		newArticleHeight = 100;

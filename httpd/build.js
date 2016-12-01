@@ -23086,8 +23086,9 @@
 		    articleMarginTop = parseInt(articleStyle.marginTop),
 		    articleMarginBottom = parseInt(articleStyle.marginBottom),
 		    articleBody = document.getElementById('main-article-body'),
-		    articleBodyStyle = articleBody.currentStyle || window.getComputedStyle(articleBody);
-		articleBodyHeight = parseInt(articleBodyStyle.height), newArticleHeight = 100;
+		    articleBodyStyle = articleBody.currentStyle || window.getComputedStyle(articleBody),
+		    articleBodyHeight = parseInt(articleBodyStyle.height),
+		    newArticleHeight = 100;
 
 		if (articleBodyHeight <= bHeight) {
 
