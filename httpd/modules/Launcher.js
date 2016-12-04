@@ -40,12 +40,7 @@ Launcher.prototype.init = function(){
 			$contextMenu.hide();
 		});
 
-		// console.log(111);
-		// smartResize();
-		resizer.suspend();
 		resizer.resize();
-		resizer.resume();
-		// debugger;
 
 		$('.tnb-li.service').click(function(e){
 			$('.tnb-li.service').removeClass('active-btn');
@@ -73,56 +68,15 @@ Launcher.prototype.init = function(){
 					$('#services-list').css('display', 'block');
 					break;
 			}
-			// console.log(222);
-			// smartResize();
+
 			resizer.resize();
-			// debugger;
 		});
 	});
 
 	$(window).on('resize', function(e){
 
-		// if(resizer.isSuspended() === true || true) return;
-
-		// console.log(333333);
-		// debugger;
-
 		resizer.resize();
-		// smartResize();
 	});
 }
 
-function smartResize(){
-
-	var b = document.body,
-		bStyle = b.currentStyle || window.getComputedStyle(b),
-		bHeight = parseInt(bStyle.height),
-
-		article = document.getElementById("main-article"),
-		articleStyle = article.currentStyle || window.getComputedStyle(article),
-		articleHeight = parseInt(articleStyle.height),
-		articleMarginTop = parseInt(articleStyle.marginTop),
-		articleMarginBottom = parseInt(articleStyle.marginBottom),
-
-		articleBody = document.getElementById("main-article-body"),
-		articleBodyStyle = articleBody.currentStyle || window.getComputedStyle(articleBody),
-		articleBodyHeight = parseInt(articleBodyStyle.height),
-
-		newArticleHeight = 100;
-// console.log(articleBody.currentStyle);
-// console.log(window.getComputedStyle(articleBody));
-	if(articleBodyHeight <= bHeight){
-
-		newArticleHeight = bHeight - articleMarginTop - articleMarginBottom;
-	}
-	else{
-
-		newArticleHeight = articleBodyHeight;
-	}
-
-	$('#main-article').css('height', newArticleHeight + 'px');
-	$('.content-block.opios-webview').css('height', bHeight - 85 + 'px').css('width', '100%'); 
-}
-
 module.exports = Launcher;
-

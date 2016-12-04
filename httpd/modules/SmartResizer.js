@@ -1,20 +1,4 @@
-var isSuspended = false;
-
 function SmartResizer(){}
-
-SmartResizer.prototype.isSuspended = function(){
-
-	return isSuspended;
-}
-
-SmartResizer.prototype.suspend = function(){
-
-	isSuspended	= true;
-}
-
-SmartResizer.prototype.resume = function(){
-	isSuspended	= false;
-}
 
 SmartResizer.prototype.resize = function(){
 
@@ -42,8 +26,6 @@ SmartResizer.prototype.resize = function(){
 
 		newArticleHeight = articleBodyHeight;
 	}
-
-console.log(bHeight,articleMarginTop,articleMarginBottom,newArticleHeight)
 
 	$('#main-article').css('height', newArticleHeight + 'px');
 	$('.content-block.opios-webview').css('height', bHeight - 85 + 'px').css('width', '100%'); 

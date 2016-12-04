@@ -21932,453 +21932,453 @@
 	                        _React2["default"].createElement("webview", { className: "content-block opios-webview", id: "foo1", src: "https://messenger.yahoo.com/", style: { position: "absolute", display: "inline-flex", visibility: "hidden", width: "100%", height: "600px" } }),
 	                        _React2["default"].createElement("webview", { className: "content-block opios-webview", id: "foo2", src: "https://web.telegram.org/#/im", style: { position: "absolute", display: "inline-flex", visibility: "hidden", width: "100%", height: "600px" } }),
 	                        _React2["default"].createElement("webview", { className: "content-block opios-webview", id: "foo3", src: "https://web.whatsapp.com/", style: { position: "absolute", display: "inline-flex", visibility: "hidden", width: "100%", height: "600px" } }),
-	                        _React2["default"].createElement("webview", { className: "content-block opios-webview", id: "foo4", src: "https://web.skype.com/", style: { position: "absolute", display: "inline-flex", visibility: "hidden", width: "100%", height: "600px" } })
-	                    ),
-	                    _React2["default"].createElement(
-	                        "div",
-	                        { className: "content-block", id: "services-list", style: { display: "block", width: "100%" } },
+	                        _React2["default"].createElement("webview", { className: "content-block opios-webview", id: "foo4", src: "https://web.skype.com/", style: { position: "absolute", display: "inline-flex", visibility: "hidden", width: "100%", height: "600px" } }),
 	                        _React2["default"].createElement(
 	                            "div",
-	                            { className: "services-list" },
-	                            _React2["default"].createElement(
-	                                "h1",
-	                                null,
-	                                "Add New Service"
-	                            ),
-	                            _React2["default"].createElement(
-	                                "ul",
-	                                null,
-	                                _React2["default"].createElement(
-	                                    "li",
-	                                    { className: "services-list-li active" },
-	                                    _React2["default"].createElement(
-	                                        "a",
-	                                        { href: "#" },
-	                                        "All"
-	                                    )
-	                                ),
-	                                _React2["default"].createElement(
-	                                    "li",
-	                                    { className: "services-list-delimitter" },
-	                                    "/"
-	                                ),
-	                                _React2["default"].createElement(
-	                                    "li",
-	                                    { className: "services-list-li" },
-	                                    _React2["default"].createElement(
-	                                        "a",
-	                                        { href: "#" },
-	                                        "Messengers"
-	                                    )
-	                                ),
-	                                _React2["default"].createElement(
-	                                    "li",
-	                                    { className: "services-list-delimitter" },
-	                                    "/"
-	                                ),
-	                                _React2["default"].createElement(
-	                                    "li",
-	                                    { className: "services-list-li" },
-	                                    _React2["default"].createElement(
-	                                        "a",
-	                                        { href: "#" },
-	                                        "E-mail"
-	                                    )
-	                                ),
-	                                _React2["default"].createElement(
-	                                    "li",
-	                                    { className: "services-list-delimitter" },
-	                                    "/"
-	                                ),
-	                                _React2["default"].createElement(
-	                                    "li",
-	                                    { className: "services-list-li" },
-	                                    _React2["default"].createElement(
-	                                        "a",
-	                                        { href: "#" },
-	                                        "Social Networks"
-	                                    )
-	                                ),
-	                                _React2["default"].createElement(
-	                                    "li",
-	                                    { className: "services-list-delimitter" },
-	                                    "/"
-	                                ),
-	                                _React2["default"].createElement(
-	                                    "li",
-	                                    { className: "services-list-li" },
-	                                    _React2["default"].createElement(
-	                                        "a",
-	                                        { href: "#" },
-	                                        "Data Storage"
-	                                    )
-	                                ),
-	                                _React2["default"].createElement(
-	                                    "li",
-	                                    { className: "services-list-delimitter" },
-	                                    "/"
-	                                ),
-	                                _React2["default"].createElement(
-	                                    "li",
-	                                    { className: "services-list-li" },
-	                                    _React2["default"].createElement(
-	                                        "a",
-	                                        { href: "#" },
-	                                        "Other"
-	                                    )
-	                                )
-	                            ),
+	                            { className: "content-block", id: "services-list", style: { display: "block", width: "100%" } },
 	                            _React2["default"].createElement(
 	                                "div",
-	                                { className: "service-icons" },
+	                                { className: "services-list" },
 	                                _React2["default"].createElement(
-	                                    "div",
-	                                    { className: "service-img-container" },
-	                                    _React2["default"].createElement("img", { src: "services/slack.svg", alt: "" }),
+	                                    "h1",
+	                                    null,
+	                                    "Add New Service"
+	                                ),
+	                                _React2["default"].createElement(
+	                                    "ul",
+	                                    null,
 	                                    _React2["default"].createElement(
-	                                        "p",
-	                                        null,
-	                                        "Slack"
+	                                        "li",
+	                                        { className: "services-list-li active" },
+	                                        _React2["default"].createElement(
+	                                            "a",
+	                                            { href: "#" },
+	                                            "All"
+	                                        )
+	                                    ),
+	                                    _React2["default"].createElement(
+	                                        "li",
+	                                        { className: "services-list-delimitter" },
+	                                        "/"
+	                                    ),
+	                                    _React2["default"].createElement(
+	                                        "li",
+	                                        { className: "services-list-li" },
+	                                        _React2["default"].createElement(
+	                                            "a",
+	                                            { href: "#" },
+	                                            "Messengers"
+	                                        )
+	                                    ),
+	                                    _React2["default"].createElement(
+	                                        "li",
+	                                        { className: "services-list-delimitter" },
+	                                        "/"
+	                                    ),
+	                                    _React2["default"].createElement(
+	                                        "li",
+	                                        { className: "services-list-li" },
+	                                        _React2["default"].createElement(
+	                                            "a",
+	                                            { href: "#" },
+	                                            "E-mail"
+	                                        )
+	                                    ),
+	                                    _React2["default"].createElement(
+	                                        "li",
+	                                        { className: "services-list-delimitter" },
+	                                        "/"
+	                                    ),
+	                                    _React2["default"].createElement(
+	                                        "li",
+	                                        { className: "services-list-li" },
+	                                        _React2["default"].createElement(
+	                                            "a",
+	                                            { href: "#" },
+	                                            "Social Networks"
+	                                        )
+	                                    ),
+	                                    _React2["default"].createElement(
+	                                        "li",
+	                                        { className: "services-list-delimitter" },
+	                                        "/"
+	                                    ),
+	                                    _React2["default"].createElement(
+	                                        "li",
+	                                        { className: "services-list-li" },
+	                                        _React2["default"].createElement(
+	                                            "a",
+	                                            { href: "#" },
+	                                            "Data Storage"
+	                                        )
+	                                    ),
+	                                    _React2["default"].createElement(
+	                                        "li",
+	                                        { className: "services-list-delimitter" },
+	                                        "/"
+	                                    ),
+	                                    _React2["default"].createElement(
+	                                        "li",
+	                                        { className: "services-list-li" },
+	                                        _React2["default"].createElement(
+	                                            "a",
+	                                            { href: "#" },
+	                                            "Other"
+	                                        )
 	                                    )
 	                                ),
 	                                _React2["default"].createElement(
 	                                    "div",
-	                                    { className: "service-img-container" },
-	                                    _React2["default"].createElement("img", { src: "services/skype.svg", alt: "" }),
+	                                    { className: "service-icons" },
 	                                    _React2["default"].createElement(
-	                                        "p",
-	                                        null,
-	                                        "Skype"
-	                                    )
-	                                ),
-	                                _React2["default"].createElement(
-	                                    "div",
-	                                    { className: "service-img-container" },
-	                                    _React2["default"].createElement("img", { src: "services/whatsapp.svg", alt: "" }),
+	                                        "div",
+	                                        { className: "service-img-container" },
+	                                        _React2["default"].createElement("img", { src: "services/slack.svg", alt: "" }),
+	                                        _React2["default"].createElement(
+	                                            "p",
+	                                            null,
+	                                            "Slack"
+	                                        )
+	                                    ),
 	                                    _React2["default"].createElement(
-	                                        "p",
-	                                        null,
-	                                        "WhatsApp"
-	                                    )
-	                                ),
-	                                _React2["default"].createElement(
-	                                    "div",
-	                                    { className: "service-img-container" },
-	                                    _React2["default"].createElement("img", { src: "services/tweetdeck.svg", alt: "" }),
+	                                        "div",
+	                                        { className: "service-img-container" },
+	                                        _React2["default"].createElement("img", { src: "services/skype.svg", alt: "" }),
+	                                        _React2["default"].createElement(
+	                                            "p",
+	                                            null,
+	                                            "Skype"
+	                                        )
+	                                    ),
 	                                    _React2["default"].createElement(
-	                                        "p",
-	                                        null,
-	                                        "Tweetdeck"
-	                                    )
-	                                ),
-	                                _React2["default"].createElement(
-	                                    "div",
-	                                    { className: "service-img-container" },
-	                                    _React2["default"].createElement("img", { src: "services/messenger.svg", alt: "" }),
+	                                        "div",
+	                                        { className: "service-img-container" },
+	                                        _React2["default"].createElement("img", { src: "services/whatsapp.svg", alt: "" }),
+	                                        _React2["default"].createElement(
+	                                            "p",
+	                                            null,
+	                                            "WhatsApp"
+	                                        )
+	                                    ),
 	                                    _React2["default"].createElement(
-	                                        "p",
-	                                        null,
-	                                        "Messenger"
-	                                    )
-	                                ),
-	                                _React2["default"].createElement(
-	                                    "div",
-	                                    { className: "service-img-container" },
-	                                    _React2["default"].createElement("img", { src: "services/icq.svg", alt: "" }),
+	                                        "div",
+	                                        { className: "service-img-container" },
+	                                        _React2["default"].createElement("img", { src: "services/tweetdeck.svg", alt: "" }),
+	                                        _React2["default"].createElement(
+	                                            "p",
+	                                            null,
+	                                            "Tweetdeck"
+	                                        )
+	                                    ),
 	                                    _React2["default"].createElement(
-	                                        "p",
-	                                        null,
-	                                        "ICQ"
-	                                    )
-	                                ),
-	                                _React2["default"].createElement(
-	                                    "div",
-	                                    { className: "service-img-container" },
-	                                    _React2["default"].createElement("img", { src: "services/wechat.svg", alt: "" }),
+	                                        "div",
+	                                        { className: "service-img-container" },
+	                                        _React2["default"].createElement("img", { src: "services/messenger.svg", alt: "" }),
+	                                        _React2["default"].createElement(
+	                                            "p",
+	                                            null,
+	                                            "Messenger"
+	                                        )
+	                                    ),
 	                                    _React2["default"].createElement(
-	                                        "p",
-	                                        null,
-	                                        "Wechat"
-	                                    )
-	                                ),
-	                                _React2["default"].createElement(
-	                                    "div",
-	                                    { className: "service-img-container" },
-	                                    _React2["default"].createElement("img", { src: "services/telegram.svg", alt: "" }),
+	                                        "div",
+	                                        { className: "service-img-container" },
+	                                        _React2["default"].createElement("img", { src: "services/icq.svg", alt: "" }),
+	                                        _React2["default"].createElement(
+	                                            "p",
+	                                            null,
+	                                            "ICQ"
+	                                        )
+	                                    ),
 	                                    _React2["default"].createElement(
-	                                        "p",
-	                                        null,
-	                                        "Telegram"
-	                                    )
-	                                ),
-	                                _React2["default"].createElement(
-	                                    "div",
-	                                    { className: "service-img-container" },
-	                                    _React2["default"].createElement("img", { src: "services/linkedin.svg", alt: "" }),
+	                                        "div",
+	                                        { className: "service-img-container" },
+	                                        _React2["default"].createElement("img", { src: "services/wechat.svg", alt: "" }),
+	                                        _React2["default"].createElement(
+	                                            "p",
+	                                            null,
+	                                            "Wechat"
+	                                        )
+	                                    ),
 	                                    _React2["default"].createElement(
-	                                        "p",
-	                                        null,
-	                                        "Linkedin"
-	                                    )
-	                                ),
-	                                _React2["default"].createElement(
-	                                    "div",
-	                                    { className: "service-img-container" },
-	                                    _React2["default"].createElement("img", { src: "services/facebookpages.svg", alt: "" }),
+	                                        "div",
+	                                        { className: "service-img-container" },
+	                                        _React2["default"].createElement("img", { src: "services/telegram.svg", alt: "" }),
+	                                        _React2["default"].createElement(
+	                                            "p",
+	                                            null,
+	                                            "Telegram"
+	                                        )
+	                                    ),
 	                                    _React2["default"].createElement(
-	                                        "p",
-	                                        null,
-	                                        "Facebook"
-	                                    )
-	                                ),
-	                                _React2["default"].createElement(
-	                                    "div",
-	                                    { className: "service-img-container" },
-	                                    _React2["default"].createElement("img", { src: "services/steamchat.svg", alt: "" }),
+	                                        "div",
+	                                        { className: "service-img-container" },
+	                                        _React2["default"].createElement("img", { src: "services/linkedin.svg", alt: "" }),
+	                                        _React2["default"].createElement(
+	                                            "p",
+	                                            null,
+	                                            "Linkedin"
+	                                        )
+	                                    ),
 	                                    _React2["default"].createElement(
-	                                        "p",
-	                                        null,
-	                                        "Steamchat"
-	                                    )
-	                                ),
-	                                _React2["default"].createElement(
-	                                    "div",
-	                                    { className: "service-img-container" },
-	                                    _React2["default"].createElement("img", { src: "services/yahoomessenger.svg", alt: "" }),
+	                                        "div",
+	                                        { className: "service-img-container" },
+	                                        _React2["default"].createElement("img", { src: "services/facebookpages.svg", alt: "" }),
+	                                        _React2["default"].createElement(
+	                                            "p",
+	                                            null,
+	                                            "Facebook"
+	                                        )
+	                                    ),
 	                                    _React2["default"].createElement(
-	                                        "p",
-	                                        null,
-	                                        "Yahoo"
-	                                    )
-	                                ),
-	                                _React2["default"].createElement(
-	                                    "div",
-	                                    { className: "service-img-container" },
-	                                    _React2["default"].createElement("img", { src: "services/dingtalk.svg", alt: "" }),
+	                                        "div",
+	                                        { className: "service-img-container" },
+	                                        _React2["default"].createElement("img", { src: "services/steamchat.svg", alt: "" }),
+	                                        _React2["default"].createElement(
+	                                            "p",
+	                                            null,
+	                                            "Steamchat"
+	                                        )
+	                                    ),
 	                                    _React2["default"].createElement(
-	                                        "p",
-	                                        null,
-	                                        "Dingtalk"
-	                                    )
-	                                ),
-	                                _React2["default"].createElement(
-	                                    "div",
-	                                    { className: "service-img-container" },
-	                                    _React2["default"].createElement("img", { src: "services/hangouts.svg", alt: "" }),
+	                                        "div",
+	                                        { className: "service-img-container" },
+	                                        _React2["default"].createElement("img", { src: "services/yahoomessenger.svg", alt: "" }),
+	                                        _React2["default"].createElement(
+	                                            "p",
+	                                            null,
+	                                            "Yahoo"
+	                                        )
+	                                    ),
 	                                    _React2["default"].createElement(
-	                                        "p",
-	                                        null,
-	                                        "Hangouts"
-	                                    )
-	                                ),
-	                                _React2["default"].createElement(
-	                                    "div",
-	                                    { className: "service-img-container" },
-	                                    _React2["default"].createElement("img", { src: "services/hipchat.svg", alt: "" }),
+	                                        "div",
+	                                        { className: "service-img-container" },
+	                                        _React2["default"].createElement("img", { src: "services/dingtalk.svg", alt: "" }),
+	                                        _React2["default"].createElement(
+	                                            "p",
+	                                            null,
+	                                            "Dingtalk"
+	                                        )
+	                                    ),
 	                                    _React2["default"].createElement(
-	                                        "p",
-	                                        null,
-	                                        "Hipchat"
-	                                    )
-	                                ),
-	                                _React2["default"].createElement(
-	                                    "div",
-	                                    { className: "service-img-container" },
-	                                    _React2["default"].createElement("img", { src: "services/wire.svg", alt: "" }),
+	                                        "div",
+	                                        { className: "service-img-container" },
+	                                        _React2["default"].createElement("img", { src: "services/hangouts.svg", alt: "" }),
+	                                        _React2["default"].createElement(
+	                                            "p",
+	                                            null,
+	                                            "Hangouts"
+	                                        )
+	                                    ),
 	                                    _React2["default"].createElement(
-	                                        "p",
-	                                        null,
-	                                        "Wire"
-	                                    )
-	                                ),
-	                                _React2["default"].createElement(
-	                                    "div",
-	                                    { className: "service-img-container" },
-	                                    _React2["default"].createElement("img", { src: "services/googleinbox.svg", alt: "" }),
+	                                        "div",
+	                                        { className: "service-img-container" },
+	                                        _React2["default"].createElement("img", { src: "services/hipchat.svg", alt: "" }),
+	                                        _React2["default"].createElement(
+	                                            "p",
+	                                            null,
+	                                            "Hipchat"
+	                                        )
+	                                    ),
 	                                    _React2["default"].createElement(
-	                                        "p",
-	                                        null,
-	                                        "Googleinbox"
-	                                    )
-	                                ),
-	                                _React2["default"].createElement(
-	                                    "div",
-	                                    { className: "service-img-container" },
-	                                    _React2["default"].createElement("img", { src: "services/googlegmail.svg", alt: "" }),
+	                                        "div",
+	                                        { className: "service-img-container" },
+	                                        _React2["default"].createElement("img", { src: "services/wire.svg", alt: "" }),
+	                                        _React2["default"].createElement(
+	                                            "p",
+	                                            null,
+	                                            "Wire"
+	                                        )
+	                                    ),
 	                                    _React2["default"].createElement(
-	                                        "p",
-	                                        null,
-	                                        "Google Gmail"
-	                                    )
-	                                ),
-	                                _React2["default"].createElement(
-	                                    "div",
-	                                    { className: "service-img-container" },
-	                                    _React2["default"].createElement("img", { src: "services/groupme.svg", alt: "" }),
+	                                        "div",
+	                                        { className: "service-img-container" },
+	                                        _React2["default"].createElement("img", { src: "services/googleinbox.svg", alt: "" }),
+	                                        _React2["default"].createElement(
+	                                            "p",
+	                                            null,
+	                                            "Googleinbox"
+	                                        )
+	                                    ),
 	                                    _React2["default"].createElement(
-	                                        "p",
-	                                        null,
-	                                        "Group.me"
-	                                    )
-	                                ),
-	                                _React2["default"].createElement(
-	                                    "div",
-	                                    { className: "service-img-container" },
-	                                    _React2["default"].createElement("img", { src: "services/gitter.svg", alt: "" }),
+	                                        "div",
+	                                        { className: "service-img-container" },
+	                                        _React2["default"].createElement("img", { src: "services/googlegmail.svg", alt: "" }),
+	                                        _React2["default"].createElement(
+	                                            "p",
+	                                            null,
+	                                            "Google Gmail"
+	                                        )
+	                                    ),
 	                                    _React2["default"].createElement(
-	                                        "p",
-	                                        null,
-	                                        "Gitter"
-	                                    )
-	                                ),
-	                                _React2["default"].createElement(
-	                                    "div",
-	                                    { className: "service-img-container" },
-	                                    _React2["default"].createElement("img", { src: "services/intercom.svg", alt: "" }),
+	                                        "div",
+	                                        { className: "service-img-container" },
+	                                        _React2["default"].createElement("img", { src: "services/groupme.svg", alt: "" }),
+	                                        _React2["default"].createElement(
+	                                            "p",
+	                                            null,
+	                                            "Group.me"
+	                                        )
+	                                    ),
 	                                    _React2["default"].createElement(
-	                                        "p",
-	                                        null,
-	                                        "Intercom"
-	                                    )
-	                                ),
-	                                _React2["default"].createElement(
-	                                    "div",
-	                                    { className: "service-img-container" },
-	                                    _React2["default"].createElement("img", { src: "services/ciscospark.svg", alt: "" }),
+	                                        "div",
+	                                        { className: "service-img-container" },
+	                                        _React2["default"].createElement("img", { src: "services/gitter.svg", alt: "" }),
+	                                        _React2["default"].createElement(
+	                                            "p",
+	                                            null,
+	                                            "Gitter"
+	                                        )
+	                                    ),
 	                                    _React2["default"].createElement(
-	                                        "p",
-	                                        null,
-	                                        "Ciscospark"
-	                                    )
-	                                ),
-	                                _React2["default"].createElement(
-	                                    "div",
-	                                    { className: "service-img-container" },
-	                                    _React2["default"].createElement("img", { src: "services/mattermost.svg", alt: "" }),
+	                                        "div",
+	                                        { className: "service-img-container" },
+	                                        _React2["default"].createElement("img", { src: "services/intercom.svg", alt: "" }),
+	                                        _React2["default"].createElement(
+	                                            "p",
+	                                            null,
+	                                            "Intercom"
+	                                        )
+	                                    ),
 	                                    _React2["default"].createElement(
-	                                        "p",
-	                                        null,
-	                                        "Mattermost"
-	                                    )
-	                                ),
-	                                _React2["default"].createElement(
-	                                    "div",
-	                                    { className: "service-img-container" },
-	                                    _React2["default"].createElement("img", { src: "services/discord.svg", alt: "" }),
+	                                        "div",
+	                                        { className: "service-img-container" },
+	                                        _React2["default"].createElement("img", { src: "services/ciscospark.svg", alt: "" }),
+	                                        _React2["default"].createElement(
+	                                            "p",
+	                                            null,
+	                                            "Ciscospark"
+	                                        )
+	                                    ),
 	                                    _React2["default"].createElement(
-	                                        "p",
-	                                        null,
-	                                        "Discord"
-	                                    )
-	                                ),
-	                                _React2["default"].createElement(
-	                                    "div",
-	                                    { className: "service-img-container" },
-	                                    _React2["default"].createElement("img", { src: "services/hibox.svg", alt: "" }),
+	                                        "div",
+	                                        { className: "service-img-container" },
+	                                        _React2["default"].createElement("img", { src: "services/mattermost.svg", alt: "" }),
+	                                        _React2["default"].createElement(
+	                                            "p",
+	                                            null,
+	                                            "Mattermost"
+	                                        )
+	                                    ),
 	                                    _React2["default"].createElement(
-	                                        "p",
-	                                        null,
-	                                        "Hibox"
-	                                    )
-	                                ),
-	                                _React2["default"].createElement(
-	                                    "div",
-	                                    { className: "service-img-container" },
-	                                    _React2["default"].createElement("img", { src: "services/outlookdotcom.svg", alt: "" }),
+	                                        "div",
+	                                        { className: "service-img-container" },
+	                                        _React2["default"].createElement("img", { src: "services/discord.svg", alt: "" }),
+	                                        _React2["default"].createElement(
+	                                            "p",
+	                                            null,
+	                                            "Discord"
+	                                        )
+	                                    ),
 	                                    _React2["default"].createElement(
-	                                        "p",
-	                                        null,
-	                                        "Outlook"
-	                                    )
-	                                ),
-	                                _React2["default"].createElement(
-	                                    "div",
-	                                    { className: "service-img-container" },
-	                                    _React2["default"].createElement("img", { src: "services/mysms.svg", alt: "" }),
+	                                        "div",
+	                                        { className: "service-img-container" },
+	                                        _React2["default"].createElement("img", { src: "services/hibox.svg", alt: "" }),
+	                                        _React2["default"].createElement(
+	                                            "p",
+	                                            null,
+	                                            "Hibox"
+	                                        )
+	                                    ),
 	                                    _React2["default"].createElement(
-	                                        "p",
-	                                        null,
-	                                        "MySMS"
-	                                    )
-	                                ),
-	                                _React2["default"].createElement(
-	                                    "div",
-	                                    { className: "service-img-container" },
-	                                    _React2["default"].createElement("img", { src: "services/coupleme.svg", alt: "" }),
+	                                        "div",
+	                                        { className: "service-img-container" },
+	                                        _React2["default"].createElement("img", { src: "services/outlookdotcom.svg", alt: "" }),
+	                                        _React2["default"].createElement(
+	                                            "p",
+	                                            null,
+	                                            "Outlook"
+	                                        )
+	                                    ),
 	                                    _React2["default"].createElement(
-	                                        "p",
-	                                        null,
-	                                        "Couple.me"
-	                                    )
-	                                ),
-	                                _React2["default"].createElement(
-	                                    "div",
-	                                    { className: "service-img-container" },
-	                                    _React2["default"].createElement("img", { src: "services/zendesk.svg", alt: "" }),
+	                                        "div",
+	                                        { className: "service-img-container" },
+	                                        _React2["default"].createElement("img", { src: "services/mysms.svg", alt: "" }),
+	                                        _React2["default"].createElement(
+	                                            "p",
+	                                            null,
+	                                            "MySMS"
+	                                        )
+	                                    ),
 	                                    _React2["default"].createElement(
-	                                        "p",
-	                                        null,
-	                                        "Zendesk"
-	                                    )
-	                                ),
-	                                _React2["default"].createElement(
-	                                    "div",
-	                                    { className: "service-img-container" },
-	                                    _React2["default"].createElement("img", { src: "services/flowdock.svg", alt: "" }),
+	                                        "div",
+	                                        { className: "service-img-container" },
+	                                        _React2["default"].createElement("img", { src: "services/coupleme.svg", alt: "" }),
+	                                        _React2["default"].createElement(
+	                                            "p",
+	                                            null,
+	                                            "Couple.me"
+	                                        )
+	                                    ),
 	                                    _React2["default"].createElement(
-	                                        "p",
-	                                        null,
-	                                        "Flowdock"
-	                                    )
-	                                ),
-	                                _React2["default"].createElement(
-	                                    "div",
-	                                    { className: "service-img-container" },
-	                                    _React2["default"].createElement("img", { src: "services/vk.svg", alt: "" }),
+	                                        "div",
+	                                        { className: "service-img-container" },
+	                                        _React2["default"].createElement("img", { src: "services/zendesk.svg", alt: "" }),
+	                                        _React2["default"].createElement(
+	                                            "p",
+	                                            null,
+	                                            "Zendesk"
+	                                        )
+	                                    ),
 	                                    _React2["default"].createElement(
-	                                        "p",
-	                                        null,
-	                                        "VK"
-	                                    )
-	                                ),
-	                                _React2["default"].createElement(
-	                                    "div",
-	                                    { className: "service-img-container" },
-	                                    _React2["default"].createElement("img", { src: "services/irccloud.svg", alt: "" }),
+	                                        "div",
+	                                        { className: "service-img-container" },
+	                                        _React2["default"].createElement("img", { src: "services/flowdock.svg", alt: "" }),
+	                                        _React2["default"].createElement(
+	                                            "p",
+	                                            null,
+	                                            "Flowdock"
+	                                        )
+	                                    ),
 	                                    _React2["default"].createElement(
-	                                        "p",
-	                                        null,
-	                                        "Irccloud"
-	                                    )
-	                                ),
-	                                _React2["default"].createElement(
-	                                    "div",
-	                                    { className: "service-img-container" },
-	                                    _React2["default"].createElement("img", { src: "services/grape.svg", alt: "" }),
+	                                        "div",
+	                                        { className: "service-img-container" },
+	                                        _React2["default"].createElement("img", { src: "services/vk.svg", alt: "" }),
+	                                        _React2["default"].createElement(
+	                                            "p",
+	                                            null,
+	                                            "VK"
+	                                        )
+	                                    ),
 	                                    _React2["default"].createElement(
-	                                        "p",
-	                                        null,
-	                                        "Grape"
-	                                    )
-	                                ),
-	                                _React2["default"].createElement(
-	                                    "div",
-	                                    { className: "service-img-container" },
-	                                    _React2["default"].createElement("img", { src: "services/chatwork.svg", alt: "" }),
+	                                        "div",
+	                                        { className: "service-img-container" },
+	                                        _React2["default"].createElement("img", { src: "services/irccloud.svg", alt: "" }),
+	                                        _React2["default"].createElement(
+	                                            "p",
+	                                            null,
+	                                            "Irccloud"
+	                                        )
+	                                    ),
 	                                    _React2["default"].createElement(
-	                                        "p",
-	                                        null,
-	                                        "Chatwork"
-	                                    )
-	                                ),
-	                                _React2["default"].createElement(
-	                                    "div",
-	                                    { className: "service-img-container" },
-	                                    _React2["default"].createElement("img", { src: "services/rocketchat.svg", alt: "" }),
+	                                        "div",
+	                                        { className: "service-img-container" },
+	                                        _React2["default"].createElement("img", { src: "services/grape.svg", alt: "" }),
+	                                        _React2["default"].createElement(
+	                                            "p",
+	                                            null,
+	                                            "Grape"
+	                                        )
+	                                    ),
 	                                    _React2["default"].createElement(
-	                                        "p",
-	                                        null,
-	                                        "Rocketchat"
+	                                        "div",
+	                                        { className: "service-img-container" },
+	                                        _React2["default"].createElement("img", { src: "services/chatwork.svg", alt: "" }),
+	                                        _React2["default"].createElement(
+	                                            "p",
+	                                            null,
+	                                            "Chatwork"
+	                                        )
+	                                    ),
+	                                    _React2["default"].createElement(
+	                                        "div",
+	                                        { className: "service-img-container" },
+	                                        _React2["default"].createElement("img", { src: "services/rocketchat.svg", alt: "" }),
+	                                        _React2["default"].createElement(
+	                                            "p",
+	                                            null,
+	                                            "Rocketchat"
+	                                        )
 	                                    )
 	                                )
 	                            )
@@ -23102,12 +23102,7 @@
 				$contextMenu.hide();
 			});
 
-			// console.log(111);
-			// smartResize();
-			resizer.suspend();
 			resizer.resize();
-			resizer.resume();
-			// debugger;
 
 			$('.tnb-li.service').click(function (e) {
 				$('.tnb-li.service').removeClass('active-btn');
@@ -23135,52 +23130,16 @@
 						$('#services-list').css('display', 'block');
 						break;
 				}
-				// console.log(222);
-				// smartResize();
+
 				resizer.resize();
-				// debugger;
 			});
 		});
 
 		$(window).on('resize', function (e) {
 
-			// if(resizer.isSuspended() === true || true) return;
-
-			// console.log(333333);
-			// debugger;
-
 			resizer.resize();
-			// smartResize();
 		});
 	};
-
-	function smartResize() {
-
-		var b = document.body,
-		    bStyle = b.currentStyle || window.getComputedStyle(b),
-		    bHeight = parseInt(bStyle.height),
-		    article = document.getElementById('main-article'),
-		    articleStyle = article.currentStyle || window.getComputedStyle(article),
-		    articleHeight = parseInt(articleStyle.height),
-		    articleMarginTop = parseInt(articleStyle.marginTop),
-		    articleMarginBottom = parseInt(articleStyle.marginBottom),
-		    articleBody = document.getElementById('main-article-body'),
-		    articleBodyStyle = articleBody.currentStyle || window.getComputedStyle(articleBody),
-		    articleBodyHeight = parseInt(articleBodyStyle.height),
-		    newArticleHeight = 100;
-		// console.log(articleBody.currentStyle);
-		// console.log(window.getComputedStyle(articleBody));
-		if (articleBodyHeight <= bHeight) {
-
-			newArticleHeight = bHeight - articleMarginTop - articleMarginBottom;
-		} else {
-
-			newArticleHeight = articleBodyHeight;
-		}
-
-		$('#main-article').css('height', newArticleHeight + 'px');
-		$('.content-block.opios-webview').css('height', bHeight - 85 + 'px').css('width', '100%');
-	}
 
 	module.exports = Launcher;
 
@@ -23193,23 +23152,7 @@
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-	var isSuspended = false;
-
 	function SmartResizer() {}
-
-	SmartResizer.prototype.isSuspended = function () {
-
-		return isSuspended;
-	};
-
-	SmartResizer.prototype.suspend = function () {
-
-		isSuspended = true;
-	};
-
-	SmartResizer.prototype.resume = function () {
-		isSuspended = false;
-	};
 
 	SmartResizer.prototype.resize = function () {
 
@@ -23233,8 +23176,6 @@
 
 			newArticleHeight = articleBodyHeight;
 		}
-
-		console.log(bHeight, articleMarginTop, articleMarginBottom, newArticleHeight);
 
 		$("#main-article").css("height", newArticleHeight + "px");
 		$(".content-block.opios-webview").css("height", bHeight - 85 + "px").css("width", "100%");
