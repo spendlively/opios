@@ -1,6 +1,8 @@
-function Launcher(){
-    this.text = "Launch";
-}
+import SmartResizer from './SmartResizer';
+
+var resizer = new SmartResizer();
+
+function Launcher(){}
 
 Launcher.prototype.init = function(){
 	
@@ -38,7 +40,12 @@ Launcher.prototype.init = function(){
 			$contextMenu.hide();
 		});
 
-		smartResize();
+		// console.log(111);
+		// smartResize();
+		resizer.suspend();
+		resizer.resize();
+		resizer.resume();
+		// debugger;
 
 		$('.tnb-li.service').click(function(e){
 			$('.tnb-li.service').removeClass('active-btn');
@@ -66,13 +73,22 @@ Launcher.prototype.init = function(){
 					$('#services-list').css('display', 'block');
 					break;
 			}
-			smartResize();
+			// console.log(222);
+			// smartResize();
+			resizer.resize();
+			// debugger;
 		});
 	});
 
 	$(window).on('resize', function(e){
 
-		smartResize();
+		// if(resizer.isSuspended() === true || true) return;
+
+		// console.log(333333);
+		// debugger;
+
+		resizer.resize();
+		// smartResize();
 	});
 }
 
@@ -93,7 +109,8 @@ function smartResize(){
 		articleBodyHeight = parseInt(articleBodyStyle.height),
 
 		newArticleHeight = 100;
-
+// console.log(articleBody.currentStyle);
+// console.log(window.getComputedStyle(articleBody));
 	if(articleBodyHeight <= bHeight){
 
 		newArticleHeight = bHeight - articleMarginTop - articleMarginBottom;
@@ -109,4 +126,3 @@ function smartResize(){
 
 module.exports = Launcher;
 
-	

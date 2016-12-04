@@ -68,7 +68,7 @@
 
 	var _OpiosContainer2 = _interopRequireDefault(_OpiosContainer);
 
-	var _Launcher = __webpack_require__(186);
+	var _Launcher = __webpack_require__(187);
 
 	var _Launcher2 = _interopRequireDefault(_Launcher);
 
@@ -21514,27 +21514,27 @@
 
 	var _OpiosMenu2 = _interopRequireDefault(_OpiosMenu);
 
-	var _OpiosTags = __webpack_require__(180);
+	var _OpiosTags = __webpack_require__(181);
 
 	var _OpiosTags2 = _interopRequireDefault(_OpiosTags);
 
-	var _OpiosContent = __webpack_require__(181);
+	var _OpiosContent = __webpack_require__(182);
 
 	var _OpiosContent2 = _interopRequireDefault(_OpiosContent);
 
-	var _OpiosModalCreate = __webpack_require__(182);
+	var _OpiosModalCreate = __webpack_require__(183);
 
 	var _OpiosModalCreate2 = _interopRequireDefault(_OpiosModalCreate);
 
-	var _OpiosModalSettings = __webpack_require__(183);
+	var _OpiosModalSettings = __webpack_require__(184);
 
 	var _OpiosModalSettings2 = _interopRequireDefault(_OpiosModalSettings);
 
-	var _OpiosModalPassword = __webpack_require__(184);
+	var _OpiosModalPassword = __webpack_require__(185);
 
 	var _OpiosModalPassword2 = _interopRequireDefault(_OpiosModalPassword);
 
-	var _OpiosContextMenu = __webpack_require__(185);
+	var _OpiosContextMenu = __webpack_require__(186);
 
 	var _OpiosContextMenu2 = _interopRequireDefault(_OpiosContextMenu);
 
@@ -21575,6 +21575,194 @@
 /* 179 */
 /***/ function(module, exports, __webpack_require__) {
 
+	'use strict';
+
+	var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { 'default': obj }; };
+
+	var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } };
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	var _get = function get(object, property, receiver) { var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+	var _inherits = function (subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
+
+	Object.defineProperty(exports, '__esModule', {
+	    value: true
+	});
+
+	var _React = __webpack_require__(1);
+
+	var _React2 = _interopRequireDefault(_React);
+
+	var _OpiosMenuHome = __webpack_require__(180);
+
+	var _OpiosMenuHome2 = _interopRequireDefault(_OpiosMenuHome);
+
+	var OpiosMenu = (function (_React$Component) {
+	    function OpiosMenu(props) {
+	        _classCallCheck(this, OpiosMenu);
+
+	        _get(Object.getPrototypeOf(OpiosMenu.prototype), 'constructor', this).call(this, props);
+	    }
+
+	    _inherits(OpiosMenu, _React$Component);
+
+	    _createClass(OpiosMenu, [{
+	        key: 'render',
+	        value: function render() {
+
+	            return _React2['default'].createElement(
+	                'div',
+	                null,
+	                _React2['default'].createElement(
+	                    'nav',
+	                    { className: 'tnb' },
+	                    _React2['default'].createElement(
+	                        'div',
+	                        null,
+	                        _React2['default'].createElement(
+	                            'ul',
+	                            { className: 'tnb' },
+	                            _React2['default'].createElement(
+	                                'a',
+	                                { href: '#', className: 'tnb-li-a', id: 'opios-home-btn' },
+	                                _React2['default'].createElement(
+	                                    'li',
+	                                    { className: 'tnb-li home' },
+	                                    _React2['default'].createElement('span', { className: 'glyphicon glyphicon-align-justify', 'aria-hidden': 'true' })
+	                                )
+	                            ),
+	                            _React2['default'].createElement(
+	                                'a',
+	                                { href: '#', className: 'tnb-li-a' },
+	                                _React2['default'].createElement(
+	                                    'li',
+	                                    { className: 'tnb-li service' },
+	                                    _React2['default'].createElement(
+	                                        'span',
+	                                        { className: 'tnb-logo' },
+	                                        _React2['default'].createElement('img', { src: 'services/messenger.svg' })
+	                                    ),
+	                                    _React2['default'].createElement(
+	                                        'span',
+	                                        { className: 'badge badge-active' },
+	                                        '1'
+	                                    ),
+	                                    _React2['default'].createElement(
+	                                        'span',
+	                                        { className: 'tnb-text' },
+	                                        'Messenger'
+	                                    )
+	                                )
+	                            ),
+	                            _React2['default'].createElement(
+	                                'a',
+	                                { href: '#', className: 'tnb-li-a' },
+	                                _React2['default'].createElement(
+	                                    'li',
+	                                    { className: 'tnb-li service' },
+	                                    _React2['default'].createElement(
+	                                        'span',
+	                                        { className: 'tnb-logo' },
+	                                        _React2['default'].createElement('img', { src: 'services/telegram.svg' })
+	                                    ),
+	                                    _React2['default'].createElement(
+	                                        'span',
+	                                        { className: 'tnb-text' },
+	                                        'Telegram'
+	                                    )
+	                                )
+	                            ),
+	                            _React2['default'].createElement(
+	                                'a',
+	                                { href: '#', className: 'tnb-li-a' },
+	                                _React2['default'].createElement(
+	                                    'li',
+	                                    { className: 'tnb-li service' },
+	                                    _React2['default'].createElement(
+	                                        'span',
+	                                        { className: 'tnb-logo' },
+	                                        _React2['default'].createElement('img', { src: 'services/whatsapp.svg' })
+	                                    ),
+	                                    _React2['default'].createElement(
+	                                        'span',
+	                                        { className: 'badge badge-active' },
+	                                        '4'
+	                                    ),
+	                                    _React2['default'].createElement(
+	                                        'span',
+	                                        { className: 'tnb-text' },
+	                                        'WhatsApp'
+	                                    )
+	                                )
+	                            ),
+	                            _React2['default'].createElement(
+	                                'a',
+	                                { href: '#', className: 'tnb-li-a' },
+	                                _React2['default'].createElement(
+	                                    'li',
+	                                    { className: 'tnb-li service' },
+	                                    _React2['default'].createElement(
+	                                        'span',
+	                                        { className: 'tnb-logo' },
+	                                        _React2['default'].createElement('img', { src: 'services/skype.svg' })
+	                                    ),
+	                                    _React2['default'].createElement(
+	                                        'span',
+	                                        { className: 'tnb-text' },
+	                                        'Skype'
+	                                    )
+	                                )
+	                            ),
+	                            _React2['default'].createElement(
+	                                'a',
+	                                { href: '#', className: 'tnb-li-a' },
+	                                _React2['default'].createElement(
+	                                    'li',
+	                                    { className: 'tnb-li service active-btn' },
+	                                    _React2['default'].createElement(
+	                                        'span',
+	                                        { className: 'tnb-logo-new' },
+	                                        _React2['default'].createElement('img', { src: 'services/plus.svg' })
+	                                    )
+	                                )
+	                            ),
+	                            _React2['default'].createElement(
+	                                'li',
+	                                { className: 'tnb-li-right', id: 'opios-right-logo' },
+	                                _React2['default'].createElement(
+	                                    'span',
+	                                    { className: 'tnb-logo opios-logo' },
+	                                    _React2['default'].createElement('img', { src: 'services/opios.png' })
+	                                )
+	                            ),
+	                            _React2['default'].createElement(
+	                                'li',
+	                                { className: 'tnb-li-right', id: 'opios-phone' },
+	                                _React2['default'].createElement(
+	                                    'span',
+	                                    { className: 'tnb-logo' },
+	                                    _React2['default'].createElement('img', { src: 'services/phone.svg' })
+	                                )
+	                            )
+	                        )
+	                    )
+	                )
+	            );
+	        }
+	    }]);
+
+	    return OpiosMenu;
+	})(_React2['default'].Component);
+
+	exports['default'] = OpiosMenu;
+	module.exports = exports['default'];
+
+/***/ },
+/* 180 */
+/***/ function(module, exports, __webpack_require__) {
+
 	"use strict";
 
 	var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
@@ -21595,168 +21783,39 @@
 
 	var _React2 = _interopRequireDefault(_React);
 
-	var OpiosMenu = (function (_React$Component) {
-	    function OpiosMenu(props) {
-	        _classCallCheck(this, OpiosMenu);
+	var OpiosMenuHome = (function (_React$Component) {
+	    function OpiosMenuHome(props) {
+	        _classCallCheck(this, OpiosMenuHome);
 
-	        _get(Object.getPrototypeOf(OpiosMenu.prototype), "constructor", this).call(this, props);
+	        _get(Object.getPrototypeOf(OpiosMenuHome.prototype), "constructor", this).call(this, props);
 	    }
 
-	    _inherits(OpiosMenu, _React$Component);
+	    _inherits(OpiosMenuHome, _React$Component);
 
-	    _createClass(OpiosMenu, [{
+	    _createClass(OpiosMenuHome, [{
 	        key: "render",
 	        value: function render() {
 
 	            return _React2["default"].createElement(
-	                "div",
-	                null,
+	                "a",
+	                { href: "#", className: "tnb-li-a", id: "opios-home-btn" },
 	                _React2["default"].createElement(
-	                    "nav",
-	                    { className: "tnb" },
-	                    _React2["default"].createElement(
-	                        "div",
-	                        null,
-	                        _React2["default"].createElement(
-	                            "ul",
-	                            { className: "tnb" },
-	                            _React2["default"].createElement(
-	                                "a",
-	                                { href: "#", className: "tnb-li-a", id: "opios-home-btn" },
-	                                _React2["default"].createElement(
-	                                    "li",
-	                                    { className: "tnb-li home" },
-	                                    _React2["default"].createElement("span", { className: "glyphicon glyphicon-align-justify", "aria-hidden": "true" })
-	                                )
-	                            ),
-	                            _React2["default"].createElement(
-	                                "a",
-	                                { href: "#", className: "tnb-li-a" },
-	                                _React2["default"].createElement(
-	                                    "li",
-	                                    { className: "tnb-li service" },
-	                                    _React2["default"].createElement(
-	                                        "span",
-	                                        { className: "tnb-logo" },
-	                                        _React2["default"].createElement("img", { src: "services/messenger.svg" })
-	                                    ),
-	                                    _React2["default"].createElement(
-	                                        "span",
-	                                        { className: "badge badge-active" },
-	                                        "1"
-	                                    ),
-	                                    _React2["default"].createElement(
-	                                        "span",
-	                                        { className: "tnb-text" },
-	                                        "Messenger"
-	                                    )
-	                                )
-	                            ),
-	                            _React2["default"].createElement(
-	                                "a",
-	                                { href: "#", className: "tnb-li-a" },
-	                                _React2["default"].createElement(
-	                                    "li",
-	                                    { className: "tnb-li service" },
-	                                    _React2["default"].createElement(
-	                                        "span",
-	                                        { className: "tnb-logo" },
-	                                        _React2["default"].createElement("img", { src: "services/telegram.svg" })
-	                                    ),
-	                                    _React2["default"].createElement(
-	                                        "span",
-	                                        { className: "tnb-text" },
-	                                        "Telegram"
-	                                    )
-	                                )
-	                            ),
-	                            _React2["default"].createElement(
-	                                "a",
-	                                { href: "#", className: "tnb-li-a" },
-	                                _React2["default"].createElement(
-	                                    "li",
-	                                    { className: "tnb-li service" },
-	                                    _React2["default"].createElement(
-	                                        "span",
-	                                        { className: "tnb-logo" },
-	                                        _React2["default"].createElement("img", { src: "services/whatsapp.svg" })
-	                                    ),
-	                                    _React2["default"].createElement(
-	                                        "span",
-	                                        { className: "badge badge-active" },
-	                                        "4"
-	                                    ),
-	                                    _React2["default"].createElement(
-	                                        "span",
-	                                        { className: "tnb-text" },
-	                                        "WhatsApp"
-	                                    )
-	                                )
-	                            ),
-	                            _React2["default"].createElement(
-	                                "a",
-	                                { href: "#", className: "tnb-li-a" },
-	                                _React2["default"].createElement(
-	                                    "li",
-	                                    { className: "tnb-li service" },
-	                                    _React2["default"].createElement(
-	                                        "span",
-	                                        { className: "tnb-logo" },
-	                                        _React2["default"].createElement("img", { src: "services/skype.svg" })
-	                                    ),
-	                                    _React2["default"].createElement(
-	                                        "span",
-	                                        { className: "tnb-text" },
-	                                        "Skype"
-	                                    )
-	                                )
-	                            ),
-	                            _React2["default"].createElement(
-	                                "a",
-	                                { href: "#", className: "tnb-li-a" },
-	                                _React2["default"].createElement(
-	                                    "li",
-	                                    { className: "tnb-li service active-btn" },
-	                                    _React2["default"].createElement(
-	                                        "span",
-	                                        { className: "tnb-logo-new" },
-	                                        _React2["default"].createElement("img", { src: "services/plus.svg" })
-	                                    )
-	                                )
-	                            ),
-	                            _React2["default"].createElement(
-	                                "li",
-	                                { className: "tnb-li-right", id: "opios-right-logo" },
-	                                _React2["default"].createElement(
-	                                    "span",
-	                                    { className: "tnb-logo opios-logo" },
-	                                    _React2["default"].createElement("img", { src: "services/opios.png" })
-	                                )
-	                            ),
-	                            _React2["default"].createElement(
-	                                "li",
-	                                { className: "tnb-li-right", id: "opios-phone" },
-	                                _React2["default"].createElement(
-	                                    "span",
-	                                    { className: "tnb-logo" },
-	                                    _React2["default"].createElement("img", { src: "services/phone.svg" })
-	                                )
-	                            )
-	                        )
-	                    )
+	                    "li",
+	                    { className: "tnb-li home" },
+	                    _React2["default"].createElement("span", { className: "glyphicon glyphicon-align-justify", "aria-hidden": "true" })
 	                )
 	            );
 	        }
 	    }]);
 
-	    return OpiosMenu;
+	    return OpiosMenuHome;
 	})(_React2["default"].Component);
 
-	exports["default"] = OpiosMenu;
+	exports["default"] = OpiosMenuHome;
 	module.exports = exports["default"];
 
 /***/ },
-/* 180 */
+/* 181 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -21825,7 +21884,7 @@
 	module.exports = exports["default"];
 
 /***/ },
-/* 181 */
+/* 182 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -22337,7 +22396,7 @@
 	module.exports = exports["default"];
 
 /***/ },
-/* 182 */
+/* 183 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -22540,7 +22599,7 @@
 	module.exports = exports["default"];
 
 /***/ },
-/* 183 */
+/* 184 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -22759,7 +22818,7 @@
 	module.exports = exports["default"];
 
 /***/ },
-/* 184 */
+/* 185 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -22871,7 +22930,7 @@
 	module.exports = exports["default"];
 
 /***/ },
-/* 185 */
+/* 186 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -22994,14 +23053,20 @@
 	module.exports = exports["default"];
 
 /***/ },
-/* 186 */
-/***/ function(module, exports) {
+/* 187 */
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	function Launcher() {
-		this.text = 'Launch';
-	}
+	var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { 'default': obj }; };
+
+	var _SmartResizer = __webpack_require__(188);
+
+	var _SmartResizer2 = _interopRequireDefault(_SmartResizer);
+
+	var resizer = new _SmartResizer2['default']();
+
+	function Launcher() {}
 
 	Launcher.prototype.init = function () {
 
@@ -23037,7 +23102,12 @@
 				$contextMenu.hide();
 			});
 
-			smartResize();
+			// console.log(111);
+			// smartResize();
+			resizer.suspend();
+			resizer.resize();
+			resizer.resume();
+			// debugger;
 
 			$('.tnb-li.service').click(function (e) {
 				$('.tnb-li.service').removeClass('active-btn');
@@ -23065,13 +23135,22 @@
 						$('#services-list').css('display', 'block');
 						break;
 				}
-				smartResize();
+				// console.log(222);
+				// smartResize();
+				resizer.resize();
+				// debugger;
 			});
 		});
 
 		$(window).on('resize', function (e) {
 
-			smartResize();
+			// if(resizer.isSuspended() === true || true) return;
+
+			// console.log(333333);
+			// debugger;
+
+			resizer.resize();
+			// smartResize();
 		});
 	};
 
@@ -23089,7 +23168,8 @@
 		    articleBodyStyle = articleBody.currentStyle || window.getComputedStyle(articleBody),
 		    articleBodyHeight = parseInt(articleBodyStyle.height),
 		    newArticleHeight = 100;
-
+		// console.log(articleBody.currentStyle);
+		// console.log(window.getComputedStyle(articleBody));
 		if (articleBodyHeight <= bHeight) {
 
 			newArticleHeight = bHeight - articleMarginTop - articleMarginBottom;
@@ -23103,6 +23183,65 @@
 	}
 
 	module.exports = Launcher;
+
+/***/ },
+/* 188 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	var isSuspended = false;
+
+	function SmartResizer() {}
+
+	SmartResizer.prototype.isSuspended = function () {
+
+		return isSuspended;
+	};
+
+	SmartResizer.prototype.suspend = function () {
+
+		isSuspended = true;
+	};
+
+	SmartResizer.prototype.resume = function () {
+		isSuspended = false;
+	};
+
+	SmartResizer.prototype.resize = function () {
+
+		var b = document.body,
+		    bStyle = b.currentStyle || window.getComputedStyle(b),
+		    bHeight = parseInt(bStyle.height),
+		    article = document.getElementById("main-article"),
+		    articleStyle = article.currentStyle || window.getComputedStyle(article),
+		    articleHeight = parseInt(articleStyle.height),
+		    articleMarginTop = parseInt(articleStyle.marginTop),
+		    articleMarginBottom = parseInt(articleStyle.marginBottom),
+		    articleBody = document.getElementById("main-article-body"),
+		    articleBodyStyle = articleBody.currentStyle || window.getComputedStyle(articleBody),
+		    articleBodyHeight = parseInt(articleBodyStyle.height),
+		    newArticleHeight = 100;
+
+		if (articleBodyHeight <= bHeight) {
+
+			newArticleHeight = bHeight - articleMarginTop - articleMarginBottom;
+		} else {
+
+			newArticleHeight = articleBodyHeight;
+		}
+
+		console.log(bHeight, articleMarginTop, articleMarginBottom, newArticleHeight);
+
+		$("#main-article").css("height", newArticleHeight + "px");
+		$(".content-block.opios-webview").css("height", bHeight - 85 + "px").css("width", "100%");
+	};
+
+	exports["default"] = SmartResizer;
+	module.exports = exports["default"];
 
 /***/ }
 /******/ ]);

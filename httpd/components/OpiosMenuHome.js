@@ -9,9 +9,11 @@ class OpiosMenuHome extends React.Component {
   render() {
 
     return (
-      <div>
-        REPLACE THAT!
-      </div>
+        <a href="#" className="tnb-li-a" id='opios-home-btn'>
+            <li className="tnb-li home">
+                <span className="glyphicon glyphicon-align-justify" aria-hidden="true"></span>
+            </li>
+        </a>
     );
   }
 }

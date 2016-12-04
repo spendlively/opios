@@ -1,4 +1,5 @@
 import React from '../../node_modules/react';
+import OpiosMenuHome from './OpiosMenuHome';
 
 class OpiosMenu extends React.Component {
 
@@ -17,8 +18,11 @@ class OpiosMenu extends React.Component {
                 <a href="#" className="tnb-li-a" id='opios-home-btn'>
                     <li className="tnb-li home">
                         <span className="glyphicon glyphicon-align-justify" aria-hidden="true"></span>
-                </li>
-                </a>
+                    </li>
+                </a>                
+
+
+
                 <a href="#" className="tnb-li-a">
                     <li className="tnb-li service">
                         <span className="tnb-logo"><img src="services/messenger.svg" /></span>
@@ -45,18 +49,24 @@ class OpiosMenu extends React.Component {
                         <span className="tnb-text">Skype</span>
                     </li>
                 </a>
+
+
+
+                
                 <a href="#" className="tnb-li-a">
                     <li className="tnb-li service active-btn">
                         <span className="tnb-logo-new"><img src="services/plus.svg" /></span>
                     </li>
                 </a>
 
-        <li className="tnb-li-right" id="opios-right-logo">
-            <span className="tnb-logo opios-logo"><img src="services/opios.png" /></span>
-        </li>
-        <li className="tnb-li-right" id="opios-phone">
-            <span className="tnb-logo"><img src="services/phone.svg" /></span>
-        </li>
+
+
+                <li className="tnb-li-right" id="opios-right-logo">
+                    <span className="tnb-logo opios-logo"><img src="services/opios.png" /></span>
+                </li>
+                <li className="tnb-li-right" id="opios-phone">
+                    <span className="tnb-logo"><img src="services/phone.svg" /></span>
+                </li>
             </ul>
           </div>
         </nav>
