@@ -9,9 +9,7 @@ class OpiosService extends React.Component {
   render() {
 
     return (
-      <div>
-        REPLACE THAT!
-      </div>
+      <div className="service-img-container"><img src={this.props.data.src} alt=""></img><p>{this.props.data.title}</p></div>
     );
   }
 }

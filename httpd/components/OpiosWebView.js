@@ -9,9 +9,7 @@ class OpiosWebView extends React.Component {
   render() {
 
     return (
-      <div>
-        REPLACE THAT!
-      </div>
+      <webview className="content-block opios-webview" id={this.props.data.id} src={this.props.data.src}  style={{position: 'absolute', display:'inline-flex', visibility:'hidden', width:'100%', height:'600px'}}></webview>
     );
   }
 }

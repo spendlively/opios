@@ -21840,19 +21840,19 @@
 /* 182 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
-	var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
+	var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { 'default': obj }; };
 
-	var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
+	var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } };
 
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-	var _get = function get(object, property, receiver) { var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+	var _get = function get(object, property, receiver) { var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-	var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
+	var _inherits = function (subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
 
-	Object.defineProperty(exports, "__esModule", {
+	Object.defineProperty(exports, '__esModule', {
 	    value: true
 	});
 
@@ -21860,479 +21860,152 @@
 
 	var _React2 = _interopRequireDefault(_React);
 
+	var _OpiosWebView = __webpack_require__(189);
+
+	var _OpiosWebView2 = _interopRequireDefault(_OpiosWebView);
+
+	var _OpiosService = __webpack_require__(190);
+
+	var _OpiosService2 = _interopRequireDefault(_OpiosService);
+
 	var OpiosContent = (function (_React$Component) {
 	    function OpiosContent(props) {
 	        _classCallCheck(this, OpiosContent);
 
-	        _get(Object.getPrototypeOf(OpiosContent.prototype), "constructor", this).call(this, props);
+	        _get(Object.getPrototypeOf(OpiosContent.prototype), 'constructor', this).call(this, props);
 	    }
 
 	    _inherits(OpiosContent, _React$Component);
 
 	    _createClass(OpiosContent, [{
-	        key: "render",
+	        key: 'render',
 	        value: function render() {
 
-	            return _React2["default"].createElement(
-	                "div",
+	            var webViews = [{ key: 1, id: 'foo1', src: 'https://messenger.yahoo.com/' }, { key: 2, id: 'foo2', src: 'https://web.telegram.org/#/im' }, { key: 3, id: 'foo3', src: 'https://web.whatsapp.com/' }, { key: 4, id: 'foo4', src: 'https://web.skype.com/' }],
+	                webViewRows = [],
+	                services = [{ src: 'services/slack.svg', title: 'Slack' }, { src: 'services/skype.svg', title: 'Skype' }, { src: 'services/whatsapp.svg', title: 'WhatsApp' }, { src: 'services/tweetdeck.svg', title: 'Tweetdeck' }, { src: 'services/messenger.svg', title: 'Messenger' }, { src: 'services/icq.svg', title: 'ICQ' }, { src: 'services/wechat.svg', title: 'Wechat' }, { src: 'services/telegram.svg', title: 'Telegram' }, { src: 'services/linkedin.svg', title: 'Linkedin' }, { src: 'services/facebookpages.svg', title: 'Facebook' }, { src: 'services/steamchat.svg', title: 'Steamchat' }, { src: 'services/yahoomessenger.svg', title: 'Yahoo' }, { src: 'services/dingtalk.svg', title: 'Dingtalk' }, { src: 'services/hangouts.svg', title: 'Hangouts' }, { src: 'services/hipchat.svg', title: 'Hipchat' }, { src: 'services/wire.svg', title: 'Wire' }, { src: 'services/googleinbox.svg', title: 'Googleinbox' }, { src: 'services/googlegmail.svg', title: 'Google Gmail' }, { src: 'services/groupme.svg', title: 'Group.me' }, { src: 'services/gitter.svg', title: 'Gitter' }, { src: 'services/intercom.svg', title: 'Intercom' }, { src: 'services/ciscospark.svg', title: 'Ciscospark' }, { src: 'services/mattermost.svg', title: 'Mattermost' }, { src: 'services/discord.svg', title: 'Discord' }, { src: 'services/hibox.svg', title: 'Hibox' }, { src: 'services/outlookdotcom.svg', title: 'Outlook' }, { src: 'services/mysms.svg', title: 'MySMS' }, { src: 'services/coupleme.svg', title: 'Couple.me' }, { src: 'services/zendesk.svg', title: 'Zendesk' }, { src: 'services/flowdock.svg', title: 'Flowdock' }, { src: 'services/vk.svg', title: 'VK' }, { src: 'services/irccloud.svg', title: 'Irccloud' }, { src: 'services/grape.svg', title: 'Grape' }, { src: 'services/chatwork.svg', title: 'Chatwork' }, { src: 'services/rocketchat.svg', title: 'Rocketchat' }],
+	                servicesRows = [];
+
+	            if (services.length) {
+	                for (var d in services) {
+	                    servicesRows.push(_React2['default'].createElement(_OpiosService2['default'], { data: services[d], key: services[d].title }));
+	                }
+	            }
+
+	            if (webViews.length) {
+	                for (var d in webViews) {
+	                    webViewRows.push(_React2['default'].createElement(_OpiosWebView2['default'], { data: webViews[d], key: webViews[d].key }));
+	                }
+	            }
+
+	            return _React2['default'].createElement(
+	                'div',
 	                null,
-	                _React2["default"].createElement(
-	                    "article",
-	                    { id: "main-article" },
-	                    _React2["default"].createElement(
-	                        "div",
-	                        { id: "main-article-body", className: "service-body" },
-	                        _React2["default"].createElement("webview", { className: "content-block opios-webview", id: "foo1", src: "https://messenger.yahoo.com/", style: { position: "absolute", display: "inline-flex", visibility: "hidden", width: "100%", height: "600px" } }),
-	                        _React2["default"].createElement("webview", { className: "content-block opios-webview", id: "foo2", src: "https://web.telegram.org/#/im", style: { position: "absolute", display: "inline-flex", visibility: "hidden", width: "100%", height: "600px" } }),
-	                        _React2["default"].createElement("webview", { className: "content-block opios-webview", id: "foo3", src: "https://web.whatsapp.com/", style: { position: "absolute", display: "inline-flex", visibility: "hidden", width: "100%", height: "600px" } }),
-	                        _React2["default"].createElement("webview", { className: "content-block opios-webview", id: "foo4", src: "https://web.skype.com/", style: { position: "absolute", display: "inline-flex", visibility: "hidden", width: "100%", height: "600px" } }),
-	                        _React2["default"].createElement(
-	                            "div",
-	                            { className: "content-block", id: "services-list", style: { display: "block", width: "100%" } },
-	                            _React2["default"].createElement(
-	                                "div",
-	                                { className: "services-list" },
-	                                _React2["default"].createElement(
-	                                    "h1",
+	                _React2['default'].createElement(
+	                    'article',
+	                    { id: 'main-article' },
+	                    _React2['default'].createElement(
+	                        'div',
+	                        { id: 'main-article-body', className: 'service-body' },
+	                        webViewRows,
+	                        _React2['default'].createElement(
+	                            'div',
+	                            { className: 'content-block', id: 'services-list', style: { display: 'block', width: '100%' } },
+	                            _React2['default'].createElement(
+	                                'div',
+	                                { className: 'services-list' },
+	                                _React2['default'].createElement(
+	                                    'h1',
 	                                    null,
-	                                    "Add New Service"
+	                                    'Add New Service'
 	                                ),
-	                                _React2["default"].createElement(
-	                                    "ul",
+	                                _React2['default'].createElement(
+	                                    'ul',
 	                                    null,
-	                                    _React2["default"].createElement(
-	                                        "li",
-	                                        { className: "services-list-li active" },
-	                                        _React2["default"].createElement(
-	                                            "a",
-	                                            { href: "#" },
-	                                            "All"
+	                                    _React2['default'].createElement(
+	                                        'li',
+	                                        { className: 'services-list-li active' },
+	                                        _React2['default'].createElement(
+	                                            'a',
+	                                            { href: '#' },
+	                                            'All'
 	                                        )
 	                                    ),
-	                                    _React2["default"].createElement(
-	                                        "li",
-	                                        { className: "services-list-delimitter" },
-	                                        "/"
+	                                    _React2['default'].createElement(
+	                                        'li',
+	                                        { className: 'services-list-delimitter' },
+	                                        '/'
 	                                    ),
-	                                    _React2["default"].createElement(
-	                                        "li",
-	                                        { className: "services-list-li" },
-	                                        _React2["default"].createElement(
-	                                            "a",
-	                                            { href: "#" },
-	                                            "Messengers"
+	                                    _React2['default'].createElement(
+	                                        'li',
+	                                        { className: 'services-list-li' },
+	                                        _React2['default'].createElement(
+	                                            'a',
+	                                            { href: '#' },
+	                                            'Messengers'
 	                                        )
 	                                    ),
-	                                    _React2["default"].createElement(
-	                                        "li",
-	                                        { className: "services-list-delimitter" },
-	                                        "/"
+	                                    _React2['default'].createElement(
+	                                        'li',
+	                                        { className: 'services-list-delimitter' },
+	                                        '/'
 	                                    ),
-	                                    _React2["default"].createElement(
-	                                        "li",
-	                                        { className: "services-list-li" },
-	                                        _React2["default"].createElement(
-	                                            "a",
-	                                            { href: "#" },
-	                                            "E-mail"
+	                                    _React2['default'].createElement(
+	                                        'li',
+	                                        { className: 'services-list-li' },
+	                                        _React2['default'].createElement(
+	                                            'a',
+	                                            { href: '#' },
+	                                            'E-mail'
 	                                        )
 	                                    ),
-	                                    _React2["default"].createElement(
-	                                        "li",
-	                                        { className: "services-list-delimitter" },
-	                                        "/"
+	                                    _React2['default'].createElement(
+	                                        'li',
+	                                        { className: 'services-list-delimitter' },
+	                                        '/'
 	                                    ),
-	                                    _React2["default"].createElement(
-	                                        "li",
-	                                        { className: "services-list-li" },
-	                                        _React2["default"].createElement(
-	                                            "a",
-	                                            { href: "#" },
-	                                            "Social Networks"
+	                                    _React2['default'].createElement(
+	                                        'li',
+	                                        { className: 'services-list-li' },
+	                                        _React2['default'].createElement(
+	                                            'a',
+	                                            { href: '#' },
+	                                            'Social Networks'
 	                                        )
 	                                    ),
-	                                    _React2["default"].createElement(
-	                                        "li",
-	                                        { className: "services-list-delimitter" },
-	                                        "/"
+	                                    _React2['default'].createElement(
+	                                        'li',
+	                                        { className: 'services-list-delimitter' },
+	                                        '/'
 	                                    ),
-	                                    _React2["default"].createElement(
-	                                        "li",
-	                                        { className: "services-list-li" },
-	                                        _React2["default"].createElement(
-	                                            "a",
-	                                            { href: "#" },
-	                                            "Data Storage"
+	                                    _React2['default'].createElement(
+	                                        'li',
+	                                        { className: 'services-list-li' },
+	                                        _React2['default'].createElement(
+	                                            'a',
+	                                            { href: '#' },
+	                                            'Data Storage'
 	                                        )
 	                                    ),
-	                                    _React2["default"].createElement(
-	                                        "li",
-	                                        { className: "services-list-delimitter" },
-	                                        "/"
+	                                    _React2['default'].createElement(
+	                                        'li',
+	                                        { className: 'services-list-delimitter' },
+	                                        '/'
 	                                    ),
-	                                    _React2["default"].createElement(
-	                                        "li",
-	                                        { className: "services-list-li" },
-	                                        _React2["default"].createElement(
-	                                            "a",
-	                                            { href: "#" },
-	                                            "Other"
+	                                    _React2['default'].createElement(
+	                                        'li',
+	                                        { className: 'services-list-li' },
+	                                        _React2['default'].createElement(
+	                                            'a',
+	                                            { href: '#' },
+	                                            'Other'
 	                                        )
 	                                    )
 	                                ),
-	                                _React2["default"].createElement(
-	                                    "div",
-	                                    { className: "service-icons" },
-	                                    _React2["default"].createElement(
-	                                        "div",
-	                                        { className: "service-img-container" },
-	                                        _React2["default"].createElement("img", { src: "services/slack.svg", alt: "" }),
-	                                        _React2["default"].createElement(
-	                                            "p",
-	                                            null,
-	                                            "Slack"
-	                                        )
-	                                    ),
-	                                    _React2["default"].createElement(
-	                                        "div",
-	                                        { className: "service-img-container" },
-	                                        _React2["default"].createElement("img", { src: "services/skype.svg", alt: "" }),
-	                                        _React2["default"].createElement(
-	                                            "p",
-	                                            null,
-	                                            "Skype"
-	                                        )
-	                                    ),
-	                                    _React2["default"].createElement(
-	                                        "div",
-	                                        { className: "service-img-container" },
-	                                        _React2["default"].createElement("img", { src: "services/whatsapp.svg", alt: "" }),
-	                                        _React2["default"].createElement(
-	                                            "p",
-	                                            null,
-	                                            "WhatsApp"
-	                                        )
-	                                    ),
-	                                    _React2["default"].createElement(
-	                                        "div",
-	                                        { className: "service-img-container" },
-	                                        _React2["default"].createElement("img", { src: "services/tweetdeck.svg", alt: "" }),
-	                                        _React2["default"].createElement(
-	                                            "p",
-	                                            null,
-	                                            "Tweetdeck"
-	                                        )
-	                                    ),
-	                                    _React2["default"].createElement(
-	                                        "div",
-	                                        { className: "service-img-container" },
-	                                        _React2["default"].createElement("img", { src: "services/messenger.svg", alt: "" }),
-	                                        _React2["default"].createElement(
-	                                            "p",
-	                                            null,
-	                                            "Messenger"
-	                                        )
-	                                    ),
-	                                    _React2["default"].createElement(
-	                                        "div",
-	                                        { className: "service-img-container" },
-	                                        _React2["default"].createElement("img", { src: "services/icq.svg", alt: "" }),
-	                                        _React2["default"].createElement(
-	                                            "p",
-	                                            null,
-	                                            "ICQ"
-	                                        )
-	                                    ),
-	                                    _React2["default"].createElement(
-	                                        "div",
-	                                        { className: "service-img-container" },
-	                                        _React2["default"].createElement("img", { src: "services/wechat.svg", alt: "" }),
-	                                        _React2["default"].createElement(
-	                                            "p",
-	                                            null,
-	                                            "Wechat"
-	                                        )
-	                                    ),
-	                                    _React2["default"].createElement(
-	                                        "div",
-	                                        { className: "service-img-container" },
-	                                        _React2["default"].createElement("img", { src: "services/telegram.svg", alt: "" }),
-	                                        _React2["default"].createElement(
-	                                            "p",
-	                                            null,
-	                                            "Telegram"
-	                                        )
-	                                    ),
-	                                    _React2["default"].createElement(
-	                                        "div",
-	                                        { className: "service-img-container" },
-	                                        _React2["default"].createElement("img", { src: "services/linkedin.svg", alt: "" }),
-	                                        _React2["default"].createElement(
-	                                            "p",
-	                                            null,
-	                                            "Linkedin"
-	                                        )
-	                                    ),
-	                                    _React2["default"].createElement(
-	                                        "div",
-	                                        { className: "service-img-container" },
-	                                        _React2["default"].createElement("img", { src: "services/facebookpages.svg", alt: "" }),
-	                                        _React2["default"].createElement(
-	                                            "p",
-	                                            null,
-	                                            "Facebook"
-	                                        )
-	                                    ),
-	                                    _React2["default"].createElement(
-	                                        "div",
-	                                        { className: "service-img-container" },
-	                                        _React2["default"].createElement("img", { src: "services/steamchat.svg", alt: "" }),
-	                                        _React2["default"].createElement(
-	                                            "p",
-	                                            null,
-	                                            "Steamchat"
-	                                        )
-	                                    ),
-	                                    _React2["default"].createElement(
-	                                        "div",
-	                                        { className: "service-img-container" },
-	                                        _React2["default"].createElement("img", { src: "services/yahoomessenger.svg", alt: "" }),
-	                                        _React2["default"].createElement(
-	                                            "p",
-	                                            null,
-	                                            "Yahoo"
-	                                        )
-	                                    ),
-	                                    _React2["default"].createElement(
-	                                        "div",
-	                                        { className: "service-img-container" },
-	                                        _React2["default"].createElement("img", { src: "services/dingtalk.svg", alt: "" }),
-	                                        _React2["default"].createElement(
-	                                            "p",
-	                                            null,
-	                                            "Dingtalk"
-	                                        )
-	                                    ),
-	                                    _React2["default"].createElement(
-	                                        "div",
-	                                        { className: "service-img-container" },
-	                                        _React2["default"].createElement("img", { src: "services/hangouts.svg", alt: "" }),
-	                                        _React2["default"].createElement(
-	                                            "p",
-	                                            null,
-	                                            "Hangouts"
-	                                        )
-	                                    ),
-	                                    _React2["default"].createElement(
-	                                        "div",
-	                                        { className: "service-img-container" },
-	                                        _React2["default"].createElement("img", { src: "services/hipchat.svg", alt: "" }),
-	                                        _React2["default"].createElement(
-	                                            "p",
-	                                            null,
-	                                            "Hipchat"
-	                                        )
-	                                    ),
-	                                    _React2["default"].createElement(
-	                                        "div",
-	                                        { className: "service-img-container" },
-	                                        _React2["default"].createElement("img", { src: "services/wire.svg", alt: "" }),
-	                                        _React2["default"].createElement(
-	                                            "p",
-	                                            null,
-	                                            "Wire"
-	                                        )
-	                                    ),
-	                                    _React2["default"].createElement(
-	                                        "div",
-	                                        { className: "service-img-container" },
-	                                        _React2["default"].createElement("img", { src: "services/googleinbox.svg", alt: "" }),
-	                                        _React2["default"].createElement(
-	                                            "p",
-	                                            null,
-	                                            "Googleinbox"
-	                                        )
-	                                    ),
-	                                    _React2["default"].createElement(
-	                                        "div",
-	                                        { className: "service-img-container" },
-	                                        _React2["default"].createElement("img", { src: "services/googlegmail.svg", alt: "" }),
-	                                        _React2["default"].createElement(
-	                                            "p",
-	                                            null,
-	                                            "Google Gmail"
-	                                        )
-	                                    ),
-	                                    _React2["default"].createElement(
-	                                        "div",
-	                                        { className: "service-img-container" },
-	                                        _React2["default"].createElement("img", { src: "services/groupme.svg", alt: "" }),
-	                                        _React2["default"].createElement(
-	                                            "p",
-	                                            null,
-	                                            "Group.me"
-	                                        )
-	                                    ),
-	                                    _React2["default"].createElement(
-	                                        "div",
-	                                        { className: "service-img-container" },
-	                                        _React2["default"].createElement("img", { src: "services/gitter.svg", alt: "" }),
-	                                        _React2["default"].createElement(
-	                                            "p",
-	                                            null,
-	                                            "Gitter"
-	                                        )
-	                                    ),
-	                                    _React2["default"].createElement(
-	                                        "div",
-	                                        { className: "service-img-container" },
-	                                        _React2["default"].createElement("img", { src: "services/intercom.svg", alt: "" }),
-	                                        _React2["default"].createElement(
-	                                            "p",
-	                                            null,
-	                                            "Intercom"
-	                                        )
-	                                    ),
-	                                    _React2["default"].createElement(
-	                                        "div",
-	                                        { className: "service-img-container" },
-	                                        _React2["default"].createElement("img", { src: "services/ciscospark.svg", alt: "" }),
-	                                        _React2["default"].createElement(
-	                                            "p",
-	                                            null,
-	                                            "Ciscospark"
-	                                        )
-	                                    ),
-	                                    _React2["default"].createElement(
-	                                        "div",
-	                                        { className: "service-img-container" },
-	                                        _React2["default"].createElement("img", { src: "services/mattermost.svg", alt: "" }),
-	                                        _React2["default"].createElement(
-	                                            "p",
-	                                            null,
-	                                            "Mattermost"
-	                                        )
-	                                    ),
-	                                    _React2["default"].createElement(
-	                                        "div",
-	                                        { className: "service-img-container" },
-	                                        _React2["default"].createElement("img", { src: "services/discord.svg", alt: "" }),
-	                                        _React2["default"].createElement(
-	                                            "p",
-	                                            null,
-	                                            "Discord"
-	                                        )
-	                                    ),
-	                                    _React2["default"].createElement(
-	                                        "div",
-	                                        { className: "service-img-container" },
-	                                        _React2["default"].createElement("img", { src: "services/hibox.svg", alt: "" }),
-	                                        _React2["default"].createElement(
-	                                            "p",
-	                                            null,
-	                                            "Hibox"
-	                                        )
-	                                    ),
-	                                    _React2["default"].createElement(
-	                                        "div",
-	                                        { className: "service-img-container" },
-	                                        _React2["default"].createElement("img", { src: "services/outlookdotcom.svg", alt: "" }),
-	                                        _React2["default"].createElement(
-	                                            "p",
-	                                            null,
-	                                            "Outlook"
-	                                        )
-	                                    ),
-	                                    _React2["default"].createElement(
-	                                        "div",
-	                                        { className: "service-img-container" },
-	                                        _React2["default"].createElement("img", { src: "services/mysms.svg", alt: "" }),
-	                                        _React2["default"].createElement(
-	                                            "p",
-	                                            null,
-	                                            "MySMS"
-	                                        )
-	                                    ),
-	                                    _React2["default"].createElement(
-	                                        "div",
-	                                        { className: "service-img-container" },
-	                                        _React2["default"].createElement("img", { src: "services/coupleme.svg", alt: "" }),
-	                                        _React2["default"].createElement(
-	                                            "p",
-	                                            null,
-	                                            "Couple.me"
-	                                        )
-	                                    ),
-	                                    _React2["default"].createElement(
-	                                        "div",
-	                                        { className: "service-img-container" },
-	                                        _React2["default"].createElement("img", { src: "services/zendesk.svg", alt: "" }),
-	                                        _React2["default"].createElement(
-	                                            "p",
-	                                            null,
-	                                            "Zendesk"
-	                                        )
-	                                    ),
-	                                    _React2["default"].createElement(
-	                                        "div",
-	                                        { className: "service-img-container" },
-	                                        _React2["default"].createElement("img", { src: "services/flowdock.svg", alt: "" }),
-	                                        _React2["default"].createElement(
-	                                            "p",
-	                                            null,
-	                                            "Flowdock"
-	                                        )
-	                                    ),
-	                                    _React2["default"].createElement(
-	                                        "div",
-	                                        { className: "service-img-container" },
-	                                        _React2["default"].createElement("img", { src: "services/vk.svg", alt: "" }),
-	                                        _React2["default"].createElement(
-	                                            "p",
-	                                            null,
-	                                            "VK"
-	                                        )
-	                                    ),
-	                                    _React2["default"].createElement(
-	                                        "div",
-	                                        { className: "service-img-container" },
-	                                        _React2["default"].createElement("img", { src: "services/irccloud.svg", alt: "" }),
-	                                        _React2["default"].createElement(
-	                                            "p",
-	                                            null,
-	                                            "Irccloud"
-	                                        )
-	                                    ),
-	                                    _React2["default"].createElement(
-	                                        "div",
-	                                        { className: "service-img-container" },
-	                                        _React2["default"].createElement("img", { src: "services/grape.svg", alt: "" }),
-	                                        _React2["default"].createElement(
-	                                            "p",
-	                                            null,
-	                                            "Grape"
-	                                        )
-	                                    ),
-	                                    _React2["default"].createElement(
-	                                        "div",
-	                                        { className: "service-img-container" },
-	                                        _React2["default"].createElement("img", { src: "services/chatwork.svg", alt: "" }),
-	                                        _React2["default"].createElement(
-	                                            "p",
-	                                            null,
-	                                            "Chatwork"
-	                                        )
-	                                    ),
-	                                    _React2["default"].createElement(
-	                                        "div",
-	                                        { className: "service-img-container" },
-	                                        _React2["default"].createElement("img", { src: "services/rocketchat.svg", alt: "" }),
-	                                        _React2["default"].createElement(
-	                                            "p",
-	                                            null,
-	                                            "Rocketchat"
-	                                        )
-	                                    )
+	                                _React2['default'].createElement(
+	                                    'div',
+	                                    { className: 'service-icons' },
+	                                    servicesRows
 	                                )
 	                            )
 	                        )
@@ -22343,10 +22016,10 @@
 	    }]);
 
 	    return OpiosContent;
-	})(_React2["default"].Component);
+	})(_React2['default'].Component);
 
-	exports["default"] = OpiosContent;
-	module.exports = exports["default"];
+	exports['default'] = OpiosContent;
+	module.exports = exports['default'];
 
 /***/ },
 /* 183 */
@@ -23135,6 +22808,109 @@
 	};
 
 	exports["default"] = SmartResizer;
+	module.exports = exports["default"];
+
+/***/ },
+/* 189 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { 'default': obj }; };
+
+	var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } };
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	var _get = function get(object, property, receiver) { var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+	var _inherits = function (subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _React = __webpack_require__(1);
+
+	var _React2 = _interopRequireDefault(_React);
+
+	var OpiosWebView = (function (_React$Component) {
+	  function OpiosWebView(props) {
+	    _classCallCheck(this, OpiosWebView);
+
+	    _get(Object.getPrototypeOf(OpiosWebView.prototype), 'constructor', this).call(this, props);
+	  }
+
+	  _inherits(OpiosWebView, _React$Component);
+
+	  _createClass(OpiosWebView, [{
+	    key: 'render',
+	    value: function render() {
+
+	      return _React2['default'].createElement('webview', { className: 'content-block opios-webview', id: this.props.data.id, src: this.props.data.src, style: { position: 'absolute', display: 'inline-flex', visibility: 'hidden', width: '100%', height: '600px' } });
+	    }
+	  }]);
+
+	  return OpiosWebView;
+	})(_React2['default'].Component);
+
+	exports['default'] = OpiosWebView;
+	module.exports = exports['default'];
+
+/***/ },
+/* 190 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
+
+	var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	var _get = function get(object, property, receiver) { var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+	var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _React = __webpack_require__(1);
+
+	var _React2 = _interopRequireDefault(_React);
+
+	var OpiosService = (function (_React$Component) {
+	  function OpiosService(props) {
+	    _classCallCheck(this, OpiosService);
+
+	    _get(Object.getPrototypeOf(OpiosService.prototype), "constructor", this).call(this, props);
+	  }
+
+	  _inherits(OpiosService, _React$Component);
+
+	  _createClass(OpiosService, [{
+	    key: "render",
+	    value: function render() {
+
+	      return _React2["default"].createElement(
+	        "div",
+	        { className: "service-img-container" },
+	        _React2["default"].createElement("img", { src: this.props.data.src, alt: "" }),
+	        _React2["default"].createElement(
+	          "p",
+	          null,
+	          this.props.data.title
+	        )
+	      );
+	    }
+	  }]);
+
+	  return OpiosService;
+	})(_React2["default"].Component);
+
+	exports["default"] = OpiosService;
 	module.exports = exports["default"];
 
 /***/ }
