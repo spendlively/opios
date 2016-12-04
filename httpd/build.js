@@ -21595,9 +21595,9 @@
 
 	var _React2 = _interopRequireDefault(_React);
 
-	var _OpiosMenuHome = __webpack_require__(180);
+	var _OpiosMenuItem = __webpack_require__(180);
 
-	var _OpiosMenuHome2 = _interopRequireDefault(_OpiosMenuHome);
+	var _OpiosMenuItem2 = _interopRequireDefault(_OpiosMenuItem);
 
 	var OpiosMenu = (function (_React$Component) {
 	    function OpiosMenu(props) {
@@ -21611,6 +21611,15 @@
 	    _createClass(OpiosMenu, [{
 	        key: 'render',
 	        value: function render() {
+
+	            var data = [{ key: 1, src: 'services/messenger.svg', text: 'Messenger', badge: 1 }, { key: 2, src: 'services/telegram.svg', text: 'Telegram' }, { key: 3, src: 'services/whatsapp.svg', text: 'WhatsApp', badge: 4 }, { key: 4, src: 'services/skype.svg', text: 'Skype' }],
+	                rows = [];
+
+	            if (data.length) {
+	                for (var d in data) {
+	                    rows.push(_React2['default'].createElement(_OpiosMenuItem2['default'], { data: data[d], key: data[d].key }));
+	                }
+	            }
 
 	            return _React2['default'].createElement(
 	                'div',
@@ -21630,91 +21639,10 @@
 	                                _React2['default'].createElement(
 	                                    'li',
 	                                    { className: 'tnb-li home' },
-	                                    _React2['default'].createElement('span', { className: 'glyphicon glyphicon-align-justify', 'aria-hidden': 'true' })
+	                                    _React2['default'].createElement('span', { className: 'glyphicon glyphicon-align-justify' })
 	                                )
 	                            ),
-	                            _React2['default'].createElement(
-	                                'a',
-	                                { href: '#', className: 'tnb-li-a' },
-	                                _React2['default'].createElement(
-	                                    'li',
-	                                    { className: 'tnb-li service' },
-	                                    _React2['default'].createElement(
-	                                        'span',
-	                                        { className: 'tnb-logo' },
-	                                        _React2['default'].createElement('img', { src: 'services/messenger.svg' })
-	                                    ),
-	                                    _React2['default'].createElement(
-	                                        'span',
-	                                        { className: 'badge badge-active' },
-	                                        '1'
-	                                    ),
-	                                    _React2['default'].createElement(
-	                                        'span',
-	                                        { className: 'tnb-text' },
-	                                        'Messenger'
-	                                    )
-	                                )
-	                            ),
-	                            _React2['default'].createElement(
-	                                'a',
-	                                { href: '#', className: 'tnb-li-a' },
-	                                _React2['default'].createElement(
-	                                    'li',
-	                                    { className: 'tnb-li service' },
-	                                    _React2['default'].createElement(
-	                                        'span',
-	                                        { className: 'tnb-logo' },
-	                                        _React2['default'].createElement('img', { src: 'services/telegram.svg' })
-	                                    ),
-	                                    _React2['default'].createElement(
-	                                        'span',
-	                                        { className: 'tnb-text' },
-	                                        'Telegram'
-	                                    )
-	                                )
-	                            ),
-	                            _React2['default'].createElement(
-	                                'a',
-	                                { href: '#', className: 'tnb-li-a' },
-	                                _React2['default'].createElement(
-	                                    'li',
-	                                    { className: 'tnb-li service' },
-	                                    _React2['default'].createElement(
-	                                        'span',
-	                                        { className: 'tnb-logo' },
-	                                        _React2['default'].createElement('img', { src: 'services/whatsapp.svg' })
-	                                    ),
-	                                    _React2['default'].createElement(
-	                                        'span',
-	                                        { className: 'badge badge-active' },
-	                                        '4'
-	                                    ),
-	                                    _React2['default'].createElement(
-	                                        'span',
-	                                        { className: 'tnb-text' },
-	                                        'WhatsApp'
-	                                    )
-	                                )
-	                            ),
-	                            _React2['default'].createElement(
-	                                'a',
-	                                { href: '#', className: 'tnb-li-a' },
-	                                _React2['default'].createElement(
-	                                    'li',
-	                                    { className: 'tnb-li service' },
-	                                    _React2['default'].createElement(
-	                                        'span',
-	                                        { className: 'tnb-logo' },
-	                                        _React2['default'].createElement('img', { src: 'services/skype.svg' })
-	                                    ),
-	                                    _React2['default'].createElement(
-	                                        'span',
-	                                        { className: 'tnb-text' },
-	                                        'Skype'
-	                                    )
-	                                )
-	                            ),
+	                            rows,
 	                            _React2['default'].createElement(
 	                                'a',
 	                                { href: '#', className: 'tnb-li-a' },
@@ -21729,21 +21657,29 @@
 	                                )
 	                            ),
 	                            _React2['default'].createElement(
-	                                'li',
-	                                { className: 'tnb-li-right', id: 'opios-right-logo' },
+	                                'a',
+	                                { href: '#' },
 	                                _React2['default'].createElement(
-	                                    'span',
-	                                    { className: 'tnb-logo opios-logo' },
-	                                    _React2['default'].createElement('img', { src: 'services/opios.png' })
+	                                    'li',
+	                                    { className: 'tnb-li-right', id: 'opios-right-logo' },
+	                                    _React2['default'].createElement(
+	                                        'span',
+	                                        { className: 'tnb-logo opios-logo' },
+	                                        _React2['default'].createElement('img', { src: 'services/opios.png' })
+	                                    )
 	                                )
 	                            ),
 	                            _React2['default'].createElement(
-	                                'li',
-	                                { className: 'tnb-li-right', id: 'opios-phone' },
+	                                'a',
+	                                { href: '#' },
 	                                _React2['default'].createElement(
-	                                    'span',
-	                                    { className: 'tnb-logo' },
-	                                    _React2['default'].createElement('img', { src: 'services/phone.svg' })
+	                                    'li',
+	                                    { className: 'tnb-li-right', id: 'opios-phone' },
+	                                    _React2['default'].createElement(
+	                                        'span',
+	                                        { className: 'tnb-logo' },
+	                                        _React2['default'].createElement('img', { src: 'services/phone.svg' })
+	                                    )
 	                                )
 	                            )
 	                        )
@@ -21763,19 +21699,19 @@
 /* 180 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
-	var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
+	var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { 'default': obj }; };
 
-	var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
+	var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } };
 
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-	var _get = function get(object, property, receiver) { var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+	var _get = function get(object, property, receiver) { var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-	var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
+	var _inherits = function (subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
 
-	Object.defineProperty(exports, "__esModule", {
+	Object.defineProperty(exports, '__esModule', {
 	    value: true
 	});
 
@@ -21783,36 +21719,53 @@
 
 	var _React2 = _interopRequireDefault(_React);
 
-	var OpiosMenuHome = (function (_React$Component) {
-	    function OpiosMenuHome(props) {
-	        _classCallCheck(this, OpiosMenuHome);
+	var OpiosMenuItem = (function (_React$Component) {
+	    function OpiosMenuItem(props) {
+	        _classCallCheck(this, OpiosMenuItem);
 
-	        _get(Object.getPrototypeOf(OpiosMenuHome.prototype), "constructor", this).call(this, props);
+	        _get(Object.getPrototypeOf(OpiosMenuItem.prototype), 'constructor', this).call(this, props);
+	        this.itemTemplates = undefined;
 	    }
 
-	    _inherits(OpiosMenuHome, _React$Component);
+	    _inherits(OpiosMenuItem, _React$Component);
 
-	    _createClass(OpiosMenuHome, [{
-	        key: "render",
+	    _createClass(OpiosMenuItem, [{
+	        key: 'render',
 	        value: function render() {
 
-	            return _React2["default"].createElement(
-	                "a",
-	                { href: "#", className: "tnb-li-a", id: "opios-home-btn" },
-	                _React2["default"].createElement(
-	                    "li",
-	                    { className: "tnb-li home" },
-	                    _React2["default"].createElement("span", { className: "glyphicon glyphicon-align-justify", "aria-hidden": "true" })
+	            var badge = this.props.data.badge ? _React2['default'].createElement(
+	                'span',
+	                { className: 'badge badge-active' },
+	                this.props.data.badge
+	            ) : '';
+
+	            return _React2['default'].createElement(
+	                'a',
+	                { href: '#', className: 'tnb-li-a' },
+	                _React2['default'].createElement(
+	                    'li',
+	                    { className: 'tnb-li service' },
+	                    _React2['default'].createElement(
+	                        'span',
+	                        { className: 'tnb-logo' },
+	                        _React2['default'].createElement('img', { src: this.props.data.src })
+	                    ),
+	                    badge,
+	                    _React2['default'].createElement(
+	                        'span',
+	                        { className: 'tnb-text' },
+	                        this.props.data.text
+	                    )
 	                )
 	            );
 	        }
 	    }]);
 
-	    return OpiosMenuHome;
-	})(_React2["default"].Component);
+	    return OpiosMenuItem;
+	})(_React2['default'].Component);
 
-	exports["default"] = OpiosMenuHome;
-	module.exports = exports["default"];
+	exports['default'] = OpiosMenuItem;
+	module.exports = exports['default'];
 
 /***/ },
 /* 181 */
