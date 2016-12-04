@@ -8,10 +8,10 @@ class OpiosTag extends React.Component {
 
   render() {
 
+    var cls = "aside-tag " + this.props.data.colorCls;
+
     return (
-      <div>
-        REPLACE THAT!
-      </div>
+      <div className={cls}>{this.props.data.title}</div>
     );
   }
 }

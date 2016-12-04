@@ -6,10 +6,6 @@ class OpiosMenuItem extends React.Component {
 	   super(props);
   }
 
-  itemTemplates: {
-
-  }
-
   render() {
 
   	var badge = this.props.data.badge ? <span className="badge badge-active">{this.props.data.badge}</span> : '';

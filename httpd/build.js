@@ -21724,7 +21724,6 @@
 	        _classCallCheck(this, OpiosMenuItem);
 
 	        _get(Object.getPrototypeOf(OpiosMenuItem.prototype), 'constructor', this).call(this, props);
-	        this.itemTemplates = undefined;
 	    }
 
 	    _inherits(OpiosMenuItem, _React$Component);
@@ -21771,19 +21770,19 @@
 /* 181 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
-	var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
+	var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { 'default': obj }; };
 
-	var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
+	var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } };
 
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-	var _get = function get(object, property, receiver) { var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+	var _get = function get(object, property, receiver) { var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-	var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
+	var _inherits = function (subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
 
-	Object.defineProperty(exports, "__esModule", {
+	Object.defineProperty(exports, '__esModule', {
 	  value: true
 	});
 
@@ -21791,50 +21790,56 @@
 
 	var _React2 = _interopRequireDefault(_React);
 
+	var _OpiosTag = __webpack_require__(191);
+
+	var _OpiosTag2 = _interopRequireDefault(_OpiosTag);
+
 	var OpiosTags = (function (_React$Component) {
 	  function OpiosTags(props) {
 	    _classCallCheck(this, OpiosTags);
 
-	    _get(Object.getPrototypeOf(OpiosTags.prototype), "constructor", this).call(this, props);
+	    _get(Object.getPrototypeOf(OpiosTags.prototype), 'constructor', this).call(this, props);
 	  }
 
 	  _inherits(OpiosTags, _React$Component);
 
 	  _createClass(OpiosTags, [{
-	    key: "render",
+	    key: 'render',
 	    value: function render() {
 
-	      return _React2["default"].createElement(
-	        "div",
+	      var data = [{ key: 1, title: 'TAG 1', colorCls: 'yellow' }, { key: 2, title: 'TAG 2', colorCls: 'red' }, { key: 3, title: 'TAG 3', colorCls: 'violet' }],
+	          rows = [];
+
+	      if (data.length) {
+	        for (var d in data) {
+	          rows.push(_React2['default'].createElement(_OpiosTag2['default'], { data: data[d], key: data[d].key }));
+	        }
+	      }
+
+	      return _React2['default'].createElement(
+	        'div',
 	        null,
-	        _React2["default"].createElement(
-	          "aside",
-	          { className: "aside-left" },
-	          _React2["default"].createElement(
-	            "div",
-	            { className: "aside-tag yellow" },
-	            "TAG 1"
-	          ),
-	          _React2["default"].createElement(
-	            "div",
-	            { className: "aside-tag red" },
-	            "TAG 2"
-	          ),
-	          _React2["default"].createElement(
-	            "div",
-	            { className: "aside-tag violet" },
-	            "TAG 2"
-	          )
+	        _React2['default'].createElement(
+	          'aside',
+	          { className: 'aside-left' },
+	          rows
 	        )
 	      );
 	    }
 	  }]);
 
 	  return OpiosTags;
-	})(_React2["default"].Component);
+	})(_React2['default'].Component);
 
-	exports["default"] = OpiosTags;
-	module.exports = exports["default"];
+	exports['default'] = OpiosTags;
+
+	/*
+	            <div className="aside-tag yellow">TAG 1</div>
+	            <div className="aside-tag red">TAG 2</div>
+	            <div className="aside-tag violet">TAG 2</div>
+
+	            */
+	module.exports = exports['default'];
 
 /***/ },
 /* 182 */
@@ -22911,6 +22916,59 @@
 	})(_React2["default"].Component);
 
 	exports["default"] = OpiosService;
+	module.exports = exports["default"];
+
+/***/ },
+/* 191 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
+
+	var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	var _get = function get(object, property, receiver) { var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+	var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _React = __webpack_require__(1);
+
+	var _React2 = _interopRequireDefault(_React);
+
+	var OpiosTag = (function (_React$Component) {
+	  function OpiosTag(props) {
+	    _classCallCheck(this, OpiosTag);
+
+	    _get(Object.getPrototypeOf(OpiosTag.prototype), "constructor", this).call(this, props);
+	  }
+
+	  _inherits(OpiosTag, _React$Component);
+
+	  _createClass(OpiosTag, [{
+	    key: "render",
+	    value: function render() {
+
+	      var cls = "aside-tag " + this.props.data.colorCls;
+
+	      return _React2["default"].createElement(
+	        "div",
+	        { className: cls },
+	        this.props.data.title
+	      );
+	    }
+	  }]);
+
+	  return OpiosTag;
+	})(_React2["default"].Component);
+
+	exports["default"] = OpiosTag;
 	module.exports = exports["default"];
 
 /***/ }
