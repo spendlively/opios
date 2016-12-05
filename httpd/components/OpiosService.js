@@ -6,10 +6,24 @@ class OpiosService extends React.Component {
 	   super(props);
   }
 
+  onClickHandler(){
+
+  	var store = this.props.store;
+
+	store.dispatch({
+	    type: 'OPEN_CREATE_SERVICE_WINDOW',
+	    payload: {service: this.props.data.name}
+	});
+
+	// $('.service-img-container').click(function(){
+	$('#addServiceModal').modal();
+	// });
+  }
+
   render() {
 
     return (
-      <div className="service-img-container"><img src={this.props.data.img} alt=""></img><p>{this.props.data.title}</p></div>
+      <div className="service-img-container" onClick={this.onClickHandler.bind(this)} ><img src={this.props.data.img} alt=""></img><p>{this.props.data.title}</p></div>
     );
   }
 }

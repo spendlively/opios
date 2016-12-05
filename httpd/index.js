@@ -2,14 +2,17 @@ import React from '../node_modules/react';
 import ReactDOM from '../node_modules/react-dom';
 import OpiosContainer from './components/OpiosContainer';
 import Launcher from './modules/Launcher';
-import State from './State';
+import store from './store/Store';
 
-var state = new State();
-var data = state.getInitialState();
-// console.log(data);
+store.subscribe(function(){
+	ReactDOM.render(
+		<OpiosContainer data={store.getState()} store={store} />,
+	  	document.getElementById('container')
+	)
+});
 
 ReactDOM.render(
-	<OpiosContainer data={data} />,
+	<OpiosContainer data={store.getState()} store={store} />,
   	document.getElementById('container')
 )
 
@@ -19,10 +22,10 @@ setTimeout(function(){
 }, 2000);
 
 
+
 // setTimeout(function(){
-// 	console.log('update!');
-// 	ReactDOM.render(
-// 		<OpiosContainer data={store.getInitialState2()} />,
-// 	  	document.getElementById('container')
-// 	)
+// 	store.dispatch({
+// 	    type: 'TEST',
+// 	    payload: {name: 'Ivan'}
+// 	});
 // }, 5000);

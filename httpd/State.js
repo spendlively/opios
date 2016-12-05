@@ -4,12 +4,15 @@ State.prototype.getInitialState = function(){
 
 	var data = {
 		services: [
-			{id: 'foo1', name: 'messenger', text: 'Messenger!', badges: 1},
-			{id: 'foo2', name: 'telegram', text: 'Telegram!', badges: 0},
-			{id: 'foo3', name: 'whatsapp', text: 'WhatsApp!', badges: 4}
+			{id: 'foo1', name: 'messenger', text: 'Мессенджер', badges: 1},
+			{id: 'foo2', name: 'telegram', text: 'Телеграм', badges: 0},
+			{id: 'foo3', name: 'whatsapp', text: 'Ватсап', badges: 4},
+			{id: 'foo4', name: 'skype', text: 'Скайп', badges: 0}
 		],
 		settings: {},
-		modalCreate: {},
+		modalCreate: {
+			service: 'vk'
+		},
 		modalUpdate: {},
 		l12n: {},
 		tags: []

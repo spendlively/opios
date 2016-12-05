@@ -31,7 +31,7 @@ class OpiosContent extends React.Component {
 
     if(availableServices.length){
         for(var d in availableServices){
-            availableServicesRows.push(<OpiosService data={availableServices[d]} key={availableServices[d].name} />);
+            availableServicesRows.push(<OpiosService data={availableServices[d]} key={availableServices[d].name} store={this.props.store} />);
         }
     }
 

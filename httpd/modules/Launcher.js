@@ -16,9 +16,9 @@ Launcher.prototype.init = function(){
 		});
 
 		//Открывание модального окна добавления сервиса
-		$('.service-img-container').click(function(){
-			$('#addServiceModal').modal();
-		});
+		// $('.service-img-container').click(function(){
+		// 	$('#addServiceModal').modal();
+		// });
 
 		//Открывание модального окна настроек
 		$('#opios-right-logo').click(function(){

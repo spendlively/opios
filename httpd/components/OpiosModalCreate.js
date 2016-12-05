@@ -1,4 +1,5 @@
 import React from '../../node_modules/react';
+import Directory from '../modules/Directory';
 
 class OpiosModalCreate extends React.Component {
 
@@ -6,7 +7,26 @@ class OpiosModalCreate extends React.Component {
 	   super(props);
   }
 
+  onSave(serviceName, title) {
+
+    var store = this.props.store;
+
+    store.dispatch({
+       type: 'ADD_SERVICE',
+       payload: {service: serviceName, text: title}
+    });
+    
+    $('#addServiceModal').modal('hide');
+  }
+
   render() {
+
+    var directory = new Directory(),
+        data = this.props.data.modalCreate,
+        serviceName = data.service,
+        serviceProps = directory.getServicePropsByName(serviceName),
+        src = serviceProps ? serviceProps.img : '',
+        title = serviceProps ? serviceProps.title : '';
 
     return (
       <div>
@@ -15,8 +35,8 @@ class OpiosModalCreate extends React.Component {
             <div className="modal-content">
 
               <div className="modal-body">
-                <img width="100px" src="services/messenger.svg" />
-                <h2>Messenger</h2>
+                <img width="100px" src={src} />
+                <h2>{title}</h2>
                 <div className="form">
 
                   <div className="checkbox">
@@ -49,7 +69,7 @@ class OpiosModalCreate extends React.Component {
                 </div>
               </div>
               <div className="modal-footer">
-                <button type="button" className="btn btn-primary ">Save</button>
+                <button onClick={this.onSave.bind(this, serviceName, title)} type="button" className="btn btn-primary ">Save</button>
                 <button type="button" className="btn btn-default " data-dismiss="modal">Cancel</button>
               </div>
             </div>
