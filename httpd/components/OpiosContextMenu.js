@@ -12,6 +12,21 @@ class OpiosContextMenu extends React.Component {
       <div>
         <div id="contextMenu" className="dropdown clearfix">
             <ul className="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style={{display:'block',position:'static',marginBottom:'5px'}}>
+                <li><a tabIndex="-1" href="#">Редактировать</a></li>
+                <li><a tabIndex="-1" href="#">Удалить</a></li>
+            </ul>
+        </div>
+      </div>
+    );
+  }
+}
+
+export default OpiosContextMenu;
+
+
+/*
+        <div id="contextMenu" className="dropdown clearfix">
+            <ul className="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style={{display:'block',position:'static',marginBottom:'5px'}}>
                 <li><a tabIndex="-1" href="#"><div className="red-square"></div>Highlight Color</a></li>
                 <li className="divider"></li>
                 <li><a tabIndex="-1" href="#">Add to favorite</a></li>
@@ -22,9 +37,4 @@ class OpiosContextMenu extends React.Component {
                 <li><a tabIndex="-1" href="#">Delete Project</a></li>
             </ul>
         </div>
-      </div>
-    );
-  }
-}
-
-export default OpiosContextMenu;
+        */

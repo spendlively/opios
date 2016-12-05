@@ -14,10 +14,6 @@ class OpiosModalCreate extends React.Component {
           <div className="modal-dialog" role="document">
             <div className="modal-content">
 
-                <div className="close-wrapper">
-                    <button type="button" className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                </div>
-                
               <div className="modal-body">
                 <img width="100px" src="services/messenger.svg" />
                 <h2>Messenger</h2>

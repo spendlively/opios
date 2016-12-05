@@ -14,10 +14,6 @@ class OpiosModalPassword extends React.Component {
           <div className="modal-dialog" role="document">
             <div className="modal-content">
 
-                <div className="close-wrapper">
-                    <button type="button" className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                </div>
-                
                 <div className="modal-body">
                     <div className="modal-body-center">
                         <div className="opios-code-header">

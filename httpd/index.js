@@ -19,10 +19,10 @@ setTimeout(function(){
 }, 2000);
 
 
-setTimeout(function(){
-	console.log('update!');
-	ReactDOM.render(
-		<OpiosContainer data={store.getInitialState2()} />,
-	  	document.getElementById('container')
-	)
-}, 5000);
+// setTimeout(function(){
+// 	console.log('update!');
+// 	ReactDOM.render(
+// 		<OpiosContainer data={store.getInitialState2()} />,
+// 	  	document.getElementById('container')
+// 	)
+// }, 5000);
