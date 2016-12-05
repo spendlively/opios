@@ -1,6 +1,6 @@
-function Store(){}
+function State(){}
 
-Store.prototype.getInitialState = function(){
+State.prototype.getInitialState = function(){
 
 	var data = {
 		services: [
@@ -18,7 +18,7 @@ Store.prototype.getInitialState = function(){
 	return data;
 }
 
-Store.prototype.getInitialState2 = function(){
+State.prototype.getInitialState2 = function(){
 
 	var data = {
 		services: [
@@ -37,4 +37,4 @@ Store.prototype.getInitialState2 = function(){
 	return data;
 }
 
-export default Store;
+export default State;

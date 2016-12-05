@@ -64,12 +64,12 @@
 
 	var _Launcher2 = _interopRequireDefault(_Launcher);
 
-	var _Store = __webpack_require__(193);
+	var _State = __webpack_require__(194);
 
-	var _Store2 = _interopRequireDefault(_Store);
+	var _State2 = _interopRequireDefault(_State);
 
-	var store = new _Store2['default']();
-	var data = store.getInitialState();
+	var state = new _State2['default']();
+	var data = state.getInitialState();
 	// console.log(data);
 
 	_ReactDOM2['default'].render(_React2['default'].createElement(_OpiosContainer2['default'], { data: data }), document.getElementById('container'));
@@ -23293,7 +23293,8 @@
 	module.exports = Launcher;
 
 /***/ },
-/* 193 */
+/* 193 */,
+/* 194 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -23301,9 +23302,9 @@
 	Object.defineProperty(exports, '__esModule', {
 		value: true
 	});
-	function Store() {}
+	function State() {}
 
-	Store.prototype.getInitialState = function () {
+	State.prototype.getInitialState = function () {
 
 		var data = {
 			services: [{ id: 'foo1', name: 'messenger', text: 'Messenger!', badges: 1 }, { id: 'foo2', name: 'telegram', text: 'Telegram!', badges: 0 }, { id: 'foo3', name: 'whatsapp', text: 'WhatsApp!', badges: 4 }],
@@ -23317,7 +23318,7 @@
 		return data;
 	};
 
-	Store.prototype.getInitialState2 = function () {
+	State.prototype.getInitialState2 = function () {
 
 		var data = {
 			services: [{ id: 'foo1', name: 'messenger', text: 'Messenger!', badges: 1 }, { id: 'foo2', name: 'telegram', text: 'Telegram!', badges: 0 }, { id: 'foo3', name: 'whatsapp', text: 'WhatsApp!', badges: 4 }, { id: 'foo4', name: 'skype', text: 'Skype1', badges: 0 }],
@@ -23331,7 +23332,7 @@
 		return data;
 	};
 
-	exports['default'] = Store;
+	exports['default'] = State;
 	module.exports = exports['default'];
 
 /***/ }

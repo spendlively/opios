@@ -2,10 +2,10 @@ import React from '../node_modules/react';
 import ReactDOM from '../node_modules/react-dom';
 import OpiosContainer from './components/OpiosContainer';
 import Launcher from './modules/Launcher';
-import Store from './Store';
+import State from './State';
 
-var store = new Store();
-var data = store.getInitialState();
+var state = new State();
+var data = state.getInitialState();
 // console.log(data);
 
 ReactDOM.render(
