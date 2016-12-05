@@ -2,19 +2,11 @@
 OpiosContainer
 	OpiosMenu
 		OpiosMenuItem
-		//OpiosMenuHome
-		//OpiosMenuTabs
-		//	OpiosMenuTab
-		//OpiosMenuRight
 	OpiosTags
 		OpiosTag
 	OpiosContent
-		OpiosWebViewList
-			OpiosWebView
-		OpiosServicesContainer
-			OpiosServicesCategories
-			OpiosServicesList
-				OpiosService
+		OpiosWebView
+		OpiosService
 	OpiosModalCreate
 	OpiosModalUpdate
 	OpiosModalSettings

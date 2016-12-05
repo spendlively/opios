@@ -42,35 +42,36 @@ Launcher.prototype.init = function(){
 
 		resizer.resize();
 
-		$('.tnb-li.service').click(function(e){
-			$('.tnb-li.service').removeClass('active-btn');
-			$(this).addClass('active-btn');
+		// $('.tnb-li.service').click(function(e){
+		// 	$('.tnb-li.service').removeClass('active-btn');
+		// 	$(this).addClass('active-btn');
 
-			var service = $(this).children('.tnb-text').text();
+		// 	var service = $(this).children('.tnb-text').text();
 
-			$('.content-block.opios-webview').css('visibility', 'hidden').css('position', 'absolute').css('top', '0px');
-			$('#services-list').css('display', 'none');
+		// 	$('.content-block.opios-webview').css('visibility', 'hidden').css('position', 'absolute').css('top', '0px');
+		// 	$('#services-list').css('display', 'none');
 
-			switch(service){
-				case 'Messenger':
-					$('#foo1').css('position', 'inherit').css('visibility', 'visible');
-					break;
-				case 'Telegram':
-					$('#foo2').css('position', 'inherit').css('visibility', 'visible');
-					break;
-				case 'WhatsApp':
-					$('#foo3').css('position', 'inherit').css('visibility', 'visible');
-					break;
-				case 'Skype':
-					$('#foo4').css('position', 'inherit').css('visibility', 'visible');
-					break;
-				default:
-					$('#services-list').css('display', 'block');
-					break;
-			}
+		// 	debugger;
+		// 	switch(service){
+		// 		case 'Messenger':
+		// 			$('#foo1').css('position', 'inherit').css('visibility', 'visible');
+		// 			break;
+		// 		case 'Telegram':
+		// 			$('#foo2').css('position', 'inherit').css('visibility', 'visible');
+		// 			break;
+		// 		case 'WhatsApp':
+		// 			$('#foo3').css('position', 'inherit').css('visibility', 'visible');
+		// 			break;
+		// 		case 'Skype':
+		// 			$('#foo4').css('position', 'inherit').css('visibility', 'visible');
+		// 			break;
+		// 		default:
+		// 			$('#services-list').css('display', 'block');
+		// 			break;
+		// 	}
 
-			resizer.resize();
-		});
+		// 	resizer.resize();
+		// });
 	});
 
 	$(window).on('resize', function(e){

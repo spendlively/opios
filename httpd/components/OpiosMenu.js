@@ -1,5 +1,7 @@
 import React from '../../node_modules/react';
 import OpiosMenuItem from './OpiosMenuItem';
+import Directory from '../modules/Directory';
+import SmartResizer from '../modules/SmartResizer';
 
 class OpiosMenu extends React.Component {
 
@@ -7,19 +9,49 @@ class OpiosMenu extends React.Component {
 	   super(props);
   }
 
+  clickOnPlusHandler(){
+
+    var me = this,
+        resizer = new SmartResizer();
+
+      $('.tnb-li.service').removeClass('active-btn');
+      $('#opios-plus-btn').addClass('active-btn');
+
+      $('.content-block.opios-webview').css('visibility', 'hidden').css('position', 'absolute').css('top', '0px');
+      $('#services-list').css('display', 'none');
+
+      $('#services-list').css('display', 'block');
+
+      resizer.resize();
+  }
+
   render() {
 
-    var data = [
-        {key: 1, src: "services/messenger.svg",text: "Messenger",badge: 1},
-        {key: 2, src: "services/telegram.svg",text: "Telegram"},
-        {key: 3, src: "services/whatsapp.svg",text: "WhatsApp",badge: 4},
-        {key: 4, src: "services/skype.svg",text: "Skype"},
-    ],
-    rows = [];
+    var services = this.props.data.services,
+        directory = new Directory(),
+        rows = [];
 
-    if(data.length){
-        for(var d in data){
-            rows.push(<OpiosMenuItem data={data[d]} key={data[d].key} />);
+    // var data = [
+    //     {key: 1, src: "services/messenger.svg",text: "Messenger",badge: 1},
+    //     {key: 2, src: "services/telegram.svg",text: "Telegram"},
+    //     {key: 3, src: "services/whatsapp.svg",text: "WhatsApp",badge: 4},
+    //     {key: 4, src: "services/skype.svg",text: "Skype"},
+    // ],
+    // rows = [];
+
+// console.log('menu', this.props.data.services)
+
+    if(services.length){
+        for(var d in services){
+            var serviceProps = directory.getServicePropsByName(services[d]['name']),
+                data = {
+                    id: services[d]['id'], 
+                    src: serviceProps['img'], 
+                    text: services[d]['text'], 
+                    badges: services[d]['badges']
+                };
+
+            rows.push(<OpiosMenuItem data={data} key={services[d]['id']} />);
         }
     }
 
@@ -43,7 +75,7 @@ class OpiosMenu extends React.Component {
 
                 
                 <a href="#" className="tnb-li-a">
-                    <li className="tnb-li service active-btn">
+                    <li id="opios-plus-btn" className="tnb-li service active-btn" onClick={this.clickOnPlusHandler.bind(this)}>
                         <span className="tnb-logo-new"><img src="services/plus.svg" /></span>
                     </li>
                 </a>

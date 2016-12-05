@@ -48,14 +48,6 @@
 
 	var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { 'default': obj }; };
 
-	// var Launcher = require("./modules/Launcher");
-	// var OpiosContainer = require("./components/OpiosContainer");
-
-	// var launcher = new Launcher();
-	// launcher.init();
-
-	// var React = require("../node_modules/react");
-
 	var _React = __webpack_require__(1);
 
 	var _React2 = _interopRequireDefault(_React);
@@ -68,16 +60,29 @@
 
 	var _OpiosContainer2 = _interopRequireDefault(_OpiosContainer);
 
-	var _Launcher = __webpack_require__(187);
+	var _Launcher = __webpack_require__(191);
 
 	var _Launcher2 = _interopRequireDefault(_Launcher);
 
-	_ReactDOM2['default'].render(_React2['default'].createElement(_OpiosContainer2['default'], null), document.getElementById('container'));
+	var _Store = __webpack_require__(190);
+
+	var _Store2 = _interopRequireDefault(_Store);
+
+	var store = new _Store2['default']();
+	var data = store.getInitialState();
+	// console.log(data);
+
+	_ReactDOM2['default'].render(_React2['default'].createElement(_OpiosContainer2['default'], { data: data }), document.getElementById('container'));
 
 	setTimeout(function () {
 		var launcher = new _Launcher2['default']();
 		launcher.init();
 	}, 2000);
+
+	setTimeout(function () {
+		console.log('update!');
+		_ReactDOM2['default'].render(_React2['default'].createElement(_OpiosContainer2['default'], { data: store.getInitialState2() }), document.getElementById('container'));
+	}, 5000);
 
 /***/ },
 /* 1 */
@@ -21514,7 +21519,7 @@
 
 	var _OpiosMenu2 = _interopRequireDefault(_OpiosMenu);
 
-	var _OpiosTags = __webpack_require__(181);
+	var _OpiosTags = __webpack_require__(180);
 
 	var _OpiosTags2 = _interopRequireDefault(_OpiosTags);
 
@@ -21522,19 +21527,19 @@
 
 	var _OpiosContent2 = _interopRequireDefault(_OpiosContent);
 
-	var _OpiosModalCreate = __webpack_require__(183);
+	var _OpiosModalCreate = __webpack_require__(186);
 
 	var _OpiosModalCreate2 = _interopRequireDefault(_OpiosModalCreate);
 
-	var _OpiosModalSettings = __webpack_require__(184);
+	var _OpiosModalSettings = __webpack_require__(187);
 
 	var _OpiosModalSettings2 = _interopRequireDefault(_OpiosModalSettings);
 
-	var _OpiosModalPassword = __webpack_require__(185);
+	var _OpiosModalPassword = __webpack_require__(188);
 
 	var _OpiosModalPassword2 = _interopRequireDefault(_OpiosModalPassword);
 
-	var _OpiosContextMenu = __webpack_require__(186);
+	var _OpiosContextMenu = __webpack_require__(189);
 
 	var _OpiosContextMenu2 = _interopRequireDefault(_OpiosContextMenu);
 
@@ -21554,9 +21559,9 @@
 	      return _React2['default'].createElement(
 	        'div',
 	        null,
-	        _React2['default'].createElement(_OpiosMenu2['default'], null),
+	        _React2['default'].createElement(_OpiosMenu2['default'], { data: this.props.data }),
 	        _React2['default'].createElement(_OpiosTags2['default'], null),
-	        _React2['default'].createElement(_OpiosContent2['default'], null),
+	        _React2['default'].createElement(_OpiosContent2['default'], { data: this.props.data }),
 	        _React2['default'].createElement(_OpiosModalCreate2['default'], null),
 	        _React2['default'].createElement(_OpiosModalSettings2['default'], null),
 	        _React2['default'].createElement(_OpiosModalPassword2['default'], null),
@@ -21595,9 +21600,17 @@
 
 	var _React2 = _interopRequireDefault(_React);
 
-	var _OpiosMenuItem = __webpack_require__(180);
+	var _OpiosMenuItem = __webpack_require__(193);
 
 	var _OpiosMenuItem2 = _interopRequireDefault(_OpiosMenuItem);
+
+	var _Directory = __webpack_require__(185);
+
+	var _Directory2 = _interopRequireDefault(_Directory);
+
+	var _SmartResizer = __webpack_require__(192);
+
+	var _SmartResizer2 = _interopRequireDefault(_SmartResizer);
 
 	var OpiosMenu = (function (_React$Component) {
 	    function OpiosMenu(props) {
@@ -21609,15 +21622,51 @@
 	    _inherits(OpiosMenu, _React$Component);
 
 	    _createClass(OpiosMenu, [{
+	        key: 'clickOnPlusHandler',
+	        value: function clickOnPlusHandler() {
+
+	            var me = this,
+	                resizer = new _SmartResizer2['default']();
+
+	            $('.tnb-li.service').removeClass('active-btn');
+	            $('#opios-plus-btn').addClass('active-btn');
+
+	            $('.content-block.opios-webview').css('visibility', 'hidden').css('position', 'absolute').css('top', '0px');
+	            $('#services-list').css('display', 'none');
+
+	            $('#services-list').css('display', 'block');
+
+	            resizer.resize();
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
 
-	            var data = [{ key: 1, src: 'services/messenger.svg', text: 'Messenger', badge: 1 }, { key: 2, src: 'services/telegram.svg', text: 'Telegram' }, { key: 3, src: 'services/whatsapp.svg', text: 'WhatsApp', badge: 4 }, { key: 4, src: 'services/skype.svg', text: 'Skype' }],
+	            var services = this.props.data.services,
+	                directory = new _Directory2['default'](),
 	                rows = [];
 
-	            if (data.length) {
-	                for (var d in data) {
-	                    rows.push(_React2['default'].createElement(_OpiosMenuItem2['default'], { data: data[d], key: data[d].key }));
+	            // var data = [
+	            //     {key: 1, src: "services/messenger.svg",text: "Messenger",badge: 1},
+	            //     {key: 2, src: "services/telegram.svg",text: "Telegram"},
+	            //     {key: 3, src: "services/whatsapp.svg",text: "WhatsApp",badge: 4},
+	            //     {key: 4, src: "services/skype.svg",text: "Skype"},
+	            // ],
+	            // rows = [];
+
+	            // console.log('menu', this.props.data.services)
+
+	            if (services.length) {
+	                for (var d in services) {
+	                    var serviceProps = directory.getServicePropsByName(services[d].name),
+	                        data = {
+	                        id: services[d].id,
+	                        src: serviceProps.img,
+	                        text: services[d].text,
+	                        badges: services[d].badges
+	                    };
+
+	                    rows.push(_React2['default'].createElement(_OpiosMenuItem2['default'], { data: data, key: services[d].id }));
 	                }
 	            }
 
@@ -21648,7 +21697,7 @@
 	                                { href: '#', className: 'tnb-li-a' },
 	                                _React2['default'].createElement(
 	                                    'li',
-	                                    { className: 'tnb-li service active-btn' },
+	                                    { id: 'opios-plus-btn', className: 'tnb-li service active-btn', onClick: this.clickOnPlusHandler.bind(this) },
 	                                    _React2['default'].createElement(
 	                                        'span',
 	                                        { className: 'tnb-logo-new' },
@@ -21712,77 +21761,6 @@
 	var _inherits = function (subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
 
 	Object.defineProperty(exports, '__esModule', {
-	    value: true
-	});
-
-	var _React = __webpack_require__(1);
-
-	var _React2 = _interopRequireDefault(_React);
-
-	var OpiosMenuItem = (function (_React$Component) {
-	    function OpiosMenuItem(props) {
-	        _classCallCheck(this, OpiosMenuItem);
-
-	        _get(Object.getPrototypeOf(OpiosMenuItem.prototype), 'constructor', this).call(this, props);
-	    }
-
-	    _inherits(OpiosMenuItem, _React$Component);
-
-	    _createClass(OpiosMenuItem, [{
-	        key: 'render',
-	        value: function render() {
-
-	            var badge = this.props.data.badge ? _React2['default'].createElement(
-	                'span',
-	                { className: 'badge badge-active' },
-	                this.props.data.badge
-	            ) : '';
-
-	            return _React2['default'].createElement(
-	                'a',
-	                { href: '#', className: 'tnb-li-a' },
-	                _React2['default'].createElement(
-	                    'li',
-	                    { className: 'tnb-li service' },
-	                    _React2['default'].createElement(
-	                        'span',
-	                        { className: 'tnb-logo' },
-	                        _React2['default'].createElement('img', { src: this.props.data.src })
-	                    ),
-	                    badge,
-	                    _React2['default'].createElement(
-	                        'span',
-	                        { className: 'tnb-text' },
-	                        this.props.data.text
-	                    )
-	                )
-	            );
-	        }
-	    }]);
-
-	    return OpiosMenuItem;
-	})(_React2['default'].Component);
-
-	exports['default'] = OpiosMenuItem;
-	module.exports = exports['default'];
-
-/***/ },
-/* 181 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { 'default': obj }; };
-
-	var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } };
-
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-	var _get = function get(object, property, receiver) { var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
-
-	var _inherits = function (subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
-
-	Object.defineProperty(exports, '__esModule', {
 	  value: true
 	});
 
@@ -21790,7 +21768,7 @@
 
 	var _React2 = _interopRequireDefault(_React);
 
-	var _OpiosTag = __webpack_require__(191);
+	var _OpiosTag = __webpack_require__(181);
 
 	var _OpiosTag2 = _interopRequireDefault(_OpiosTag);
 
@@ -21842,6 +21820,59 @@
 	module.exports = exports['default'];
 
 /***/ },
+/* 181 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
+
+	var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	var _get = function get(object, property, receiver) { var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+	var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _React = __webpack_require__(1);
+
+	var _React2 = _interopRequireDefault(_React);
+
+	var OpiosTag = (function (_React$Component) {
+	  function OpiosTag(props) {
+	    _classCallCheck(this, OpiosTag);
+
+	    _get(Object.getPrototypeOf(OpiosTag.prototype), "constructor", this).call(this, props);
+	  }
+
+	  _inherits(OpiosTag, _React$Component);
+
+	  _createClass(OpiosTag, [{
+	    key: "render",
+	    value: function render() {
+
+	      var cls = "aside-tag " + this.props.data.colorCls;
+
+	      return _React2["default"].createElement(
+	        "div",
+	        { className: cls },
+	        this.props.data.title
+	      );
+	    }
+	  }]);
+
+	  return OpiosTag;
+	})(_React2["default"].Component);
+
+	exports["default"] = OpiosTag;
+	module.exports = exports["default"];
+
+/***/ },
 /* 182 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -21865,13 +21896,17 @@
 
 	var _React2 = _interopRequireDefault(_React);
 
-	var _OpiosWebView = __webpack_require__(189);
+	var _OpiosWebView = __webpack_require__(183);
 
 	var _OpiosWebView2 = _interopRequireDefault(_OpiosWebView);
 
-	var _OpiosService = __webpack_require__(190);
+	var _OpiosService = __webpack_require__(184);
 
 	var _OpiosService2 = _interopRequireDefault(_OpiosService);
+
+	var _Directory = __webpack_require__(185);
+
+	var _Directory2 = _interopRequireDefault(_Directory);
 
 	var OpiosContent = (function (_React$Component) {
 	    function OpiosContent(props) {
@@ -21886,20 +21921,27 @@
 	        key: 'render',
 	        value: function render() {
 
-	            var webViews = [{ key: 1, id: 'foo1', src: 'https://messenger.yahoo.com/' }, { key: 2, id: 'foo2', src: 'https://web.telegram.org/#/im' }, { key: 3, id: 'foo3', src: 'https://web.whatsapp.com/' }, { key: 4, id: 'foo4', src: 'https://web.skype.com/' }],
+	            var services = this.props.data.services,
 	                webViewRows = [],
-	                services = [{ src: 'services/slack.svg', title: 'Slack' }, { src: 'services/skype.svg', title: 'Skype' }, { src: 'services/whatsapp.svg', title: 'WhatsApp' }, { src: 'services/tweetdeck.svg', title: 'Tweetdeck' }, { src: 'services/messenger.svg', title: 'Messenger' }, { src: 'services/icq.svg', title: 'ICQ' }, { src: 'services/wechat.svg', title: 'Wechat' }, { src: 'services/telegram.svg', title: 'Telegram' }, { src: 'services/linkedin.svg', title: 'Linkedin' }, { src: 'services/facebookpages.svg', title: 'Facebook' }, { src: 'services/steamchat.svg', title: 'Steamchat' }, { src: 'services/yahoomessenger.svg', title: 'Yahoo' }, { src: 'services/dingtalk.svg', title: 'Dingtalk' }, { src: 'services/hangouts.svg', title: 'Hangouts' }, { src: 'services/hipchat.svg', title: 'Hipchat' }, { src: 'services/wire.svg', title: 'Wire' }, { src: 'services/googleinbox.svg', title: 'Googleinbox' }, { src: 'services/googlegmail.svg', title: 'Google Gmail' }, { src: 'services/groupme.svg', title: 'Group.me' }, { src: 'services/gitter.svg', title: 'Gitter' }, { src: 'services/intercom.svg', title: 'Intercom' }, { src: 'services/ciscospark.svg', title: 'Ciscospark' }, { src: 'services/mattermost.svg', title: 'Mattermost' }, { src: 'services/discord.svg', title: 'Discord' }, { src: 'services/hibox.svg', title: 'Hibox' }, { src: 'services/outlookdotcom.svg', title: 'Outlook' }, { src: 'services/mysms.svg', title: 'MySMS' }, { src: 'services/coupleme.svg', title: 'Couple.me' }, { src: 'services/zendesk.svg', title: 'Zendesk' }, { src: 'services/flowdock.svg', title: 'Flowdock' }, { src: 'services/vk.svg', title: 'VK' }, { src: 'services/irccloud.svg', title: 'Irccloud' }, { src: 'services/grape.svg', title: 'Grape' }, { src: 'services/chatwork.svg', title: 'Chatwork' }, { src: 'services/rocketchat.svg', title: 'Rocketchat' }],
-	                servicesRows = [];
+	                directory = new _Directory2['default'](),
+	                availableServices = directory.getAvailableServices(),
+	                availableServicesRows = [];
 
 	            if (services.length) {
 	                for (var d in services) {
-	                    servicesRows.push(_React2['default'].createElement(_OpiosService2['default'], { data: services[d], key: services[d].title }));
+	                    var serviceProps = directory.getServicePropsByName(services[d].name),
+	                        data = {
+	                        id: services[d].id,
+	                        url: serviceProps.url
+	                    };
+
+	                    webViewRows.push(_React2['default'].createElement(_OpiosWebView2['default'], { data: data, key: services[d].id }));
 	                }
 	            }
 
-	            if (webViews.length) {
-	                for (var d in webViews) {
-	                    webViewRows.push(_React2['default'].createElement(_OpiosWebView2['default'], { data: webViews[d], key: webViews[d].key }));
+	            if (availableServices.length) {
+	                for (var d in availableServices) {
+	                    availableServicesRows.push(_React2['default'].createElement(_OpiosService2['default'], { data: availableServices[d], key: availableServices[d].name }));
 	                }
 	            }
 
@@ -22010,7 +22052,7 @@
 	                                _React2['default'].createElement(
 	                                    'div',
 	                                    { className: 'service-icons' },
-	                                    servicesRows
+	                                    availableServicesRows
 	                                )
 	                            )
 	                        )
@@ -22028,6 +22070,414 @@
 
 /***/ },
 /* 183 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { 'default': obj }; };
+
+	var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } };
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	var _get = function get(object, property, receiver) { var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+	var _inherits = function (subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _React = __webpack_require__(1);
+
+	var _React2 = _interopRequireDefault(_React);
+
+	var OpiosWebView = (function (_React$Component) {
+	  function OpiosWebView(props) {
+	    _classCallCheck(this, OpiosWebView);
+
+	    _get(Object.getPrototypeOf(OpiosWebView.prototype), 'constructor', this).call(this, props);
+	  }
+
+	  _inherits(OpiosWebView, _React$Component);
+
+	  _createClass(OpiosWebView, [{
+	    key: 'render',
+	    value: function render() {
+
+	      return _React2['default'].createElement('webview', { className: 'content-block opios-webview', id: this.props.data.id, src: this.props.data.url, style: { position: 'absolute', display: 'inline-flex', visibility: 'hidden', width: '100%', height: '600px' } });
+	    }
+	  }]);
+
+	  return OpiosWebView;
+	})(_React2['default'].Component);
+
+	exports['default'] = OpiosWebView;
+	module.exports = exports['default'];
+
+/***/ },
+/* 184 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
+
+	var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	var _get = function get(object, property, receiver) { var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+	var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _React = __webpack_require__(1);
+
+	var _React2 = _interopRequireDefault(_React);
+
+	var OpiosService = (function (_React$Component) {
+	  function OpiosService(props) {
+	    _classCallCheck(this, OpiosService);
+
+	    _get(Object.getPrototypeOf(OpiosService.prototype), "constructor", this).call(this, props);
+	  }
+
+	  _inherits(OpiosService, _React$Component);
+
+	  _createClass(OpiosService, [{
+	    key: "render",
+	    value: function render() {
+
+	      return _React2["default"].createElement(
+	        "div",
+	        { className: "service-img-container" },
+	        _React2["default"].createElement("img", { src: this.props.data.img, alt: "" }),
+	        _React2["default"].createElement(
+	          "p",
+	          null,
+	          this.props.data.title
+	        )
+	      );
+	    }
+	  }]);
+
+	  return OpiosService;
+	})(_React2["default"].Component);
+
+	exports["default"] = OpiosService;
+	module.exports = exports["default"];
+
+/***/ },
+/* 185 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	function Directory() {}
+
+	Directory.prototype.getServicePropsByName = function (name) {
+
+		var services = this.getAvailableServices();
+
+		if (services.length) {
+			for (var s in services) {
+				if (services[s].name === name) {
+					return services[s];
+				}
+			}
+		}
+
+		return null;
+	};
+
+	Directory.prototype.getAvailableServices = function () {
+
+		return [{
+			img: "services/slack.svg",
+			title: "Slack",
+			name: "slack",
+			url: "https://{teamId}.slack.com",
+			preload: "default.js",
+			useTitle: true,
+			hasTeam: true
+		}, {
+			img: "services/messenger.svg",
+			title: "Messenger",
+			name: "messenger",
+			url: "https://www.messenger.com/login/",
+			preload: "default.js",
+			useTitle: true,
+			hasTeam: false
+		}, {
+			img: "services/whatsapp.svg",
+			title: "WhatsApp",
+			name: "whatsapp",
+			url: "https://web.whatsapp.com/",
+			preload: "default.js",
+			useTitle: true,
+			hasTeam: false
+		}, {
+			img: "services/telegram.svg",
+			title: "Telegram",
+			name: "telegram",
+			url: "https://web.telegram.org/#/im",
+			preload: "default.js",
+			useTitle: true,
+			hasTeam: false
+		}, {
+			img: "services/skype.svg",
+			title: "Skype",
+			name: "skype",
+			url: "https://web.skype.com/",
+			preload: "default.js",
+			useTitle: true,
+			hasTeam: false
+		}, {
+			img: "services/wechat.svg",
+			title: "WeChat",
+			name: "wechat",
+			url: "https://web.wechat.com/?lang=en_US",
+			preload: "default.js",
+			useTitle: true,
+			hasTeam: false
+		}, {
+			img: "services/hipchat.svg",
+			title: "HipChat",
+			name: "hipchat",
+			url: "https://www.hipchat.com/",
+			preload: "default.js",
+			useTitle: true,
+			hasTeam: false
+		}, {
+			img: "services/chatwork.svg",
+			title: "ChatWork",
+			name: "chatwork",
+			url: "https://www.chatwork.com/login.php",
+			preload: "default.js",
+			useTitle: true,
+			hasTeam: false
+		}, {
+			img: "services/flowdock.svg",
+			title: "Flowdock",
+			name: "flowdock",
+			url: "https://www.flowdock.com/login",
+			preload: "default.js",
+			useTitle: true,
+			hasTeam: false
+		}, {
+			img: "services/hangouts.svg",
+			title: "Hangouts",
+			name: "hangouts",
+			url: "https://hangouts.google.com/",
+			preload: "default.js",
+			useTitle: true,
+			hasTeam: false
+		}, {
+			img: "services/groupme.svg",
+			title: "GroupMe",
+			name: "groupme",
+			url: "https://web.groupme.com",
+			preload: "default.js",
+			useTitle: true,
+			hasTeam: false
+		}, {
+			img: "services/rocketchat.svg",
+			title: "Rocket Chat",
+			name: "rocketchat",
+			url: "https://rocket.chat/",
+			preload: "default.js",
+			useTitle: true,
+			hasTeam: false
+		}, {
+			img: "services/mattermost.svg",
+			title: "Mattermost",
+			name: "mattermost",
+			url: "https://www.mattermost.org/",
+			preload: "default.js",
+			useTitle: true,
+			hasTeam: false
+		}, {
+			img: "services/grape.svg",
+			title: "Grape",
+			name: "grape",
+			url: "https://{teamId}.chatgrape.com",
+			preload: "default.js",
+			useTitle: true,
+			hasTeam: true
+		}, {
+			img: "services/gitter.svg",
+			title: "Gitter",
+			name: "gitter",
+			url: "https://gitter.im/login/github?action=login",
+			preload: "default.js",
+			useTitle: true,
+			hasTeam: false
+		}, {
+			img: "services/tweetdeck.svg",
+			title: "TweetDeck",
+			name: "tweetdeck",
+			url: "https://tweetdeck.twitter.com",
+			preload: "default.js",
+			useTitle: true,
+			hasTeam: false
+		}, {
+			img: "services/dingtalk.svg",
+			title: "DingTalk",
+			name: "dingtalk",
+			url: "https://im.dingtalk.com/",
+			preload: "default.js",
+			useTitle: true,
+			hasTeam: false
+		}, {
+			img: "services/steamchat.svg",
+			title: "Steam Chat",
+			name: "steamchat",
+			url: "https://steamcommunity.com/chat",
+			preload: "default.js",
+			useTitle: true,
+			hasTeam: false
+		}, {
+			img: "services/discord.svg",
+			title: "Discord",
+			name: "discord",
+			url: "https://discordapp.com/login",
+			preload: "default.js",
+			useTitle: true,
+			hasTeam: false
+		}, {
+			img: "services/mysms.svg",
+			title: "MySMS",
+			name: "mysms",
+			url: "https://app.mysms.com",
+			preload: "default.js",
+			useTitle: true,
+			hasTeam: false
+		}, {
+			img: "services/googleinbox.svg",
+			title: "Inbox by Gmail",
+			name: "inboxbygmail",
+			url: "https://inbox.google.com/",
+			preload: "default.js",
+			useTitle: true,
+			hasTeam: false
+		}, {
+			img: "services/googlegmail.svg",
+			title: "Gmail",
+			name: "gmail",
+			url: "https://gmail.google.com/",
+			preload: "default.js",
+			useTitle: true,
+			hasTeam: false
+		}, {
+			img: "services/outlookdotcom.svg",
+			title: "Outlook.com",
+			name: "outlookcom",
+			url: "https://outlook.com/",
+			preload: "default.js",
+			useTitle: true,
+			hasTeam: false
+		}, {
+			img: "services/vk.svg",
+			title: "VK",
+			name: "vk",
+			url: "https://vk.com/im",
+			preload: "vk.js",
+			useTitle: false,
+			hasTeam: false
+		}, {
+			img: "services/wire.svg",
+			title: "Wire",
+			name: "wire",
+			url: "https://app.wire.com",
+			preload: "default.js",
+			useTitle: true,
+			hasTeam: false
+		}, {
+			img: "services/icq.svg",
+			title: "ICQ",
+			name: "icq",
+			url: "https://web.icq.com",
+			preload: "default.js",
+			useTitle: true,
+			hasTeam: false
+		}, {
+			img: "services/irccloud.svg",
+			title: "IRCCloud",
+			name: "irccloud",
+			url: "https://www.irccloud.com",
+			preload: "default.js",
+			useTitle: true,
+			hasTeam: false
+		}, {
+			img: "services/ciscospark.svg",
+			title: "Cisco Spark",
+			name: "ciscospark",
+			url: "https://web.ciscospark.com",
+			preload: "default.js",
+			useTitle: true,
+			hasTeam: false
+		}, {
+			img: "services/facebookpages.svg",
+			title: "Facebook Page",
+			name: "facebookpage",
+			url: "https://www.facebook.com/",
+			preload: "default.js",
+			useTitle: true,
+			hasTeam: false
+		}, {
+			img: "services/linkedin.svg",
+			title: "LinkedIn",
+			name: "linkedin",
+			url: "https://www.linkedin.com/messaging",
+			preload: "default.js",
+			useTitle: true,
+			hasTeam: false
+		}, {
+			img: "services/hibox.svg",
+			title: "Hibox",
+			name: "hibox",
+			url: "https://app.hibox.co",
+			preload: "default.js",
+			useTitle: true,
+			hasTeam: false
+		}, {
+			img: "services/coupleme.svg",
+			title: "Couple.me",
+			name: "coupleme",
+			url: "https://app.couple.me/",
+			preload: "default.js",
+			useTitle: true,
+			hasTeam: false
+		}, {
+			img: "services/yahoomessenger.svg",
+			title: "Yahoo! Messenger",
+			name: "yahoomessenger",
+			url: "https://messenger.yahoo.com/",
+			preload: "default.js",
+			useTitle: true,
+			hasTeam: false
+		}, {
+			img: "services/zendesk.svg",
+			title: "Zendesk",
+			name: "zendesk",
+			url: "https://{teamId}.zendesk.com/agent",
+			preload: "default.js",
+			hasTeam: true
+		}];
+	};
+
+	exports["default"] = Directory;
+	module.exports = exports["default"];
+
+/***/ },
+/* 186 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -22230,7 +22680,7 @@
 	module.exports = exports["default"];
 
 /***/ },
-/* 184 */
+/* 187 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -22449,7 +22899,7 @@
 	module.exports = exports["default"];
 
 /***/ },
-/* 185 */
+/* 188 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -22561,7 +23011,7 @@
 	module.exports = exports["default"];
 
 /***/ },
-/* 186 */
+/* 189 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -22684,14 +23134,56 @@
 	module.exports = exports["default"];
 
 /***/ },
-/* 187 */
+/* 190 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
+		value: true
+	});
+	function Store() {}
+
+	Store.prototype.getInitialState = function () {
+
+		var data = {
+			services: [{ id: 'foo1', name: 'messenger', text: 'Messenger!', badges: 1 }, { id: 'foo2', name: 'telegram', text: 'Telegram!', badges: 0 }, { id: 'foo3', name: 'whatsapp', text: 'WhatsApp!', badges: 4 }, { id: 'foo4', name: 'skype', text: 'Skype1', badges: 0 }],
+			settings: {},
+			modalCreate: {},
+			modalUpdate: {},
+			l12n: {},
+			tags: []
+		};
+
+		return data;
+	};
+
+	Store.prototype.getInitialState2 = function () {
+
+		var data = {
+			services: [{ id: 'foo5', name: 'vk', text: 'Вконтакте', badges: 1 }, { id: 'foo6', name: 'slack', text: 'Слак', badges: 0 }],
+			settings: {},
+			modalCreate: {},
+			modalUpdate: {},
+			l12n: {},
+			tags: []
+		};
+
+		return data;
+	};
+
+	exports['default'] = Store;
+	module.exports = exports['default'];
+
+/***/ },
+/* 191 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { 'default': obj }; };
 
-	var _SmartResizer = __webpack_require__(188);
+	var _SmartResizer = __webpack_require__(192);
 
 	var _SmartResizer2 = _interopRequireDefault(_SmartResizer);
 
@@ -22735,35 +23227,36 @@
 
 			resizer.resize();
 
-			$('.tnb-li.service').click(function (e) {
-				$('.tnb-li.service').removeClass('active-btn');
-				$(this).addClass('active-btn');
+			// $('.tnb-li.service').click(function(e){
+			// 	$('.tnb-li.service').removeClass('active-btn');
+			// 	$(this).addClass('active-btn');
 
-				var service = $(this).children('.tnb-text').text();
+			// 	var service = $(this).children('.tnb-text').text();
 
-				$('.content-block.opios-webview').css('visibility', 'hidden').css('position', 'absolute').css('top', '0px');
-				$('#services-list').css('display', 'none');
+			// 	$('.content-block.opios-webview').css('visibility', 'hidden').css('position', 'absolute').css('top', '0px');
+			// 	$('#services-list').css('display', 'none');
 
-				switch (service) {
-					case 'Messenger':
-						$('#foo1').css('position', 'inherit').css('visibility', 'visible');
-						break;
-					case 'Telegram':
-						$('#foo2').css('position', 'inherit').css('visibility', 'visible');
-						break;
-					case 'WhatsApp':
-						$('#foo3').css('position', 'inherit').css('visibility', 'visible');
-						break;
-					case 'Skype':
-						$('#foo4').css('position', 'inherit').css('visibility', 'visible');
-						break;
-					default:
-						$('#services-list').css('display', 'block');
-						break;
-				}
+			// 	debugger;
+			// 	switch(service){
+			// 		case 'Messenger':
+			// 			$('#foo1').css('position', 'inherit').css('visibility', 'visible');
+			// 			break;
+			// 		case 'Telegram':
+			// 			$('#foo2').css('position', 'inherit').css('visibility', 'visible');
+			// 			break;
+			// 		case 'WhatsApp':
+			// 			$('#foo3').css('position', 'inherit').css('visibility', 'visible');
+			// 			break;
+			// 		case 'Skype':
+			// 			$('#foo4').css('position', 'inherit').css('visibility', 'visible');
+			// 			break;
+			// 		default:
+			// 			$('#services-list').css('display', 'block');
+			// 			break;
+			// 	}
 
-				resizer.resize();
-			});
+			// 	resizer.resize();
+			// });
 		});
 
 		$(window).on('resize', function (e) {
@@ -22775,7 +23268,7 @@
 	module.exports = Launcher;
 
 /***/ },
-/* 188 */
+/* 192 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -22816,7 +23309,7 @@
 	module.exports = exports["default"];
 
 /***/ },
-/* 189 */
+/* 193 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22832,144 +23325,82 @@
 	var _inherits = function (subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
 
 	Object.defineProperty(exports, '__esModule', {
-	  value: true
+	    value: true
 	});
 
 	var _React = __webpack_require__(1);
 
 	var _React2 = _interopRequireDefault(_React);
 
-	var OpiosWebView = (function (_React$Component) {
-	  function OpiosWebView(props) {
-	    _classCallCheck(this, OpiosWebView);
+	var _SmartResizer = __webpack_require__(192);
 
-	    _get(Object.getPrototypeOf(OpiosWebView.prototype), 'constructor', this).call(this, props);
-	  }
+	var _SmartResizer2 = _interopRequireDefault(_SmartResizer);
 
-	  _inherits(OpiosWebView, _React$Component);
+	var OpiosMenuItem = (function (_React$Component) {
+	    function OpiosMenuItem(props) {
+	        _classCallCheck(this, OpiosMenuItem);
 
-	  _createClass(OpiosWebView, [{
-	    key: 'render',
-	    value: function render() {
-
-	      return _React2['default'].createElement('webview', { className: 'content-block opios-webview', id: this.props.data.id, src: this.props.data.src, style: { position: 'absolute', display: 'inline-flex', visibility: 'hidden', width: '100%', height: '600px' } });
+	        _get(Object.getPrototypeOf(OpiosMenuItem.prototype), 'constructor', this).call(this, props);
 	    }
-	  }]);
 
-	  return OpiosWebView;
+	    _inherits(OpiosMenuItem, _React$Component);
+
+	    _createClass(OpiosMenuItem, [{
+	        key: 'clickOnTabHandler',
+	        value: function clickOnTabHandler(tabId) {
+
+	            var me = this,
+	                resizer = new _SmartResizer2['default'](),
+	                id = this.props.data.id;
+
+	            $('.tnb-li.service').removeClass('active-btn');
+	            $('#' + tabId).addClass('active-btn');
+
+	            $('.content-block.opios-webview').css('visibility', 'hidden').css('position', 'absolute').css('top', '0px');
+	            $('#services-list').css('display', 'none');
+
+	            $('#' + id).css('position', 'inherit').css('visibility', 'visible');
+
+	            resizer.resize();
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+
+	            var badges = this.props.data.badges ? _React2['default'].createElement(
+	                'span',
+	                { className: 'badge badge-active' },
+	                this.props.data.badges
+	            ) : '',
+	                id = 'tab-' + this.props.data.id;
+
+	            return _React2['default'].createElement(
+	                'a',
+	                { href: '#', className: 'tnb-li-a' },
+	                _React2['default'].createElement(
+	                    'li',
+	                    { id: id, className: 'tnb-li service', onClick: this.clickOnTabHandler.bind(this, id) },
+	                    _React2['default'].createElement(
+	                        'span',
+	                        { className: 'tnb-logo' },
+	                        _React2['default'].createElement('img', { src: this.props.data.src })
+	                    ),
+	                    badges,
+	                    _React2['default'].createElement(
+	                        'span',
+	                        { className: 'tnb-text' },
+	                        this.props.data.text
+	                    )
+	                )
+	            );
+	        }
+	    }]);
+
+	    return OpiosMenuItem;
 	})(_React2['default'].Component);
 
-	exports['default'] = OpiosWebView;
+	exports['default'] = OpiosMenuItem;
 	module.exports = exports['default'];
-
-/***/ },
-/* 190 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
-
-	var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
-
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-	var _get = function get(object, property, receiver) { var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
-
-	var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _React = __webpack_require__(1);
-
-	var _React2 = _interopRequireDefault(_React);
-
-	var OpiosService = (function (_React$Component) {
-	  function OpiosService(props) {
-	    _classCallCheck(this, OpiosService);
-
-	    _get(Object.getPrototypeOf(OpiosService.prototype), "constructor", this).call(this, props);
-	  }
-
-	  _inherits(OpiosService, _React$Component);
-
-	  _createClass(OpiosService, [{
-	    key: "render",
-	    value: function render() {
-
-	      return _React2["default"].createElement(
-	        "div",
-	        { className: "service-img-container" },
-	        _React2["default"].createElement("img", { src: this.props.data.src, alt: "" }),
-	        _React2["default"].createElement(
-	          "p",
-	          null,
-	          this.props.data.title
-	        )
-	      );
-	    }
-	  }]);
-
-	  return OpiosService;
-	})(_React2["default"].Component);
-
-	exports["default"] = OpiosService;
-	module.exports = exports["default"];
-
-/***/ },
-/* 191 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
-
-	var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
-
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-	var _get = function get(object, property, receiver) { var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
-
-	var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _React = __webpack_require__(1);
-
-	var _React2 = _interopRequireDefault(_React);
-
-	var OpiosTag = (function (_React$Component) {
-	  function OpiosTag(props) {
-	    _classCallCheck(this, OpiosTag);
-
-	    _get(Object.getPrototypeOf(OpiosTag.prototype), "constructor", this).call(this, props);
-	  }
-
-	  _inherits(OpiosTag, _React$Component);
-
-	  _createClass(OpiosTag, [{
-	    key: "render",
-	    value: function render() {
-
-	      var cls = "aside-tag " + this.props.data.colorCls;
-
-	      return _React2["default"].createElement(
-	        "div",
-	        { className: cls },
-	        this.props.data.title
-	      );
-	    }
-	  }]);
-
-	  return OpiosTag;
-	})(_React2["default"].Component);
-
-	exports["default"] = OpiosTag;
-	module.exports = exports["default"];
 
 /***/ }
 /******/ ]);

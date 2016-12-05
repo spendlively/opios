@@ -17,9 +17,9 @@ class OpiosContainer extends React.Component {
 
     return (
       <div>
-        <OpiosMenu />
+        <OpiosMenu data={this.props.data} />
         <OpiosTags />
-        <OpiosContent />
+        <OpiosContent data={this.props.data} />
         <OpiosModalCreate />
         <OpiosModalSettings />
         <OpiosModalPassword />

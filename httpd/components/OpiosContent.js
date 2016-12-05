@@ -1,6 +1,7 @@
 import React from '../../node_modules/react';
 import OpiosWebView from './OpiosWebView';
 import OpiosService from './OpiosService';
+import Directory from '../modules/Directory';
 
 class OpiosContent extends React.Component {
 
@@ -10,63 +11,29 @@ class OpiosContent extends React.Component {
 
   render() {
 
-    var webViews = [
-            {key: 1, id: 'foo1', src: 'https://messenger.yahoo.com/'},
-            {key: 2, id: 'foo2', src: 'https://web.telegram.org/#/im'},
-            {key: 3, id: 'foo3', src: 'https://web.whatsapp.com/'},
-            {key: 4, id: 'foo4', src: 'https://web.skype.com/'}
-        ],
+    var services = this.props.data.services,
         webViewRows = [],
-        services = [
-            {src: "services/slack.svg", title: "Slack"},
-            {src: "services/skype.svg", title: "Skype"},
-            {src: "services/whatsapp.svg", title: "WhatsApp"},
-            {src: "services/tweetdeck.svg", title: "Tweetdeck"},
-            {src: "services/messenger.svg", title: "Messenger"},
-            {src: "services/icq.svg", title: "ICQ"},
-            {src: "services/wechat.svg", title: "Wechat"},
-            {src: "services/telegram.svg", title: "Telegram"},
-            {src: "services/linkedin.svg", title: "Linkedin"},
-            {src: "services/facebookpages.svg", title: "Facebook"},
-            {src: "services/steamchat.svg", title: "Steamchat"},
-            {src: "services/yahoomessenger.svg", title: "Yahoo"},
-            {src: "services/dingtalk.svg", title: "Dingtalk"},
-            {src: "services/hangouts.svg", title: "Hangouts"},
-            {src: "services/hipchat.svg", title: "Hipchat"},
-            {src: "services/wire.svg", title: "Wire"},
-            {src: "services/googleinbox.svg", title: "Googleinbox"},
-            {src: "services/googlegmail.svg", title: "Google Gmail"},
-            {src: "services/groupme.svg", title: "Group.me"},
-            {src: "services/gitter.svg", title: "Gitter"},
-            {src: "services/intercom.svg", title: "Intercom"},
-            {src: "services/ciscospark.svg", title: "Ciscospark"},
-            {src: "services/mattermost.svg", title: "Mattermost"},
-            {src: "services/discord.svg", title: "Discord"},
-            {src: "services/hibox.svg", title: "Hibox"},
-            {src: "services/outlookdotcom.svg", title: "Outlook"},
-            {src: "services/mysms.svg", title: "MySMS"},
-            {src: "services/coupleme.svg", title: "Couple.me"},
-            {src: "services/zendesk.svg", title: "Zendesk"},
-            {src: "services/flowdock.svg", title: "Flowdock"},
-            {src: "services/vk.svg", title: "VK"},
-            {src: "services/irccloud.svg", title: "Irccloud"},
-            {src: "services/grape.svg", title: "Grape"},
-            {src: "services/chatwork.svg", title: "Chatwork"},
-            {src: "services/rocketchat.svg", title: "Rocketchat"}
-        ],
-        servicesRows = [];
+        directory = new Directory(),
+        availableServices = directory.getAvailableServices(),
+        availableServicesRows = [];
 
     if(services.length){
         for(var d in services){
-            servicesRows.push(<OpiosService data={services[d]} key={services[d].title} />);
-        }
-    }
+            var serviceProps = directory.getServicePropsByName(services[d]['name']),
+                data = {
+                    id: services[d]['id'],
+                    url: serviceProps['url']
+                };
 
-    if(webViews.length){
-        for(var d in webViews){
-            webViewRows.push(<OpiosWebView data={webViews[d]} key={webViews[d].key} />);
+            webViewRows.push(<OpiosWebView data={data} key={services[d]['id']} />);
         }
     }    
+
+    if(availableServices.length){
+        for(var d in availableServices){
+            availableServicesRows.push(<OpiosService data={availableServices[d]} key={availableServices[d].name} />);
+        }
+    }
 
     return (
       <div>
@@ -95,7 +62,7 @@ class OpiosContent extends React.Component {
                         <div className="service-icons">
 
 
-                            {servicesRows}
+                            {availableServicesRows}
 
 
                         </div>
