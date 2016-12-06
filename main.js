@@ -17,38 +17,38 @@ var configEncoded;
 var configText;
 var config;
 
-var AutoLaunch = require('auto-launch');
-var options = {
-    name: 'Opios'
-};
-if(process.platform == 'darwin'){
-    options.mac = {
-        useLaunchAgent: true
-    };
-}
-var opiosAutoLauncher = new AutoLaunch(options);
+// var AutoLaunch = require('auto-launch');
+// var options = {
+//     name: 'Opios'
+// };
+// if(process.platform == 'darwin'){
+//     options.mac = {
+//         useLaunchAgent: true
+//     };
+// }
+// var opiosAutoLauncher = new AutoLaunch(options);
 
-//Не открывать вторую копию opios
-const shouldQuit = app.makeSingleInstance(function(commandLine, workingDirectory){
-  if (mainWindow) {
-    if (mainWindow.isMinimized()) mainWindow.restore()
-    mainWindow.focus()
-  }
-});
-if (shouldQuit) {
-  app.quit()
-}
-
-
-// opiosAutoLauncher.isEnabled()
-// .then(function(isEnabled){
-//     if(isEnabled){
-//         return;
-//     }
-//     opiosAutoLauncher.enable();
-// })
-// .catch(function(err){
+// //Не открывать вторую копию opios
+// const shouldQuit = app.makeSingleInstance(function(commandLine, workingDirectory){
+//   if (mainWindow) {
+//     if (mainWindow.isMinimized()) mainWindow.restore()
+//     mainWindow.focus()
+//   }
 // });
+// if (shouldQuit) {
+//   app.quit()
+// }
+
+
+// // opiosAutoLauncher.isEnabled()
+// // .then(function(isEnabled){
+// //     if(isEnabled){
+// //         return;
+// //     }
+// //     opiosAutoLauncher.enable();
+// // })
+// // .catch(function(err){
+// // });
 
 //Обновление badges
 global.messages = messages;
@@ -87,12 +87,12 @@ ipcMain.on('update-tray', function(event) {
 //Вкл/выкл автозагрузчика
 ipcMain.on('set-auto-launch', function(event, params) {
 
-    if(params.checked){
-        opiosAutoLauncher.enable();
-    }
-    else{
-        opiosAutoLauncher.disable();
-    }
+    // if(params.checked){
+    //     opiosAutoLauncher.enable();
+    // }
+    // else{
+    //     opiosAutoLauncher.disable();
+    // }
 });
 
 
@@ -157,29 +157,29 @@ function initWindow(){
 // и будет готов к созданию браузерных окон.
 app.on('ready', function() {
 
-    //Работа с конфигом
-    if(!fs.existsSync(pathToConfig)){
-        fs.writeFileSync(pathToConfig, fs.readFileSync(pathToDefaultConfig));
-    }
-    configEncoded = fs.readFileSync(pathToConfig, 'utf8');
-    configText = decodeURIComponent(configEncoded);
-    config = JSON.parse(configText);
+    // //Работа с конфигом
+    // if(!fs.existsSync(pathToConfig)){
+    //     fs.writeFileSync(pathToConfig, fs.readFileSync(pathToDefaultConfig));
+    // }
+    // configEncoded = fs.readFileSync(pathToConfig, 'utf8');
+    // configText = decodeURIComponent(configEncoded);
+    // config = JSON.parse(configText);
 
-    //Вкл/Откл автозагрузки
-    if(config.config.launchOnStart){
-        opiosAutoLauncher.enable();
-    }
-    else{
-        opiosAutoLauncher.disable();
-    }
+    // //Вкл/Откл автозагрузки
+    // if(config.config.launchOnStart){
+    //     opiosAutoLauncher.enable();
+    // }
+    // else{
+    //     opiosAutoLauncher.disable();
+    // }
 
-    global.config = config;
-    ipcMain.on('save-config', function(event) {
-        config = global.config;
-        configText = JSON.stringify(config);
-        fs.chmodSync(pathToConfig, 0777);
-        fs.writeFileSync(pathToConfig, configText);
-    });
+    // global.config = config;
+    // ipcMain.on('save-config', function(event) {
+    //     config = global.config;
+    //     configText = JSON.stringify(config);
+    //     fs.chmodSync(pathToConfig, 0777);
+    //     fs.writeFileSync(pathToConfig, configText);
+    // });
 
     //Инициализация окна
     initWindow();
