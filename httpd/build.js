@@ -64,7 +64,7 @@
 
 	var _Launcher2 = _interopRequireDefault(_Launcher);
 
-	var _store = __webpack_require__(194);
+	var _store = __webpack_require__(193);
 
 	var _store2 = _interopRequireDefault(_store);
 
@@ -21561,13 +21561,13 @@
 	      return _React2['default'].createElement(
 	        'div',
 	        null,
-	        _React2['default'].createElement(_OpiosMenu2['default'], { data: this.props.data }),
+	        _React2['default'].createElement(_OpiosMenu2['default'], { data: this.props.data, store: this.props.store }),
 	        _React2['default'].createElement(_OpiosTags2['default'], null),
 	        _React2['default'].createElement(_OpiosContent2['default'], { data: this.props.data, store: this.props.store }),
 	        _React2['default'].createElement(_OpiosModalCreate2['default'], { data: this.props.data, store: this.props.store }),
 	        _React2['default'].createElement(_OpiosModalSettings2['default'], null),
 	        _React2['default'].createElement(_OpiosModalPassword2['default'], null),
-	        _React2['default'].createElement(_OpiosContextMenu2['default'], null)
+	        _React2['default'].createElement(_OpiosContextMenu2['default'], { data: this.props.data, store: this.props.store })
 	      );
 	    }
 	  }]);
@@ -21668,7 +21668,7 @@
 	                        badges: services[d].badges
 	                    };
 
-	                    rows.push(_React2['default'].createElement(_OpiosMenuItem2['default'], { data: data, key: services[d].id }));
+	                    rows.push(_React2['default'].createElement(_OpiosMenuItem2['default'], { data: data, key: services[d].id, store: this.props.store }));
 	                }
 	            }
 
@@ -21763,7 +21763,7 @@
 	var _inherits = function (subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
 
 	Object.defineProperty(exports, '__esModule', {
-	    value: true
+	  value: true
 	});
 
 	var _React = __webpack_require__(1);
@@ -21775,69 +21775,98 @@
 	var _SmartResizer2 = _interopRequireDefault(_SmartResizer);
 
 	var OpiosMenuItem = (function (_React$Component) {
-	    function OpiosMenuItem(props) {
-	        _classCallCheck(this, OpiosMenuItem);
+	  function OpiosMenuItem(props) {
+	    _classCallCheck(this, OpiosMenuItem);
 
-	        _get(Object.getPrototypeOf(OpiosMenuItem.prototype), 'constructor', this).call(this, props);
+	    _get(Object.getPrototypeOf(OpiosMenuItem.prototype), 'constructor', this).call(this, props);
+	  }
+
+	  _inherits(OpiosMenuItem, _React$Component);
+
+	  _createClass(OpiosMenuItem, [{
+	    key: 'onContextMenu',
+	    value: function onContextMenu(e) {
+
+	      var store = this.props.store,
+	          id = this.props.data.id;
+
+	      store.dispatch({
+	        type: 'OPEN_CONTEXT_MENU',
+	        payload: { id: id }
+	      });
+
+	      //Контекстное меню сервиса
+	      var $contextMenu = $('#contextMenu');
+
+	      $contextMenu.css({
+	        display: 'block',
+	        left: e.nativeEvent.pageX,
+	        top: e.nativeEvent.pageY
+	      });
+
+	      $('body').click(function () {
+	        $contextMenu.hide();
+	      });
 	    }
+	  }, {
+	    key: 'clickOnTabHandler',
+	    value: function clickOnTabHandler(tabId) {
 
-	    _inherits(OpiosMenuItem, _React$Component);
+	      var me = this,
+	          resizer = new _SmartResizer2['default'](),
+	          id = this.props.data.id;
 
-	    _createClass(OpiosMenuItem, [{
-	        key: 'clickOnTabHandler',
-	        value: function clickOnTabHandler(tabId) {
+	      $('.tnb-li.service').removeClass('active-btn');
+	      $('#' + tabId).addClass('active-btn');
 
-	            var me = this,
-	                resizer = new _SmartResizer2['default'](),
-	                id = this.props.data.id;
+	      $('.content-block.opios-webview').css('visibility', 'hidden').css('position', 'absolute').css('top', '0px');
+	      $('#services-list').css('display', 'none');
 
-	            $('.tnb-li.service').removeClass('active-btn');
-	            $('#' + tabId).addClass('active-btn');
+	      $('#' + id).css('position', 'inherit').css('visibility', 'visible');
 
-	            $('.content-block.opios-webview').css('visibility', 'hidden').css('position', 'absolute').css('top', '0px');
-	            $('#services-list').css('display', 'none');
+	      resizer.resize();
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
 
-	            $('#' + id).css('position', 'inherit').css('visibility', 'visible');
+	      var badges = this.props.data.badges ? _React2['default'].createElement(
+	        'span',
+	        { className: 'badge badge-active' },
+	        this.props.data.badges
+	      ) : '',
+	          id = 'tab-' + this.props.data.id;
 
-	            resizer.resize();
-	        }
-	    }, {
-	        key: 'render',
-	        value: function render() {
+	      return _React2['default'].createElement(
+	        'a',
+	        { href: '#', className: 'tnb-li-a' },
+	        _React2['default'].createElement(
+	          'li',
+	          { id: id, className: 'tnb-li service', onClick: this.clickOnTabHandler.bind(this, id), onContextMenu: this.onContextMenu.bind(this) },
+	          _React2['default'].createElement(
+	            'span',
+	            { className: 'tnb-logo' },
+	            _React2['default'].createElement('img', { src: this.props.data.src })
+	          ),
+	          badges,
+	          _React2['default'].createElement(
+	            'span',
+	            { className: 'tnb-text' },
+	            this.props.data.text
+	          )
+	        )
+	      );
+	    }
+	  }]);
 
-	            var badges = this.props.data.badges ? _React2['default'].createElement(
-	                'span',
-	                { className: 'badge badge-active' },
-	                this.props.data.badges
-	            ) : '',
-	                id = 'tab-' + this.props.data.id;
-
-	            return _React2['default'].createElement(
-	                'a',
-	                { href: '#', className: 'tnb-li-a' },
-	                _React2['default'].createElement(
-	                    'li',
-	                    { id: id, className: 'tnb-li service', onClick: this.clickOnTabHandler.bind(this, id) },
-	                    _React2['default'].createElement(
-	                        'span',
-	                        { className: 'tnb-logo' },
-	                        _React2['default'].createElement('img', { src: this.props.data.src })
-	                    ),
-	                    badges,
-	                    _React2['default'].createElement(
-	                        'span',
-	                        { className: 'tnb-text' },
-	                        this.props.data.text
-	                    )
-	                )
-	            );
-	        }
-	    }]);
-
-	    return OpiosMenuItem;
+	  return OpiosMenuItem;
 	})(_React2['default'].Component);
 
 	exports['default'] = OpiosMenuItem;
+
+	/*
+	onClick={this.clickOnTabHandler.bind(this, id)}
+	*/
 	module.exports = exports['default'];
 
 /***/ },
@@ -23151,20 +23180,20 @@
 /* 191 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
-	var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
+	var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { 'default': obj }; };
 
-	var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
+	var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } };
 
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-	var _get = function get(object, property, receiver) { var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+	var _get = function get(object, property, receiver) { var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-	var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
+	var _inherits = function (subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
 
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
 	});
 
 	var _React = __webpack_require__(1);
@@ -23172,55 +23201,66 @@
 	var _React2 = _interopRequireDefault(_React);
 
 	var OpiosContextMenu = (function (_React$Component) {
-	    function OpiosContextMenu(props) {
-	        _classCallCheck(this, OpiosContextMenu);
+	  function OpiosContextMenu(props) {
+	    _classCallCheck(this, OpiosContextMenu);
 
-	        _get(Object.getPrototypeOf(OpiosContextMenu.prototype), "constructor", this).call(this, props);
+	    _get(Object.getPrototypeOf(OpiosContextMenu.prototype), 'constructor', this).call(this, props);
+	  }
+
+	  _inherits(OpiosContextMenu, _React$Component);
+
+	  _createClass(OpiosContextMenu, [{
+	    key: 'onDelete',
+	    value: function onDelete() {
+
+	      var store = this.props.store;
+
+	      store.dispatch({
+	        type: 'DELETE_SERVICE',
+	        payload: { id: this.props.data.contextMenu.serviceId }
+	      });
 	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
 
-	    _inherits(OpiosContextMenu, _React$Component);
+	      return _React2['default'].createElement(
+	        'div',
+	        null,
+	        _React2['default'].createElement(
+	          'div',
+	          { id: 'contextMenu', className: 'dropdown clearfix' },
+	          _React2['default'].createElement(
+	            'ul',
+	            { className: 'dropdown-menu', role: 'menu', 'aria-labelledby': 'dropdownMenu', style: { display: 'block', position: 'static', marginBottom: '5px' } },
+	            _React2['default'].createElement(
+	              'li',
+	              null,
+	              _React2['default'].createElement(
+	                'a',
+	                { tabIndex: '-1', href: '#' },
+	                'Редактировать'
+	              )
+	            ),
+	            _React2['default'].createElement(
+	              'li',
+	              { onClick: this.onDelete.bind(this) },
+	              _React2['default'].createElement(
+	                'a',
+	                { tabIndex: '-1', href: '#' },
+	                'Удалить'
+	              )
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
 
-	    _createClass(OpiosContextMenu, [{
-	        key: "render",
-	        value: function render() {
+	  return OpiosContextMenu;
+	})(_React2['default'].Component);
 
-	            return _React2["default"].createElement(
-	                "div",
-	                null,
-	                _React2["default"].createElement(
-	                    "div",
-	                    { id: "contextMenu", className: "dropdown clearfix" },
-	                    _React2["default"].createElement(
-	                        "ul",
-	                        { className: "dropdown-menu", role: "menu", "aria-labelledby": "dropdownMenu", style: { display: "block", position: "static", marginBottom: "5px" } },
-	                        _React2["default"].createElement(
-	                            "li",
-	                            null,
-	                            _React2["default"].createElement(
-	                                "a",
-	                                { tabIndex: "-1", href: "#" },
-	                                "Редактировать"
-	                            )
-	                        ),
-	                        _React2["default"].createElement(
-	                            "li",
-	                            null,
-	                            _React2["default"].createElement(
-	                                "a",
-	                                { tabIndex: "-1", href: "#" },
-	                                "Удалить"
-	                            )
-	                        )
-	                    )
-	                )
-	            );
-	        }
-	    }]);
-
-	    return OpiosContextMenu;
-	})(_React2["default"].Component);
-
-	exports["default"] = OpiosContextMenu;
+	exports['default'] = OpiosContextMenu;
 
 	/*
 	        <div id="contextMenu" className="dropdown clearfix">
@@ -23236,7 +23276,7 @@
 	            </ul>
 	        </div>
 	        */
-	module.exports = exports["default"];
+	module.exports = exports['default'];
 
 /***/ },
 /* 192 */
@@ -23273,20 +23313,20 @@
 				$('#settingsModal').modal();
 			});
 
-			//Контекстное меню сервиса
-			var $contextMenu = $('#contextMenu');
-			$('body').on('contextmenu', '.tnb-li-a', function (e) {
-				$contextMenu.css({
-					display: 'block',
-					left: e.pageX,
-					top: e.pageY
-				});
-				return false;
-			});
-			// $contextMenu.on("click", "a", function() {
-			$('body').click(function () {
-				$contextMenu.hide();
-			});
+			// //Контекстное меню сервиса
+			// var $contextMenu = $("#contextMenu");
+			// $("body").on("contextmenu", ".tnb-li-a", function(e) {
+			// 	$contextMenu.css({
+			// 		display: "block",
+			// 		left: e.pageX,
+			// 		top: e.pageY
+			// 	});
+			// 	return false;
+			// });
+			// // $contextMenu.on("click", "a", function() {
+			// $('body').click(function() {
+			// 	$contextMenu.hide();
+			// });
 
 			resizer.resize();
 
@@ -23332,50 +23372,6 @@
 
 /***/ },
 /* 193 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, '__esModule', {
-		value: true
-	});
-	function State() {}
-
-	State.prototype.getInitialState = function () {
-
-		var data = {
-			services: [{ id: 'foo1', name: 'messenger', text: 'Мессенджер', badges: 1 }, { id: 'foo2', name: 'telegram', text: 'Телеграм', badges: 0 }, { id: 'foo3', name: 'whatsapp', text: 'Ватсап', badges: 4 }, { id: 'foo4', name: 'skype', text: 'Скайп', badges: 0 }],
-			settings: {},
-			modalCreate: {
-				service: 'vk'
-			},
-			modalUpdate: {},
-			l12n: {},
-			tags: []
-		};
-
-		return data;
-	};
-
-	State.prototype.getInitialState2 = function () {
-
-		var data = {
-			services: [{ id: 'foo1', name: 'messenger', text: 'Messenger!', badges: 1 }, { id: 'foo2', name: 'telegram', text: 'Telegram!', badges: 0 }, { id: 'foo3', name: 'whatsapp', text: 'WhatsApp!', badges: 4 }, { id: 'foo4', name: 'skype', text: 'Skype1', badges: 0 }],
-			settings: {},
-			modalCreate: {},
-			modalUpdate: {},
-			l12n: {},
-			tags: []
-		};
-
-		return data;
-	};
-
-	exports['default'] = State;
-	module.exports = exports['default'];
-
-/***/ },
-/* 194 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23386,13 +23382,13 @@
 	  value: true
 	});
 
-	var _createStore = __webpack_require__(195);
+	var _createStore = __webpack_require__(194);
 
-	var _Reducer = __webpack_require__(216);
+	var _Reducer = __webpack_require__(215);
 
 	var _Reducer2 = _interopRequireDefault(_Reducer);
 
-	var _State = __webpack_require__(193);
+	var _State = __webpack_require__(217);
 
 	var _State2 = _interopRequireDefault(_State);
 
@@ -23404,7 +23400,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 195 */
+/* 194 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -23412,27 +23408,27 @@
 	exports.__esModule = true;
 	exports.compose = exports.applyMiddleware = exports.bindActionCreators = exports.combineReducers = exports.createStore = undefined;
 
-	var _createStore = __webpack_require__(196);
+	var _createStore = __webpack_require__(195);
 
 	var _createStore2 = _interopRequireDefault(_createStore);
 
-	var _combineReducers = __webpack_require__(211);
+	var _combineReducers = __webpack_require__(210);
 
 	var _combineReducers2 = _interopRequireDefault(_combineReducers);
 
-	var _bindActionCreators = __webpack_require__(213);
+	var _bindActionCreators = __webpack_require__(212);
 
 	var _bindActionCreators2 = _interopRequireDefault(_bindActionCreators);
 
-	var _applyMiddleware = __webpack_require__(214);
+	var _applyMiddleware = __webpack_require__(213);
 
 	var _applyMiddleware2 = _interopRequireDefault(_applyMiddleware);
 
-	var _compose = __webpack_require__(215);
+	var _compose = __webpack_require__(214);
 
 	var _compose2 = _interopRequireDefault(_compose);
 
-	var _warning = __webpack_require__(212);
+	var _warning = __webpack_require__(211);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
@@ -23456,7 +23452,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 196 */
+/* 195 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23465,11 +23461,11 @@
 	exports.ActionTypes = undefined;
 	exports['default'] = createStore;
 
-	var _isPlainObject = __webpack_require__(197);
+	var _isPlainObject = __webpack_require__(196);
 
 	var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
 
-	var _symbolObservable = __webpack_require__(207);
+	var _symbolObservable = __webpack_require__(206);
 
 	var _symbolObservable2 = _interopRequireDefault(_symbolObservable);
 
@@ -23722,12 +23718,12 @@
 	}
 
 /***/ },
-/* 197 */
+/* 196 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseGetTag = __webpack_require__(198),
-	    getPrototype = __webpack_require__(204),
-	    isObjectLike = __webpack_require__(206);
+	var baseGetTag = __webpack_require__(197),
+	    getPrototype = __webpack_require__(203),
+	    isObjectLike = __webpack_require__(205);
 
 	/** `Object#toString` result references. */
 	var objectTag = '[object Object]';
@@ -23790,12 +23786,12 @@
 
 
 /***/ },
-/* 198 */
+/* 197 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Symbol = __webpack_require__(199),
-	    getRawTag = __webpack_require__(202),
-	    objectToString = __webpack_require__(203);
+	var Symbol = __webpack_require__(198),
+	    getRawTag = __webpack_require__(201),
+	    objectToString = __webpack_require__(202);
 
 	/** `Object#toString` result references. */
 	var nullTag = '[object Null]',
@@ -23825,10 +23821,10 @@
 
 
 /***/ },
-/* 199 */
+/* 198 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var root = __webpack_require__(200);
+	var root = __webpack_require__(199);
 
 	/** Built-in value references. */
 	var Symbol = root.Symbol;
@@ -23837,10 +23833,10 @@
 
 
 /***/ },
-/* 200 */
+/* 199 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var freeGlobal = __webpack_require__(201);
+	var freeGlobal = __webpack_require__(200);
 
 	/** Detect free variable `self`. */
 	var freeSelf = typeof self == 'object' && self && self.Object === Object && self;
@@ -23852,7 +23848,7 @@
 
 
 /***/ },
-/* 201 */
+/* 200 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/** Detect free variable `global` from Node.js. */
@@ -23863,10 +23859,10 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 202 */
+/* 201 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Symbol = __webpack_require__(199);
+	var Symbol = __webpack_require__(198);
 
 	/** Used for built-in method references. */
 	var objectProto = Object.prototype;
@@ -23915,7 +23911,7 @@
 
 
 /***/ },
-/* 203 */
+/* 202 */
 /***/ function(module, exports) {
 
 	/** Used for built-in method references. */
@@ -23943,10 +23939,10 @@
 
 
 /***/ },
-/* 204 */
+/* 203 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var overArg = __webpack_require__(205);
+	var overArg = __webpack_require__(204);
 
 	/** Built-in value references. */
 	var getPrototype = overArg(Object.getPrototypeOf, Object);
@@ -23955,7 +23951,7 @@
 
 
 /***/ },
-/* 205 */
+/* 204 */
 /***/ function(module, exports) {
 
 	/**
@@ -23976,7 +23972,7 @@
 
 
 /***/ },
-/* 206 */
+/* 205 */
 /***/ function(module, exports) {
 
 	/**
@@ -24011,14 +24007,14 @@
 
 
 /***/ },
-/* 207 */
+/* 206 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(208);
+	module.exports = __webpack_require__(207);
 
 
 /***/ },
-/* 208 */
+/* 207 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global, module) {'use strict';
@@ -24027,7 +24023,7 @@
 	  value: true
 	});
 
-	var _ponyfill = __webpack_require__(210);
+	var _ponyfill = __webpack_require__(209);
 
 	var _ponyfill2 = _interopRequireDefault(_ponyfill);
 
@@ -24050,10 +24046,10 @@
 
 	var result = (0, _ponyfill2['default'])(root);
 	exports['default'] = result;
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(209)(module)))
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(208)(module)))
 
 /***/ },
-/* 209 */
+/* 208 */
 /***/ function(module, exports) {
 
 	module.exports = function(module) {
@@ -24069,7 +24065,7 @@
 
 
 /***/ },
-/* 210 */
+/* 209 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -24097,7 +24093,7 @@
 	};
 
 /***/ },
-/* 211 */
+/* 210 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -24105,13 +24101,13 @@
 	exports.__esModule = true;
 	exports['default'] = combineReducers;
 
-	var _createStore = __webpack_require__(196);
+	var _createStore = __webpack_require__(195);
 
-	var _isPlainObject = __webpack_require__(197);
+	var _isPlainObject = __webpack_require__(196);
 
 	var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
 
-	var _warning = __webpack_require__(212);
+	var _warning = __webpack_require__(211);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
@@ -24245,7 +24241,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 212 */
+/* 211 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -24275,7 +24271,7 @@
 	}
 
 /***/ },
-/* 213 */
+/* 212 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -24331,7 +24327,7 @@
 	}
 
 /***/ },
-/* 214 */
+/* 213 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24342,7 +24338,7 @@
 
 	exports['default'] = applyMiddleware;
 
-	var _compose = __webpack_require__(215);
+	var _compose = __webpack_require__(214);
 
 	var _compose2 = _interopRequireDefault(_compose);
 
@@ -24394,7 +24390,7 @@
 	}
 
 /***/ },
-/* 215 */
+/* 214 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -24437,7 +24433,7 @@
 	}
 
 /***/ },
-/* 216 */
+/* 215 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24445,33 +24441,54 @@
 	var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { 'default': obj }; };
 
 	Object.defineProperty(exports, '__esModule', {
-	    value: true
+	  value: true
 	});
 
-	var _Id = __webpack_require__(217);
+	var _Id = __webpack_require__(216);
 
 	var _Id2 = _interopRequireDefault(_Id);
 
 	function Reducer(state, action) {
 
-	    switch (action.type) {
-	        case 'OPEN_CREATE_SERVICE_WINDOW':
+	  switch (action.type) {
+	    case 'OPEN_CREATE_SERVICE_WINDOW':
 
-	            return Object.assign({}, state, { modalCreate: { service: action.payload.service } });
-	        case 'ADD_SERVICE':
+	      return Object.assign({}, state, { modalCreate: { service: action.payload.service } });
 
-	            state.services.push({ id: _Id2['default'](), name: action.payload.service, text: action.payload.text, badges: 0 });
-	            return Object.assign({}, state, {});
-	        default:
-	            return state;
-	    }
+	    case 'ADD_SERVICE':
+
+	      state.services.push({ id: _Id2['default'](), name: action.payload.service, text: action.payload.text, badges: 0 });
+	      return Object.assign({}, state, {});
+
+	    case 'OPEN_CONTEXT_MENU':
+
+	      return Object.assign({}, state, { contextMenu: { serviceId: action.payload.id } });
+
+	    case 'DELETE_SERVICE':
+
+	      var newState = Object.assign({}, state),
+	          id = action.payload.id;
+
+	      if (newState.services.length) {
+	        for (var s in newState.services) {
+	          if (id === newState.services[s].id) {
+	            delete newState.services[s];
+	          }
+	        }
+	      }
+
+	      return newState;
+
+	    default:
+	      return state;
+	  }
 	}
 
 	exports['default'] = Reducer;
 	module.exports = exports['default'];
 
 /***/ },
-/* 217 */
+/* 216 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -24487,6 +24504,53 @@
 	}
 
 	exports['default'] = Id;
+	module.exports = exports['default'];
+
+/***/ },
+/* 217 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
+		value: true
+	});
+	function State() {}
+
+	State.prototype.getInitialState = function () {
+
+		var data = {
+			services: [{ id: 'foo1', name: 'messenger', text: 'Мессенджер', badges: 1 }, { id: 'foo2', name: 'telegram', text: 'Телеграм', badges: 0 }, { id: 'foo3', name: 'whatsapp', text: 'Ватсап', badges: 4 }, { id: 'foo4', name: 'skype', text: 'Скайп', badges: 0 }],
+			settings: {},
+			modalCreate: {
+				service: 'vk'
+			},
+			modalUpdate: {},
+			l12n: {},
+			tags: [],
+			contextMenu: {
+				serviceId: '1'
+			}
+		};
+
+		return data;
+	};
+
+	State.prototype.getInitialState2 = function () {
+
+		var data = {
+			services: [{ id: 'foo1', name: 'messenger', text: 'Messenger!', badges: 1 }, { id: 'foo2', name: 'telegram', text: 'Telegram!', badges: 0 }, { id: 'foo3', name: 'whatsapp', text: 'WhatsApp!', badges: 4 }, { id: 'foo4', name: 'skype', text: 'Skype1', badges: 0 }],
+			settings: {},
+			modalCreate: {},
+			modalUpdate: {},
+			l12n: {},
+			tags: []
+		};
+
+		return data;
+	};
+
+	exports['default'] = State;
 	module.exports = exports['default'];
 
 /***/ }

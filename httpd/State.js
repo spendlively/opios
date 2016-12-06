@@ -15,7 +15,10 @@ State.prototype.getInitialState = function(){
 		},
 		modalUpdate: {},
 		l12n: {},
-		tags: []
+		tags: [],
+		contextMenu: {
+			serviceId: '1'	
+		}
 	};
 
 	return data;

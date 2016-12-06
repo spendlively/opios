@@ -7,9 +7,33 @@ class OpiosMenuItem extends React.Component {
 	   super(props);
   }
 
+  onContextMenu(e) {
+
+    var store = this.props.store,
+        id = this.props.data.id;
+
+    store.dispatch({
+       type: 'OPEN_CONTEXT_MENU',
+       payload: {id: id}
+    });
+
+    //Контекстное меню сервиса
+    var $contextMenu = $("#contextMenu");
+
+    $contextMenu.css({
+      display: "block",
+      left: e.nativeEvent.pageX,
+      top: e.nativeEvent.pageY
+    });
+
+    $('body').click(function() {
+      $contextMenu.hide();
+    });    
+  }
+
   clickOnTabHandler(tabId){
 
-    var me = this,
+      var me = this,
         resizer = new SmartResizer(),
         id = this.props.data.id;
 
@@ -31,7 +55,7 @@ class OpiosMenuItem extends React.Component {
 
     return (
         <a href="#" className="tnb-li-a">
-            <li id={id} className="tnb-li service" onClick={this.clickOnTabHandler.bind(this, id)}>
+            <li id={id} className="tnb-li service" onClick={this.clickOnTabHandler.bind(this, id)} onContextMenu={this.onContextMenu.bind(this)} >
                 <span className="tnb-logo"><img src={this.props.data.src} /></span>
                 {badges}
                 <span className="tnb-text">{this.props.data.text}</span>
@@ -42,3 +66,7 @@ class OpiosMenuItem extends React.Component {
 }
 
 export default OpiosMenuItem;
+
+/*
+onClick={this.clickOnTabHandler.bind(this, id)}
+*/

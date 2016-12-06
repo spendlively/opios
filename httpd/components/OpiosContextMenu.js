@@ -6,6 +6,16 @@ class OpiosContextMenu extends React.Component {
 	   super(props);
   }
 
+  onDelete() {
+
+    var store = this.props.store;
+
+    store.dispatch({
+       type: 'DELETE_SERVICE',
+       payload: {id: this.props.data.contextMenu.serviceId}
+    });
+  }
+
   render() {
 
     return (
@@ -13,7 +23,7 @@ class OpiosContextMenu extends React.Component {
         <div id="contextMenu" className="dropdown clearfix">
             <ul className="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style={{display:'block',position:'static',marginBottom:'5px'}}>
                 <li><a tabIndex="-1" href="#">Редактировать</a></li>
-                <li><a tabIndex="-1" href="#">Удалить</a></li>
+                <li onClick={this.onDelete.bind(this)}><a tabIndex="-1" href="#">Удалить</a></li>
             </ul>
         </div>
       </div>

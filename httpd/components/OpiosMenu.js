@@ -51,7 +51,7 @@ class OpiosMenu extends React.Component {
                     badges: services[d]['badges']
                 };
 
-            rows.push(<OpiosMenuItem data={data} key={services[d]['id']} />);
+            rows.push(<OpiosMenuItem data={data} key={services[d]['id']} store={this.props.store} />);
         }
     }
 

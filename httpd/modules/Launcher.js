@@ -25,20 +25,20 @@ Launcher.prototype.init = function(){
 			$('#settingsModal').modal();
 		});
 
-		//Контекстное меню сервиса
-		var $contextMenu = $("#contextMenu");
-		$("body").on("contextmenu", ".tnb-li-a", function(e) {
-			$contextMenu.css({
-				display: "block",
-				left: e.pageX,
-				top: e.pageY
-			});
-			return false;
-		});
-		// $contextMenu.on("click", "a", function() {
-		$('body').click(function() {
-			$contextMenu.hide();
-		});
+		// //Контекстное меню сервиса
+		// var $contextMenu = $("#contextMenu");
+		// $("body").on("contextmenu", ".tnb-li-a", function(e) {
+		// 	$contextMenu.css({
+		// 		display: "block",
+		// 		left: e.pageX,
+		// 		top: e.pageY
+		// 	});
+		// 	return false;
+		// });
+		// // $contextMenu.on("click", "a", function() {
+		// $('body').click(function() {
+		// 	$contextMenu.hide();
+		// });
 
 		resizer.resize();
 

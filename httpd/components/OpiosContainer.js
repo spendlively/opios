@@ -17,13 +17,13 @@ class OpiosContainer extends React.Component {
 
     return (
       <div>
-        <OpiosMenu data={this.props.data} />
+        <OpiosMenu data={this.props.data} store={this.props.store} />
         <OpiosTags />
         <OpiosContent data={this.props.data} store={this.props.store} />
         <OpiosModalCreate data={this.props.data} store={this.props.store} />
         <OpiosModalSettings />
         <OpiosModalPassword />
-        <OpiosContextMenu />
+        <OpiosContextMenu data={this.props.data} store={this.props.store} />
       </div>
     );
   }
