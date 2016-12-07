@@ -17,10 +17,12 @@ class OpiosContent extends React.Component {
         availableServices = directory.getAvailableServices(),
         availableServicesRows = [];
 
+
     if(services.length){
         for(var d in services){
             var serviceProps = directory.getServicePropsByName(services[d]['name']),
                 data = {
+                    team: services[d]['team'],
                     id: services[d]['id'],
                     url: serviceProps['url']
                 };

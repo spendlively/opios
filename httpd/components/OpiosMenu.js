@@ -31,23 +31,13 @@ class OpiosMenu extends React.Component {
         directory = new Directory(),
         rows = [];
 
-    // var data = [
-    //     {key: 1, src: "services/messenger.svg",text: "Messenger",badge: 1},
-    //     {key: 2, src: "services/telegram.svg",text: "Telegram"},
-    //     {key: 3, src: "services/whatsapp.svg",text: "WhatsApp",badge: 4},
-    //     {key: 4, src: "services/skype.svg",text: "Skype"},
-    // ],
-    // rows = [];
-
-// console.log('menu', this.props.data.services)
-
     if(services.length){
         for(var d in services){
             var serviceProps = directory.getServicePropsByName(services[d]['name']),
                 data = {
                     id: services[d]['id'], 
                     src: serviceProps['img'], 
-                    text: services[d]['text'], 
+                    text: services[d]['title'], 
                     badges: services[d]['badges']
                 };
 

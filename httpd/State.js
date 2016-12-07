@@ -6,7 +6,26 @@ State.prototype.getInitialState = function(){
 
 	var initialState = ipcRenderer.sendSync('read-opios-state', null);
 
+	if(!initialState){
+		initialState = this.getInitialStateTemplate();
+	}
+
 	return initialState;
+}
+
+State.prototype.getInitialStateTemplate = function(){
+
+	var data = {
+		services: [],
+		settings: {},
+		modalCreate: {},
+		modalUpdate: {},
+		l12n: {},
+		tags: [],
+		contextMenu: {}
+	};
+
+	return data;	
 }
 
 State.prototype.getInitialState2 = function(){

@@ -81,6 +81,7 @@ h4{
 .tnb-logo{
 	position: relative;
 	top: -3px;
+	margin-right: 2px;
 }
 
 .tnb-li-right .tnb-logo{
@@ -292,6 +293,10 @@ aside.aside-left{
 
 .opios-modal .modal-content .form{
 	padding-left: 40px;
+}
+
+input.modalInputText{
+	margin-top: 15px;
 }
 
 .opios-modal .red{

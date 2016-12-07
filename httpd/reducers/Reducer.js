@@ -7,13 +7,18 @@ function Reducer (state, action){
     
     switch(action.type){
         case 'OPEN_CREATE_SERVICE_WINDOW':
-
-        	newState = Object.assign({}, state, {modalCreate: {service: action.payload.service}});
+            newState = Object.assign({}, state, {modalCreate: {name: action.payload.name}});
             break;
 
         case 'ADD_SERVICE':
         
-            state.services.push({id: Id(), name: action.payload.service, text: action.payload.text, badges: 0});
+            state.services.push({
+                id: Id(),
+                name: action.payload.name, 
+                title: action.payload.title, 
+                team: action.payload.team, 
+                badges: 0
+            });
             newState = Object.assign({}, state, {});
             break;
 

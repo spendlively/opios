@@ -5,28 +5,79 @@ class OpiosModalCreate extends React.Component {
 
   constructor(props) {
 	   super(props);
+
+     this.state = {titleField: '', teamField: ''};
   }
 
-  onSave(serviceName, title) {
+  onSave() {
 
-    var store = this.props.store;
+    var directory = new Directory(),
+        serviceName = this.props.data.modalCreate.name,
+        serviceProps = directory.getServicePropsByName(serviceName),
+        store = this.props.store,
+        title = this.state.titleField || serviceProps.title,
+        team = this.state.teamField;
 
     store.dispatch({
        type: 'ADD_SERVICE',
-       payload: {service: serviceName, text: title}
+       payload: {name: serviceName, title: title, team: team}
     });
     
     $('#addServiceModal').modal('hide');
   }
 
+  onTitleChange(event) {
+
+    if(event.target.value.length > 30) return;
+    this.setState({titleField: event.target.value});
+  }
+
+  onTitleKeyDown(event) {
+
+    if(event.keyCode == 13){
+      event.stopPropagation();
+      event.preventDefault();
+      this.onSave();
+    }  
+  }
+
+  onTeamChange(event) {
+
+    if(event.target.value.length > 30) return;
+    this.setState({teamField: event.target.value});
+  }
+
+  onTeamKeyDown(event) {
+
+    if(event.keyCode == 13){
+      event.stopPropagation();
+      event.preventDefault();
+      this.onSave();
+    }  
+  }  
+
   render() {
 
-    var directory = new Directory(),
-        data = this.props.data.modalCreate,
-        serviceName = data.service,
+    var data = this.props.data.modalCreate,
+        serviceName = data.name,
+        directory = new Directory(),
         serviceProps = directory.getServicePropsByName(serviceName),
         src = serviceProps ? serviceProps.img : '',
-        title = serviceProps ? serviceProps.title : '';
+        title = serviceProps ? serviceProps.title : '',
+        team = '';
+
+    if(serviceProps && serviceProps.hasTeam === true){
+        team = (<input 
+          onChange={this.onTeamChange.bind(this)} 
+          onKeyDown={this.onTeamKeyDown.bind(this)}
+          type="text" 
+          className="form-control modalInputText" 
+          id="addServiceModalTeam" 
+          placeholder="Enter Team here..."
+          value={this.state.teamField}
+        >
+        </input>);
+    }
 
     return (
       <div>
@@ -38,6 +89,19 @@ class OpiosModalCreate extends React.Component {
                 <img width="100px" src={src} />
                 <h2>{title}</h2>
                 <div className="form">
+
+                  <input 
+                    onChange={this.onTitleChange.bind(this)} 
+                    onKeyDown={this.onTitleKeyDown.bind(this)}
+                    type="text" 
+                    className="form-control modalInputText" 
+                    id="addServiceModalName" 
+                    placeholder="Enter Name here..."
+                    value={this.state.titleField}
+                  >
+                  </input>
+
+                  {team}
 
                   <div className="checkbox">
                     <label><input type="checkbox"></input>Desktop Notifications</label>
@@ -69,7 +133,7 @@ class OpiosModalCreate extends React.Component {
                 </div>
               </div>
               <div className="modal-footer">
-                <button onClick={this.onSave.bind(this, serviceName, title)} type="button" className="btn btn-primary ">Save</button>
+                <button onClick={this.onSave.bind(this)} type="button" className="btn btn-primary ">Save</button>
                 <button type="button" className="btn btn-default " data-dismiss="modal">Cancel</button>
               </div>
             </div>

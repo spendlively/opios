@@ -12,7 +12,7 @@ class OpiosService extends React.Component {
 
 	store.dispatch({
 	    type: 'OPEN_CREATE_SERVICE_WINDOW',
-	    payload: {service: this.props.data.name}
+	    payload: {name: this.props.data.name}
 	});
 
 	// $('.service-img-container').click(function(){

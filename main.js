@@ -5,7 +5,7 @@ var fs = require('fs');
 var ipcMain = require('electron').ipcMain;
 var pathToDefaultConfig = __dirname + '/httpd/data/config-default.json';
 // var pathToConfig = __dirname + '/httpd/data/config.json';
-var pathToConfig = app.getPath('userData') + '/config.json';
+var pathToConfig = app.getPath('userData') + '/opios-config.json';
 var {Menu} = require('electron');
 var sanitizer = require('sanitizer');
 var {Tray} = require('electron');
@@ -32,9 +32,20 @@ ipcMain.on('save-opios-state', function(event, config){
 
 ipcMain.on('read-opios-state', function(event, config){
 
-  var configEncoded = fs.readFileSync(pathToConfig, 'utf8');
-  var configText = decodeURIComponent(configEncoded);
-  var config = JSON.parse(configText);
+  var config = '';
+
+  if (fs.existsSync(pathToConfig)) {
+    var configEncoded = fs.readFileSync(pathToConfig, 'utf8');
+    var configText = decodeURIComponent(configEncoded);
+    var config = '';
+    try{
+      var config = JSON.parse(configText);
+    } catch(e){}
+  }
+  else{
+    fs.writeFileSync(pathToConfig, '', { flag: 'wx' }, function (err) {});
+  }
+
   
   event.returnValue = config;
 });

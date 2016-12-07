@@ -21385,23 +21385,13 @@
 	                directory = new _Directory2['default'](),
 	                rows = [];
 
-	            // var data = [
-	            //     {key: 1, src: "services/messenger.svg",text: "Messenger",badge: 1},
-	            //     {key: 2, src: "services/telegram.svg",text: "Telegram"},
-	            //     {key: 3, src: "services/whatsapp.svg",text: "WhatsApp",badge: 4},
-	            //     {key: 4, src: "services/skype.svg",text: "Skype"},
-	            // ],
-	            // rows = [];
-
-	            // console.log('menu', this.props.data.services)
-
 	            if (services.length) {
 	                for (var d in services) {
 	                    var serviceProps = directory.getServicePropsByName(services[d].name),
 	                        data = {
 	                        id: services[d].id,
 	                        src: serviceProps.img,
-	                        text: services[d].text,
+	                        text: services[d].title,
 	                        badges: services[d].badges
 	                    };
 
@@ -22139,6 +22129,7 @@
 	                for (var d in services) {
 	                    var serviceProps = directory.getServicePropsByName(services[d].name),
 	                        data = {
+	                        team: services[d].team,
 	                        id: services[d].id,
 	                        url: serviceProps.url
 	                    };
@@ -22300,6 +22291,10 @@
 
 	var _React2 = _interopRequireDefault(_React);
 
+	var _Directory = __webpack_require__(181);
+
+	var _Directory2 = _interopRequireDefault(_Directory);
+
 	var OpiosWebView = (function (_React$Component) {
 	  function OpiosWebView(props) {
 	    _classCallCheck(this, OpiosWebView);
@@ -22313,7 +22308,12 @@
 	    key: 'render',
 	    value: function render() {
 
-	      return _React2['default'].createElement('webview', { className: 'content-block opios-webview', id: this.props.data.id, src: this.props.data.url, style: { position: 'absolute', display: 'inline-flex', visibility: 'hidden', width: '100%', height: '600px' } });
+	      var url = this.props.data.url,
+	          team = this.props.data.team || '';
+
+	      url = url.replace('{teamId}', team);
+
+	      return _React2['default'].createElement('webview', { className: 'content-block opios-webview', id: this.props.data.id, src: url, style: { position: 'absolute', display: 'inline-flex', visibility: 'hidden', width: '100%', height: '600px' } });
 	    }
 	  }]);
 
@@ -22364,7 +22364,7 @@
 
 	      store.dispatch({
 	        type: 'OPEN_CREATE_SERVICE_WINDOW',
-	        payload: { service: this.props.data.name }
+	        payload: { name: this.props.data.name }
 	      });
 
 	      // $('.service-img-container').click(function(){
@@ -22427,33 +22427,89 @@
 	    _classCallCheck(this, OpiosModalCreate);
 
 	    _get(Object.getPrototypeOf(OpiosModalCreate.prototype), 'constructor', this).call(this, props);
+
+	    this.state = { titleField: '', teamField: '' };
 	  }
 
 	  _inherits(OpiosModalCreate, _React$Component);
 
 	  _createClass(OpiosModalCreate, [{
 	    key: 'onSave',
-	    value: function onSave(serviceName, title) {
+	    value: function onSave() {
 
-	      var store = this.props.store;
+	      var directory = new _Directory2['default'](),
+	          serviceName = this.props.data.modalCreate.name,
+	          serviceProps = directory.getServicePropsByName(serviceName),
+	          store = this.props.store,
+	          title = this.state.titleField || serviceProps.title,
+	          team = this.state.teamField;
 
 	      store.dispatch({
 	        type: 'ADD_SERVICE',
-	        payload: { service: serviceName, text: title }
+	        payload: { name: serviceName, title: title, team: team }
 	      });
 
 	      $('#addServiceModal').modal('hide');
 	    }
 	  }, {
+	    key: 'onTitleChange',
+	    value: function onTitleChange(event) {
+
+	      if (event.target.value.length > 30) {
+	        return;
+	      }this.setState({ titleField: event.target.value });
+	    }
+	  }, {
+	    key: 'onTitleKeyDown',
+	    value: function onTitleKeyDown(event) {
+
+	      if (event.keyCode == 13) {
+	        event.stopPropagation();
+	        event.preventDefault();
+	        this.onSave();
+	      }
+	    }
+	  }, {
+	    key: 'onTeamChange',
+	    value: function onTeamChange(event) {
+
+	      if (event.target.value.length > 30) {
+	        return;
+	      }this.setState({ teamField: event.target.value });
+	    }
+	  }, {
+	    key: 'onTeamKeyDown',
+	    value: function onTeamKeyDown(event) {
+
+	      if (event.keyCode == 13) {
+	        event.stopPropagation();
+	        event.preventDefault();
+	        this.onSave();
+	      }
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 
-	      var directory = new _Directory2['default'](),
-	          data = this.props.data.modalCreate,
-	          serviceName = data.service,
+	      var data = this.props.data.modalCreate,
+	          serviceName = data.name,
+	          directory = new _Directory2['default'](),
 	          serviceProps = directory.getServicePropsByName(serviceName),
 	          src = serviceProps ? serviceProps.img : '',
-	          title = serviceProps ? serviceProps.title : '';
+	          title = serviceProps ? serviceProps.title : '',
+	          team = '';
+
+	      if (serviceProps && serviceProps.hasTeam === true) {
+	        team = _React2['default'].createElement('input', {
+	          onChange: this.onTeamChange.bind(this),
+	          onKeyDown: this.onTeamKeyDown.bind(this),
+	          type: 'text',
+	          className: 'form-control modalInputText',
+	          id: 'addServiceModalTeam',
+	          placeholder: 'Enter Team here...',
+	          value: this.state.teamField
+	        });
+	      }
 
 	      return _React2['default'].createElement(
 	        'div',
@@ -22479,6 +22535,16 @@
 	                _React2['default'].createElement(
 	                  'div',
 	                  { className: 'form' },
+	                  _React2['default'].createElement('input', {
+	                    onChange: this.onTitleChange.bind(this),
+	                    onKeyDown: this.onTitleKeyDown.bind(this),
+	                    type: 'text',
+	                    className: 'form-control modalInputText',
+	                    id: 'addServiceModalName',
+	                    placeholder: 'Enter Name here...',
+	                    value: this.state.titleField
+	                  }),
+	                  team,
 	                  _React2['default'].createElement(
 	                    'div',
 	                    { className: 'checkbox' },
@@ -22586,7 +22652,7 @@
 	                { className: 'modal-footer' },
 	                _React2['default'].createElement(
 	                  'button',
-	                  { onClick: this.onSave.bind(this, serviceName, title), type: 'button', className: 'btn btn-primary ' },
+	                  { onClick: this.onSave.bind(this), type: 'button', className: 'btn btn-primary ' },
 	                  'Save'
 	                ),
 	                _React2['default'].createElement(
@@ -24192,13 +24258,18 @@
 
 	    switch (action.type) {
 	        case 'OPEN_CREATE_SERVICE_WINDOW':
-
-	            newState = Object.assign({}, state, { modalCreate: { service: action.payload.service } });
+	            newState = Object.assign({}, state, { modalCreate: { name: action.payload.name } });
 	            break;
 
 	        case 'ADD_SERVICE':
 
-	            state.services.push({ id: _Id2['default'](), name: action.payload.service, text: action.payload.text, badges: 0 });
+	            state.services.push({
+	                id: _Id2['default'](),
+	                name: action.payload.name,
+	                title: action.payload.title,
+	                team: action.payload.team,
+	                badges: 0
+	            });
 	            newState = Object.assign({}, state, {});
 	            break;
 
@@ -24281,7 +24352,26 @@
 
 		var initialState = ipcRenderer.sendSync('read-opios-state', null);
 
+		if (!initialState) {
+			initialState = this.getInitialStateTemplate();
+		}
+
 		return initialState;
+	};
+
+	State.prototype.getInitialStateTemplate = function () {
+
+		var data = {
+			services: [],
+			settings: {},
+			modalCreate: {},
+			modalUpdate: {},
+			l12n: {},
+			tags: [],
+			contextMenu: {}
+		};
+
+		return data;
 	};
 
 	State.prototype.getInitialState2 = function () {
