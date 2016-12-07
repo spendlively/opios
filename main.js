@@ -13,9 +13,35 @@ var tray = null;
 var mainWindow = null;
 var messages = {count: 0};
 var currentCount = 0;
-var configEncoded;
-var configText;
-var config;
+// var configEncoded;
+// var configText;
+// var config;
+
+//////////////////////////////////////////////////
+/////////////СОХРАНЕНИЕ СОСТОЯНИЯ/////////////////
+//////////////////////////////////////////////////
+ipcMain.on('save-opios-state', function(event, config){
+
+  var configText = JSON.stringify(config);
+
+  fs.chmodSync(pathToConfig, 0777);
+  fs.writeFileSync(pathToConfig, configText);
+  
+  event.returnValue = config;
+});
+
+ipcMain.on('read-opios-state', function(event, config){
+
+  var configEncoded = fs.readFileSync(pathToConfig, 'utf8');
+  var configText = decodeURIComponent(configEncoded);
+  var config = JSON.parse(configText);
+  
+  event.returnValue = config;
+});
+//////////////////////////////////////////////////
+///////////END СОХРАНЕНИЕ СОСТОЯНИЯ///////////////
+//////////////////////////////////////////////////
+
 
 // var AutoLaunch = require('auto-launch');
 // var options = {

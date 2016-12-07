@@ -23125,7 +23125,7 @@
 
 	var _Reducer2 = _interopRequireDefault(_Reducer);
 
-	var _State = __webpack_require__(216);
+	var _State = __webpack_require__(217);
 
 	var _State2 = _interopRequireDefault(_State);
 
@@ -24175,47 +24175,62 @@
 	var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { 'default': obj }; };
 
 	Object.defineProperty(exports, '__esModule', {
-	  value: true
+	    value: true
 	});
 
 	var _Id = __webpack_require__(215);
 
 	var _Id2 = _interopRequireDefault(_Id);
 
+	var _require = __webpack_require__(216);
+
+	var ipcRenderer = _require.ipcRenderer;
+
 	function Reducer(state, action) {
 
-	  switch (action.type) {
-	    case 'OPEN_CREATE_SERVICE_WINDOW':
+	    var newState = null;
 
-	      return Object.assign({}, state, { modalCreate: { service: action.payload.service } });
+	    switch (action.type) {
+	        case 'OPEN_CREATE_SERVICE_WINDOW':
 
-	    case 'ADD_SERVICE':
+	            newState = Object.assign({}, state, { modalCreate: { service: action.payload.service } });
+	            break;
 
-	      state.services.push({ id: _Id2['default'](), name: action.payload.service, text: action.payload.text, badges: 0 });
-	      return Object.assign({}, state, {});
+	        case 'ADD_SERVICE':
 
-	    case 'OPEN_CONTEXT_MENU':
+	            state.services.push({ id: _Id2['default'](), name: action.payload.service, text: action.payload.text, badges: 0 });
+	            newState = Object.assign({}, state, {});
+	            break;
 
-	      return Object.assign({}, state, { contextMenu: { serviceId: action.payload.id } });
+	        case 'OPEN_CONTEXT_MENU':
 
-	    case 'DELETE_SERVICE':
+	            newState = Object.assign({}, state, { contextMenu: { serviceId: action.payload.id } });
+	            break;
 
-	      var newState = Object.assign({}, state),
-	          id = action.payload.id;
+	        case 'DELETE_SERVICE':
 
-	      if (newState.services.length) {
-	        for (var s in newState.services) {
-	          if (id === newState.services[s].id) {
-	            delete newState.services[s];
-	          }
-	        }
-	      }
+	            var id = action.payload.id;
 
-	      return newState;
+	            newState = Object.assign({}, state);
 
-	    default:
-	      return state;
-	  }
+	            if (newState.services.length) {
+	                for (var s in newState.services) {
+	                    if (id === newState.services[s].id) {
+	                        delete newState.services[s];
+	                    }
+	                }
+	            }
+
+	            break;
+
+	        default:
+	            newState = state;
+	            break;
+	    }
+
+	    ipcRenderer.sendSync('save-opios-state', newState);
+
+	    return newState;
 	}
 
 	exports['default'] = Reducer;
@@ -24244,14 +24259,32 @@
 /* 216 */
 /***/ function(module, exports) {
 
+	module.exports = require("electron");
+
+/***/ },
+/* 217 */
+/***/ function(module, exports, __webpack_require__) {
+
 	'use strict';
 
 	Object.defineProperty(exports, '__esModule', {
 		value: true
 	});
+
+	var _require = __webpack_require__(216);
+
+	var ipcRenderer = _require.ipcRenderer;
+
 	function State() {}
 
 	State.prototype.getInitialState = function () {
+
+		var initialState = ipcRenderer.sendSync('read-opios-state', null);
+
+		return initialState;
+	};
+
+	State.prototype.getInitialState2 = function () {
 
 		var data = {
 			services: [{ id: 'foo1', name: 'messenger', text: 'Мессенджер', badges: 1 }, { id: 'foo2', name: 'telegram', text: 'Телеграм', badges: 0 }, { id: 'foo3', name: 'whatsapp', text: 'Ватсап', badges: 4 }, { id: 'foo4', name: 'skype', text: 'Скайп', badges: 0 }],
@@ -24265,20 +24298,6 @@
 			contextMenu: {
 				serviceId: '1'
 			}
-		};
-
-		return data;
-	};
-
-	State.prototype.getInitialState2 = function () {
-
-		var data = {
-			services: [{ id: 'foo1', name: 'messenger', text: 'Messenger!', badges: 1 }, { id: 'foo2', name: 'telegram', text: 'Telegram!', badges: 0 }, { id: 'foo3', name: 'whatsapp', text: 'WhatsApp!', badges: 4 }, { id: 'foo4', name: 'skype', text: 'Skype1', badges: 0 }],
-			settings: {},
-			modalCreate: {},
-			modalUpdate: {},
-			l12n: {},
-			tags: []
 		};
 
 		return data;

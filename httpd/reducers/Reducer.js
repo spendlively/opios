@@ -1,40 +1,51 @@
 import Id from '../modules/Id';
+const {ipcRenderer} = require('electron');
 
 function Reducer (state, action){
 
+    var newState = null;
     
     switch(action.type){
         case 'OPEN_CREATE_SERVICE_WINDOW':
 
-        	return Object.assign({}, state, {modalCreate: {service: action.payload.service}});
+        	newState = Object.assign({}, state, {modalCreate: {service: action.payload.service}});
+            break;
 
         case 'ADD_SERVICE':
         
-			state.services.push({id: Id(), name: action.payload.service, text: action.payload.text, badges: 0});
-        	return Object.assign({}, state, {});
+            state.services.push({id: Id(), name: action.payload.service, text: action.payload.text, badges: 0});
+            newState = Object.assign({}, state, {});
+            break;
 
         case 'OPEN_CONTEXT_MENU':
 
-    		return Object.assign({}, state, {contextMenu: {serviceId: action.payload.id}});
+            newState = Object.assign({}, state, {contextMenu: {serviceId: action.payload.id}});
+            break;
 
         case 'DELETE_SERVICE':
 
-			var newState = Object.assign({}, state),
-				id = action.payload.id;			
+            var id = action.payload.id;         
 
-			if(newState.services.length){
-				for(var s in newState.services){
-					if(id === newState.services[s]['id']){
-						delete newState.services[s];
-					}
-				}
-			}
-				
-    		return newState;
+            newState = Object.assign({}, state);
+
+            if(newState.services.length){
+                for(var s in newState.services){
+                    if(id === newState.services[s]['id']){
+                        delete newState.services[s];
+                    }
+                }
+            }
+                
+            break;
 
         default:
-            return state;
+            newState = state;
+            break;
     }
+
+    ipcRenderer.sendSync('save-opios-state', newState);
+
+    return newState;
 }
 
 export default Reducer;
