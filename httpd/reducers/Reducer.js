@@ -22,6 +22,25 @@ function Reducer (state, action){
             newState = Object.assign({}, state, {});
             break;
 
+        case 'SAVE_SERVICE':
+        
+            var id = action.payload.id, 
+                title = action.payload.title, 
+                team = action.payload.team;
+
+            newState = Object.assign({}, state);
+
+            if(newState.services.length){
+                for(var s in newState.services){
+                    if(id === newState.services[s]['id']){
+                        newState.services[s]['title'] = title;
+                        newState.services[s]['team'] = team;
+                    }
+                }
+            }
+
+            break;
+
         case 'OPEN_CONTEXT_MENU':
 
             newState = Object.assign({}, state, {contextMenu: {serviceId: action.payload.id}});
@@ -41,6 +60,12 @@ function Reducer (state, action){
                 }
             }
                 
+            break;
+
+        case 'UPDATE_SERVICE':
+
+            newState = Object.assign({}, state, {modalUpdate: {id: action.payload.id}});
+
             break;
 
         default:

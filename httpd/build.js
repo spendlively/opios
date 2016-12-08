@@ -60,11 +60,11 @@
 
 	var _OpiosContainer2 = _interopRequireDefault(_OpiosContainer);
 
-	var _Launcher = __webpack_require__(191);
+	var _Launcher = __webpack_require__(192);
 
 	var _Launcher2 = _interopRequireDefault(_Launcher);
 
-	var _store = __webpack_require__(192);
+	var _store = __webpack_require__(193);
 
 	var _store2 = _interopRequireDefault(_store);
 
@@ -21270,15 +21270,19 @@
 
 	var _OpiosModalCreate2 = _interopRequireDefault(_OpiosModalCreate);
 
-	var _OpiosModalSettings = __webpack_require__(188);
+	var _OpiosModalUpdate = __webpack_require__(188);
+
+	var _OpiosModalUpdate2 = _interopRequireDefault(_OpiosModalUpdate);
+
+	var _OpiosModalSettings = __webpack_require__(189);
 
 	var _OpiosModalSettings2 = _interopRequireDefault(_OpiosModalSettings);
 
-	var _OpiosModalPassword = __webpack_require__(189);
+	var _OpiosModalPassword = __webpack_require__(190);
 
 	var _OpiosModalPassword2 = _interopRequireDefault(_OpiosModalPassword);
 
-	var _OpiosContextMenu = __webpack_require__(190);
+	var _OpiosContextMenu = __webpack_require__(191);
 
 	var _OpiosContextMenu2 = _interopRequireDefault(_OpiosContextMenu);
 
@@ -21302,6 +21306,7 @@
 	        _React2['default'].createElement(_OpiosTags2['default'], null),
 	        _React2['default'].createElement(_OpiosContent2['default'], { data: this.props.data, store: this.props.store }),
 	        _React2['default'].createElement(_OpiosModalCreate2['default'], { data: this.props.data, store: this.props.store }),
+	        _React2['default'].createElement(_OpiosModalUpdate2['default'], { data: this.props.data, store: this.props.store }),
 	        _React2['default'].createElement(_OpiosModalSettings2['default'], null),
 	        _React2['default'].createElement(_OpiosModalPassword2['default'], null),
 	        _React2['default'].createElement(_OpiosContextMenu2['default'], { data: this.props.data, store: this.props.store })
@@ -22488,6 +22493,15 @@
 	      }
 	    }
 	  }, {
+	    key: 'componentWillReceiveProps',
+	    value: function componentWillReceiveProps() {
+
+	      this.setState({
+	        titleField: '',
+	        teamField: ''
+	      });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 
@@ -22678,6 +22692,320 @@
 /* 188 */
 /***/ function(module, exports, __webpack_require__) {
 
+	'use strict';
+
+	var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { 'default': obj }; };
+
+	var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } };
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	var _get = function get(object, property, receiver) { var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+	var _inherits = function (subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _React = __webpack_require__(1);
+
+	var _React2 = _interopRequireDefault(_React);
+
+	var _Directory = __webpack_require__(181);
+
+	var _Directory2 = _interopRequireDefault(_Directory);
+
+	var OpiosModalUpdate = (function (_React$Component) {
+	  function OpiosModalUpdate(props) {
+	    _classCallCheck(this, OpiosModalUpdate);
+
+	    _get(Object.getPrototypeOf(OpiosModalUpdate.prototype), 'constructor', this).call(this, props);
+
+	    this.state = { titleField: '', teamField: '' };
+	  }
+
+	  _inherits(OpiosModalUpdate, _React$Component);
+
+	  _createClass(OpiosModalUpdate, [{
+	    key: 'onSave',
+	    value: function onSave() {
+
+	      var directory = new _Directory2['default'](),
+	          serviceName = this.props.data.modalCreate.name,
+	          serviceProps = directory.getServicePropsByName(serviceName),
+	          store = this.props.store,
+	          title = this.state.titleField || serviceProps.title,
+	          team = this.state.teamField,
+	          id = this.props.data.modalUpdate.id;
+
+	      store.dispatch({
+	        type: 'SAVE_SERVICE',
+	        payload: { id: id, title: title, team: team }
+	      });
+
+	      $('#updateServiceModal').modal('hide');
+	    }
+	  }, {
+	    key: 'componentWillReceiveProps',
+	    value: function componentWillReceiveProps() {
+
+	      var data = this.props.data.modalUpdate,
+	          serviceId = data.id,
+	          serviceData = this.getServiceDataById(this.props.data.contextMenu.serviceId);
+
+	      this.setState({
+	        titleField: serviceData ? serviceData.title : '',
+	        teamField: serviceData ? serviceData.team : ''
+	      });
+	    }
+	  }, {
+	    key: 'componentWillUpdate',
+	    value: function componentWillUpdate() {}
+	  }, {
+	    key: 'onTitleChange',
+	    value: function onTitleChange(event) {
+
+	      if (event.target.value.length > 30) {
+	        return;
+	      }this.setState({ titleField: event.target.value });
+	    }
+	  }, {
+	    key: 'onTitleKeyDown',
+	    value: function onTitleKeyDown(event) {
+
+	      if (event.keyCode == 13) {
+	        event.stopPropagation();
+	        event.preventDefault();
+	        this.onSave();
+	      }
+	    }
+	  }, {
+	    key: 'onTeamChange',
+	    value: function onTeamChange(event) {
+
+	      if (event.target.value.length > 30) {
+	        return;
+	      }this.setState({ teamField: event.target.value });
+	    }
+	  }, {
+	    key: 'onTeamKeyDown',
+	    value: function onTeamKeyDown(event) {
+
+	      if (event.keyCode == 13) {
+	        event.stopPropagation();
+	        event.preventDefault();
+	        this.onSave();
+	      }
+	    }
+	  }, {
+	    key: 'getServiceDataById',
+	    value: function getServiceDataById(id) {
+
+	      var services = this.props.data.services;
+
+	      if (services.length) {
+	        for (var s in services) {
+	          if (services[s].id === id) {
+	            return services[s];
+	          }
+	        }
+	      }
+
+	      return null;
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+
+	      var data = this.props.data.modalUpdate,
+	          serviceId = this.props.data.modalUpdate.id,
+	          serviceData = this.getServiceDataById(serviceId),
+	          directory = new _Directory2['default'](),
+	          serviceProps = serviceData ? directory.getServicePropsByName(serviceData.name) : null,
+	          src = serviceProps ? serviceProps.img : '',
+	          title = serviceProps ? serviceProps.title : '',
+	          team = '';
+
+	      if (serviceProps && serviceProps.hasTeam === true) {
+	        team = _React2['default'].createElement('input', {
+	          onChange: this.onTeamChange.bind(this),
+	          onKeyDown: this.onTeamKeyDown.bind(this),
+	          type: 'text',
+	          className: 'form-control modalInputText',
+	          id: 'updateServiceModalTeam',
+	          placeholder: 'Enter Team here...',
+	          value: this.state.teamField
+	        });
+	      }
+
+	      return _React2['default'].createElement(
+	        'div',
+	        null,
+	        _React2['default'].createElement(
+	          'div',
+	          { className: 'modal fade opios-modal', id: 'updateServiceModal', tabIndex: '-1', role: 'dialog', 'aria-labelledby': 'myModalLabel' },
+	          _React2['default'].createElement(
+	            'div',
+	            { className: 'modal-dialog', role: 'document' },
+	            _React2['default'].createElement(
+	              'div',
+	              { className: 'modal-content' },
+	              _React2['default'].createElement(
+	                'div',
+	                { className: 'modal-body' },
+	                _React2['default'].createElement('img', { width: '100px', src: src }),
+	                _React2['default'].createElement(
+	                  'h2',
+	                  null,
+	                  title
+	                ),
+	                _React2['default'].createElement(
+	                  'div',
+	                  { className: 'form' },
+	                  _React2['default'].createElement('input', {
+	                    onChange: this.onTitleChange.bind(this),
+	                    onKeyDown: this.onTitleKeyDown.bind(this),
+	                    type: 'text',
+	                    className: 'form-control modalInputText',
+	                    id: 'updateServiceModalName',
+	                    placeholder: 'Enter Name here...',
+	                    value: this.state.titleField
+	                  }),
+	                  team,
+	                  _React2['default'].createElement(
+	                    'div',
+	                    { className: 'checkbox' },
+	                    _React2['default'].createElement(
+	                      'label',
+	                      null,
+	                      _React2['default'].createElement('input', { type: 'checkbox' }),
+	                      'Desktop Notifications'
+	                    )
+	                  ),
+	                  _React2['default'].createElement(
+	                    'div',
+	                    { className: 'checkbox' },
+	                    _React2['default'].createElement(
+	                      'label',
+	                      null,
+	                      _React2['default'].createElement('input', { type: 'checkbox' }),
+	                      'Local PIN password'
+	                    ),
+	                    _React2['default'].createElement(
+	                      'label',
+	                      { className: 'red' },
+	                      '10 min idle'
+	                    ),
+	                    _React2['default'].createElement(
+	                      'label',
+	                      { className: 'blue' },
+	                      'Change PIN activation time'
+	                    )
+	                  ),
+	                  _React2['default'].createElement(
+	                    'div',
+	                    { className: 'checkbox' },
+	                    _React2['default'].createElement(
+	                      'label',
+	                      null,
+	                      _React2['default'].createElement('input', { type: 'checkbox' }),
+	                      'Application ShortCut'
+	                    ),
+	                    _React2['default'].createElement(
+	                      'label',
+	                      { className: 'grey' },
+	                      'cmd-1'
+	                    ),
+	                    _React2['default'].createElement(
+	                      'label',
+	                      { className: 'grey' },
+	                      'Change ShortCut'
+	                    )
+	                  ),
+	                  _React2['default'].createElement(
+	                    'div',
+	                    { className: 'checkbox' },
+	                    _React2['default'].createElement(
+	                      'label',
+	                      null,
+	                      _React2['default'].createElement('input', { type: 'checkbox' }),
+	                      'Standart image'
+	                    )
+	                  ),
+	                  _React2['default'].createElement(
+	                    'div',
+	                    { className: 'checkbox' },
+	                    _React2['default'].createElement(
+	                      'label',
+	                      null,
+	                      _React2['default'].createElement('input', { type: 'checkbox' }),
+	                      'Color $ Short name image'
+	                    ),
+	                    _React2['default'].createElement(
+	                      'label',
+	                      { className: 'blue' },
+	                      'Edit image color'
+	                    )
+	                  ),
+	                  _React2['default'].createElement(
+	                    'div',
+	                    { className: 'checkbox' },
+	                    _React2['default'].createElement(
+	                      'label',
+	                      null,
+	                      _React2['default'].createElement('input', { type: 'checkbox' }),
+	                      'Main Tag'
+	                    ),
+	                    _React2['default'].createElement(
+	                      'label',
+	                      { className: 'blue' },
+	                      'Change tag'
+	                    )
+	                  ),
+	                  _React2['default'].createElement(
+	                    'div',
+	                    { className: 'checkbox' },
+	                    _React2['default'].createElement(
+	                      'label',
+	                      { className: 'grey' },
+	                      _React2['default'].createElement('input', { type: 'checkbox' }),
+	                      'Delete Application'
+	                    )
+	                  )
+	                )
+	              ),
+	              _React2['default'].createElement(
+	                'div',
+	                { className: 'modal-footer' },
+	                _React2['default'].createElement(
+	                  'button',
+	                  { onClick: this.onSave.bind(this), type: 'button', className: 'btn btn-primary ' },
+	                  'Save'
+	                ),
+	                _React2['default'].createElement(
+	                  'button',
+	                  { type: 'button', className: 'btn btn-default ', 'data-dismiss': 'modal' },
+	                  'Cancel'
+	                )
+	              )
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return OpiosModalUpdate;
+	})(_React2['default'].Component);
+
+	exports['default'] = OpiosModalUpdate;
+	module.exports = exports['default'];
+
+/***/ },
+/* 189 */
+/***/ function(module, exports, __webpack_require__) {
+
 	"use strict";
 
 	var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
@@ -22729,7 +23057,7 @@
 	                                _React2["default"].createElement(
 	                                    "div",
 	                                    { className: "float-right" },
-	                                    _React2["default"].createElement("img", { width: "100px", src: "services/settings-logo.svg" }),
+	                                    _React2["default"].createElement("img", { width: "100px", src: "services/opios.svg" }),
 	                                    _React2["default"].createElement(
 	                                        "p",
 	                                        { className: "blue" },
@@ -22881,7 +23209,7 @@
 	module.exports = exports["default"];
 
 /***/ },
-/* 189 */
+/* 190 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -22980,7 +23308,7 @@
 	module.exports = exports["default"];
 
 /***/ },
-/* 190 */
+/* 191 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23013,6 +23341,19 @@
 	  _inherits(OpiosContextMenu, _React$Component);
 
 	  _createClass(OpiosContextMenu, [{
+	    key: 'onUpdate',
+	    value: function onUpdate() {
+
+	      var store = this.props.store;
+
+	      store.dispatch({
+	        type: 'UPDATE_SERVICE',
+	        payload: { id: this.props.data.contextMenu.serviceId }
+	      });
+
+	      $('#updateServiceModal').modal();
+	    }
+	  }, {
 	    key: 'onDelete',
 	    value: function onDelete() {
 
@@ -23038,7 +23379,7 @@
 	            { className: 'dropdown-menu', role: 'menu', 'aria-labelledby': 'dropdownMenu', style: { display: 'block', position: 'static', marginBottom: '5px' } },
 	            _React2['default'].createElement(
 	              'li',
-	              null,
+	              { onClick: this.onUpdate.bind(this) },
 	              _React2['default'].createElement(
 	                'a',
 	                { tabIndex: '-1', href: '#' },
@@ -23082,7 +23423,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 191 */
+/* 192 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23174,7 +23515,7 @@
 	module.exports = Launcher;
 
 /***/ },
-/* 192 */
+/* 193 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23185,13 +23526,13 @@
 	  value: true
 	});
 
-	var _createStore = __webpack_require__(193);
+	var _createStore = __webpack_require__(194);
 
-	var _Reducer = __webpack_require__(214);
+	var _Reducer = __webpack_require__(215);
 
 	var _Reducer2 = _interopRequireDefault(_Reducer);
 
-	var _State = __webpack_require__(217);
+	var _State = __webpack_require__(218);
 
 	var _State2 = _interopRequireDefault(_State);
 
@@ -23203,7 +23544,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 193 */
+/* 194 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23211,27 +23552,27 @@
 	exports.__esModule = true;
 	exports.compose = exports.applyMiddleware = exports.bindActionCreators = exports.combineReducers = exports.createStore = undefined;
 
-	var _createStore = __webpack_require__(194);
+	var _createStore = __webpack_require__(195);
 
 	var _createStore2 = _interopRequireDefault(_createStore);
 
-	var _combineReducers = __webpack_require__(209);
+	var _combineReducers = __webpack_require__(210);
 
 	var _combineReducers2 = _interopRequireDefault(_combineReducers);
 
-	var _bindActionCreators = __webpack_require__(211);
+	var _bindActionCreators = __webpack_require__(212);
 
 	var _bindActionCreators2 = _interopRequireDefault(_bindActionCreators);
 
-	var _applyMiddleware = __webpack_require__(212);
+	var _applyMiddleware = __webpack_require__(213);
 
 	var _applyMiddleware2 = _interopRequireDefault(_applyMiddleware);
 
-	var _compose = __webpack_require__(213);
+	var _compose = __webpack_require__(214);
 
 	var _compose2 = _interopRequireDefault(_compose);
 
-	var _warning = __webpack_require__(210);
+	var _warning = __webpack_require__(211);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
@@ -23254,7 +23595,7 @@
 	exports.compose = _compose2['default'];
 
 /***/ },
-/* 194 */
+/* 195 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23263,11 +23604,11 @@
 	exports.ActionTypes = undefined;
 	exports['default'] = createStore;
 
-	var _isPlainObject = __webpack_require__(195);
+	var _isPlainObject = __webpack_require__(196);
 
 	var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
 
-	var _symbolObservable = __webpack_require__(205);
+	var _symbolObservable = __webpack_require__(206);
 
 	var _symbolObservable2 = _interopRequireDefault(_symbolObservable);
 
@@ -23520,12 +23861,12 @@
 	}
 
 /***/ },
-/* 195 */
+/* 196 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseGetTag = __webpack_require__(196),
-	    getPrototype = __webpack_require__(202),
-	    isObjectLike = __webpack_require__(204);
+	var baseGetTag = __webpack_require__(197),
+	    getPrototype = __webpack_require__(203),
+	    isObjectLike = __webpack_require__(205);
 
 	/** `Object#toString` result references. */
 	var objectTag = '[object Object]';
@@ -23588,12 +23929,12 @@
 
 
 /***/ },
-/* 196 */
+/* 197 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Symbol = __webpack_require__(197),
-	    getRawTag = __webpack_require__(200),
-	    objectToString = __webpack_require__(201);
+	var Symbol = __webpack_require__(198),
+	    getRawTag = __webpack_require__(201),
+	    objectToString = __webpack_require__(202);
 
 	/** `Object#toString` result references. */
 	var nullTag = '[object Null]',
@@ -23623,10 +23964,10 @@
 
 
 /***/ },
-/* 197 */
+/* 198 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var root = __webpack_require__(198);
+	var root = __webpack_require__(199);
 
 	/** Built-in value references. */
 	var Symbol = root.Symbol;
@@ -23635,10 +23976,10 @@
 
 
 /***/ },
-/* 198 */
+/* 199 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var freeGlobal = __webpack_require__(199);
+	var freeGlobal = __webpack_require__(200);
 
 	/** Detect free variable `self`. */
 	var freeSelf = typeof self == 'object' && self && self.Object === Object && self;
@@ -23650,7 +23991,7 @@
 
 
 /***/ },
-/* 199 */
+/* 200 */
 /***/ function(module, exports) {
 
 	/** Detect free variable `global` from Node.js. */
@@ -23660,10 +24001,10 @@
 
 
 /***/ },
-/* 200 */
+/* 201 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Symbol = __webpack_require__(197);
+	var Symbol = __webpack_require__(198);
 
 	/** Used for built-in method references. */
 	var objectProto = Object.prototype;
@@ -23712,7 +24053,7 @@
 
 
 /***/ },
-/* 201 */
+/* 202 */
 /***/ function(module, exports) {
 
 	/** Used for built-in method references. */
@@ -23740,10 +24081,10 @@
 
 
 /***/ },
-/* 202 */
+/* 203 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var overArg = __webpack_require__(203);
+	var overArg = __webpack_require__(204);
 
 	/** Built-in value references. */
 	var getPrototype = overArg(Object.getPrototypeOf, Object);
@@ -23752,7 +24093,7 @@
 
 
 /***/ },
-/* 203 */
+/* 204 */
 /***/ function(module, exports) {
 
 	/**
@@ -23773,7 +24114,7 @@
 
 
 /***/ },
-/* 204 */
+/* 205 */
 /***/ function(module, exports) {
 
 	/**
@@ -23808,14 +24149,14 @@
 
 
 /***/ },
-/* 205 */
+/* 206 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(206);
+	module.exports = __webpack_require__(207);
 
 
 /***/ },
-/* 206 */
+/* 207 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {'use strict';
@@ -23824,7 +24165,7 @@
 	  value: true
 	});
 
-	var _ponyfill = __webpack_require__(208);
+	var _ponyfill = __webpack_require__(209);
 
 	var _ponyfill2 = _interopRequireDefault(_ponyfill);
 
@@ -23847,10 +24188,10 @@
 
 	var result = (0, _ponyfill2['default'])(root);
 	exports['default'] = result;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(207)(module)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(208)(module)))
 
 /***/ },
-/* 207 */
+/* 208 */
 /***/ function(module, exports) {
 
 	module.exports = function(module) {
@@ -23866,7 +24207,7 @@
 
 
 /***/ },
-/* 208 */
+/* 209 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -23894,7 +24235,7 @@
 	};
 
 /***/ },
-/* 209 */
+/* 210 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23902,13 +24243,13 @@
 	exports.__esModule = true;
 	exports['default'] = combineReducers;
 
-	var _createStore = __webpack_require__(194);
+	var _createStore = __webpack_require__(195);
 
-	var _isPlainObject = __webpack_require__(195);
+	var _isPlainObject = __webpack_require__(196);
 
 	var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
 
-	var _warning = __webpack_require__(210);
+	var _warning = __webpack_require__(211);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
@@ -24041,7 +24382,7 @@
 	}
 
 /***/ },
-/* 210 */
+/* 211 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -24071,7 +24412,7 @@
 	}
 
 /***/ },
-/* 211 */
+/* 212 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -24127,7 +24468,7 @@
 	}
 
 /***/ },
-/* 212 */
+/* 213 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24138,7 +24479,7 @@
 
 	exports['default'] = applyMiddleware;
 
-	var _compose = __webpack_require__(213);
+	var _compose = __webpack_require__(214);
 
 	var _compose2 = _interopRequireDefault(_compose);
 
@@ -24190,7 +24531,7 @@
 	}
 
 /***/ },
-/* 213 */
+/* 214 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -24233,7 +24574,7 @@
 	}
 
 /***/ },
-/* 214 */
+/* 215 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24244,11 +24585,11 @@
 	    value: true
 	});
 
-	var _Id = __webpack_require__(215);
+	var _Id = __webpack_require__(216);
 
 	var _Id2 = _interopRequireDefault(_Id);
 
-	var _require = __webpack_require__(216);
+	var _require = __webpack_require__(217);
 
 	var ipcRenderer = _require.ipcRenderer;
 
@@ -24273,6 +24614,25 @@
 	            newState = Object.assign({}, state, {});
 	            break;
 
+	        case 'SAVE_SERVICE':
+
+	            var id = action.payload.id,
+	                title = action.payload.title,
+	                team = action.payload.team;
+
+	            newState = Object.assign({}, state);
+
+	            if (newState.services.length) {
+	                for (var s in newState.services) {
+	                    if (id === newState.services[s].id) {
+	                        newState.services[s].title = title;
+	                        newState.services[s].team = team;
+	                    }
+	                }
+	            }
+
+	            break;
+
 	        case 'OPEN_CONTEXT_MENU':
 
 	            newState = Object.assign({}, state, { contextMenu: { serviceId: action.payload.id } });
@@ -24294,6 +24654,12 @@
 
 	            break;
 
+	        case 'UPDATE_SERVICE':
+
+	            newState = Object.assign({}, state, { modalUpdate: { id: action.payload.id } });
+
+	            break;
+
 	        default:
 	            newState = state;
 	            break;
@@ -24308,7 +24674,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 215 */
+/* 216 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -24327,13 +24693,13 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 216 */
+/* 217 */
 /***/ function(module, exports) {
 
 	module.exports = require("electron");
 
 /***/ },
-/* 217 */
+/* 218 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24342,7 +24708,7 @@
 		value: true
 	});
 
-	var _require = __webpack_require__(216);
+	var _require = __webpack_require__(217);
 
 	var ipcRenderer = _require.ipcRenderer;
 

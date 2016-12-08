@@ -56,6 +56,14 @@ class OpiosModalCreate extends React.Component {
     }  
   }  
 
+  componentWillReceiveProps(){
+
+    this.setState({
+      titleField: '', 
+      teamField: ''
+    });
+  }
+
   render() {
 
     var data = this.props.data.modalCreate,

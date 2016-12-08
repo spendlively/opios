@@ -16,7 +16,7 @@ class OpiosModalSettings extends React.Component {
 
                 <div className="modal-body">
                     <div className="float-right">
-                        <img width="100px" src="services/settings-logo.svg" />
+                        <img width="100px" src="services/opios.svg" />
                         <p className="blue">Edit avatar</p>
                     </div>
 

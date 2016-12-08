@@ -6,6 +6,18 @@ class OpiosContextMenu extends React.Component {
 	   super(props);
   }
 
+  onUpdate() {
+
+    var store = this.props.store;
+
+    store.dispatch({
+       type: 'UPDATE_SERVICE',
+       payload: {id: this.props.data.contextMenu.serviceId}
+    });
+
+    $('#updateServiceModal').modal();
+  }
+
   onDelete() {
 
     var store = this.props.store;
@@ -22,7 +34,7 @@ class OpiosContextMenu extends React.Component {
       <div>
         <div id="contextMenu" className="dropdown clearfix">
             <ul className="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style={{display:'block',position:'static',marginBottom:'5px'}}>
-                <li><a tabIndex="-1" href="#">Редактировать</a></li>
+                <li onClick={this.onUpdate.bind(this)}><a tabIndex="-1" href="#">Редактировать</a></li>
                 <li onClick={this.onDelete.bind(this)}><a tabIndex="-1" href="#">Удалить</a></li>
             </ul>
         </div>
