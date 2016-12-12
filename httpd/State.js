@@ -15,14 +15,21 @@ State.prototype.getInitialState = function(){
 
 State.prototype.getInitialStateTemplate = function(){
 
-	var data = {
+	var lang = navigator.language || "en",
+		l12nData,
+		data;
+
+	l12nData = ipcRenderer.sendSync('get-localization-data', lang);
+
+	data = {
 		services: [],
 		settings: {},
 		modalCreate: {},
 		modalUpdate: {},
-		l12n: {},
 		tags: [],
-		contextMenu: {}
+		contextMenu: {},
+		language: lang,
+		l12n: l12nData
 	};
 
 	return data;	

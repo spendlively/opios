@@ -15,8 +15,8 @@ class OpiosContent extends React.Component {
         webViewRows = [],
         directory = new Directory(),
         availableServices = directory.getAvailableServices(),
-        availableServicesRows = [];
-
+        availableServicesRows = [],
+        l12n = this.props.data.l12n.servicesListWindow;
 
     if(services.length){
         for(var d in services){
@@ -46,19 +46,19 @@ class OpiosContent extends React.Component {
 
                 <div className="content-block" id="services-list" style={{display:'block', width:'100%'}}>
                     <div className="services-list">
-                        <h1>Add New Service</h1>
+                        <h1>{l12n.title}</h1>
                         <ul>
-                            <li className="services-list-li active"><a href="#">All</a></li>
+                            <li className="services-list-li active"><a href="#">{l12n.all}</a></li>
                             <li className="services-list-delimitter">/</li>
-                            <li className="services-list-li"><a href="#">Messengers</a></li>
+                            <li className="services-list-li"><a href="#">{l12n.messengers}</a></li>
                             <li className="services-list-delimitter">/</li>
-                            <li className="services-list-li"><a href="#">E-mail</a></li>
+                            <li className="services-list-li"><a href="#">{l12n.email}</a></li>
                             <li className="services-list-delimitter">/</li>
-                            <li className="services-list-li"><a href="#">Social Networks</a></li>
+                            <li className="services-list-li"><a href="#">{l12n.social}</a></li>
                             <li className="services-list-delimitter">/</li>
-                            <li className="services-list-li"><a href="#">Data Storage</a></li>
+                            <li className="services-list-li"><a href="#">{l12n.data}</a></li>
                             <li className="services-list-delimitter">/</li>
-                            <li className="services-list-li"><a href="#">Other</a></li>
+                            <li className="services-list-li"><a href="#">{l12n.other}</a></li>
                         </ul>
 
                         <div className="service-icons">

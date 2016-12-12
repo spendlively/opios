@@ -13,6 +13,7 @@ var tray = null;
 var mainWindow = null;
 var messages = {count: 0};
 var currentCount = 0;
+var l12nPath = __dirname + '/httpd/localization/';
 // var configEncoded;
 // var configText;
 // var config;
@@ -52,6 +53,36 @@ ipcMain.on('read-opios-state', function(event, config){
 //////////////////////////////////////////////////
 ///////////END СОХРАНЕНИЕ СОСТОЯНИЯ///////////////
 //////////////////////////////////////////////////
+
+
+
+
+//////////////////////////////////////////////////
+////////////ПОЛУЧЕНИЕ ФАЙЛА ЛОКАЛИЗАЦИИ///////////
+//////////////////////////////////////////////////
+ipcMain.on('get-localization-data', function(event, lang){
+
+  var l12nData = '',
+    l12nFile = l12nPath + lang + ".json";
+
+  if (fs.existsSync(l12nFile)) {
+    var l12nEncoded = fs.readFileSync(l12nFile, 'utf8');
+    var l12nText = decodeURIComponent(l12nEncoded);
+    try{
+        l12nData = JSON.parse(l12nText);
+    } catch(e){}
+  }
+  else{
+    throw new Error("Localization file doesn't exists!");
+  }
+
+  event.returnValue = l12nData;
+});
+//////////////////////////////////////////////////
+//////////END ПОЛУЧЕНИЕ ФАЙЛА ЛОКАЛИЗАЦИИ/////////
+//////////////////////////////////////////////////
+
+
 
 
 // var AutoLaunch = require('auto-launch');

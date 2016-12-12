@@ -249,8 +249,8 @@ aside.aside-left{
 .opios-modal .modal-content h4{
 	/*display: inline-block;*/
 	/*margin-right: 40px;*/
-	margin-top: 10px;
-	margin-bottom: 12px;
+	margin-top: 20px;
+	margin-bottom: 0;
 	font-weight: bolder;
 }
 
@@ -398,7 +398,9 @@ input.modalInputText{
 /*END Маска модального окна*/
 
 
-
+.dropdown{
+	margin-top: 10px;
+}
 
 
 

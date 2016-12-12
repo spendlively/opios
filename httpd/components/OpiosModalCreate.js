@@ -72,7 +72,8 @@ class OpiosModalCreate extends React.Component {
         serviceProps = directory.getServicePropsByName(serviceName),
         src = serviceProps ? serviceProps.img : '',
         title = serviceProps ? serviceProps.title : '',
-        team = '';
+        team = '',
+        l12n = this.props.data.l12n.addServiceWindow;
 
     if(serviceProps && serviceProps.hasTeam === true){
         team = (<input 
@@ -112,37 +113,37 @@ class OpiosModalCreate extends React.Component {
                   {team}
 
                   <div className="checkbox">
-                    <label><input type="checkbox"></input>Desktop Notifications</label>
+                    <label><input type="checkbox"></input>{l12n.desktopNotifications}</label>
                   </div>
                   <div className="checkbox">
-                    <label><input type="checkbox"></input>Local PIN password</label>
-                    <label className="red">10 min idle</label>
-                    <label className="blue">Change PIN activation time</label>
+                    <label><input type="checkbox"></input>{l12n.localPin}</label>
+                    <label className="red">{l12n.idle}</label>
+                    <label className="blue">{l12n.changePin}</label>
                   </div>
                   <div className="checkbox">
-                    <label><input type="checkbox"></input>Application ShortCut</label>
-                    <label className="grey">cmd-1</label>
-                    <label className="grey">Change ShortCut</label>
+                    <label><input type="checkbox"></input>{l12n.appShortcut}</label>
+                    <label className="grey">{l12n.cmd}</label>
+                    <label className="grey">{l12n.changeShortcut}</label>
                   </div>
                   <div className="checkbox">
-                    <label><input type="checkbox"></input>Standart image</label>
+                    <label><input type="checkbox"></input>{l12n.standartImg}</label>
                   </div>
                   <div className="checkbox">
-                    <label><input type="checkbox"></input>Color $ Short name image</label>
-                    <label className="blue">Edit image color</label>
+                    <label><input type="checkbox"></input>{l12n.color}</label>
+                    <label className="blue">{l12n.editImage}</label>
                   </div>
                   <div className="checkbox">
-                    <label><input type="checkbox"></input>Main Tag</label>
-                    <label className="blue">Change tag</label>
+                    <label><input type="checkbox"></input>{l12n.mainTag}</label>
+                    <label className="blue">{l12n.changeTag}</label>
                   </div>
                   <div className="checkbox">
-                    <label className="grey"><input type="checkbox"></input>Delete Application</label>
+                    <label className="grey"><input type="checkbox"></input>{l12n.delete}</label>
                   </div>
                 </div>
               </div>
               <div className="modal-footer">
-                <button onClick={this.onSave.bind(this)} type="button" className="btn btn-primary ">Save</button>
-                <button type="button" className="btn btn-default " data-dismiss="modal">Cancel</button>
+                <button onClick={this.onSave.bind(this)} type="button" className="btn btn-primary ">{l12n.save}</button>
+                <button type="button" className="btn btn-default " data-dismiss="modal">{l12n.cancel}</button>
               </div>
             </div>
           </div>

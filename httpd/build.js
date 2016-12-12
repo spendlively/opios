@@ -79,6 +79,8 @@
 		launcher.init();
 	}, 2000);
 
+	// console.log('navigator.language', navigator.language);
+
 	// setTimeout(function(){
 	// 	store.dispatch({
 	// 	    type: 'TEST',
@@ -21307,8 +21309,8 @@
 	        _React2['default'].createElement(_OpiosContent2['default'], { data: this.props.data, store: this.props.store }),
 	        _React2['default'].createElement(_OpiosModalCreate2['default'], { data: this.props.data, store: this.props.store }),
 	        _React2['default'].createElement(_OpiosModalUpdate2['default'], { data: this.props.data, store: this.props.store }),
-	        _React2['default'].createElement(_OpiosModalSettings2['default'], null),
-	        _React2['default'].createElement(_OpiosModalPassword2['default'], null),
+	        _React2['default'].createElement(_OpiosModalSettings2['default'], { data: this.props.data, store: this.props.store }),
+	        _React2['default'].createElement(_OpiosModalPassword2['default'], { data: this.props.data }),
 	        _React2['default'].createElement(_OpiosContextMenu2['default'], { data: this.props.data, store: this.props.store })
 	      );
 	    }
@@ -22128,7 +22130,8 @@
 	                webViewRows = [],
 	                directory = new _Directory2['default'](),
 	                availableServices = directory.getAvailableServices(),
-	                availableServicesRows = [];
+	                availableServicesRows = [],
+	                l12n = this.props.data.l12n.servicesListWindow;
 
 	            if (services.length) {
 	                for (var d in services) {
@@ -22168,7 +22171,7 @@
 	                                _React2['default'].createElement(
 	                                    'h1',
 	                                    null,
-	                                    'Add New Service'
+	                                    l12n.title
 	                                ),
 	                                _React2['default'].createElement(
 	                                    'ul',
@@ -22179,7 +22182,7 @@
 	                                        _React2['default'].createElement(
 	                                            'a',
 	                                            { href: '#' },
-	                                            'All'
+	                                            l12n.all
 	                                        )
 	                                    ),
 	                                    _React2['default'].createElement(
@@ -22193,7 +22196,7 @@
 	                                        _React2['default'].createElement(
 	                                            'a',
 	                                            { href: '#' },
-	                                            'Messengers'
+	                                            l12n.messengers
 	                                        )
 	                                    ),
 	                                    _React2['default'].createElement(
@@ -22207,7 +22210,7 @@
 	                                        _React2['default'].createElement(
 	                                            'a',
 	                                            { href: '#' },
-	                                            'E-mail'
+	                                            l12n.email
 	                                        )
 	                                    ),
 	                                    _React2['default'].createElement(
@@ -22221,7 +22224,7 @@
 	                                        _React2['default'].createElement(
 	                                            'a',
 	                                            { href: '#' },
-	                                            'Social Networks'
+	                                            l12n.social
 	                                        )
 	                                    ),
 	                                    _React2['default'].createElement(
@@ -22235,7 +22238,7 @@
 	                                        _React2['default'].createElement(
 	                                            'a',
 	                                            { href: '#' },
-	                                            'Data Storage'
+	                                            l12n.data
 	                                        )
 	                                    ),
 	                                    _React2['default'].createElement(
@@ -22249,7 +22252,7 @@
 	                                        _React2['default'].createElement(
 	                                            'a',
 	                                            { href: '#' },
-	                                            'Other'
+	                                            l12n.other
 	                                        )
 	                                    )
 	                                ),
@@ -22511,7 +22514,8 @@
 	          serviceProps = directory.getServicePropsByName(serviceName),
 	          src = serviceProps ? serviceProps.img : '',
 	          title = serviceProps ? serviceProps.title : '',
-	          team = '';
+	          team = '',
+	          l12n = this.props.data.l12n.addServiceWindow;
 
 	      if (serviceProps && serviceProps.hasTeam === true) {
 	        team = _React2['default'].createElement('input', {
@@ -22566,7 +22570,7 @@
 	                      'label',
 	                      null,
 	                      _React2['default'].createElement('input', { type: 'checkbox' }),
-	                      'Desktop Notifications'
+	                      l12n.desktopNotifications
 	                    )
 	                  ),
 	                  _React2['default'].createElement(
@@ -22576,17 +22580,17 @@
 	                      'label',
 	                      null,
 	                      _React2['default'].createElement('input', { type: 'checkbox' }),
-	                      'Local PIN password'
+	                      l12n.localPin
 	                    ),
 	                    _React2['default'].createElement(
 	                      'label',
 	                      { className: 'red' },
-	                      '10 min idle'
+	                      l12n.idle
 	                    ),
 	                    _React2['default'].createElement(
 	                      'label',
 	                      { className: 'blue' },
-	                      'Change PIN activation time'
+	                      l12n.changePin
 	                    )
 	                  ),
 	                  _React2['default'].createElement(
@@ -22596,17 +22600,17 @@
 	                      'label',
 	                      null,
 	                      _React2['default'].createElement('input', { type: 'checkbox' }),
-	                      'Application ShortCut'
+	                      l12n.appShortcut
 	                    ),
 	                    _React2['default'].createElement(
 	                      'label',
 	                      { className: 'grey' },
-	                      'cmd-1'
+	                      l12n.cmd
 	                    ),
 	                    _React2['default'].createElement(
 	                      'label',
 	                      { className: 'grey' },
-	                      'Change ShortCut'
+	                      l12n.changeShortcut
 	                    )
 	                  ),
 	                  _React2['default'].createElement(
@@ -22616,7 +22620,7 @@
 	                      'label',
 	                      null,
 	                      _React2['default'].createElement('input', { type: 'checkbox' }),
-	                      'Standart image'
+	                      l12n.standartImg
 	                    )
 	                  ),
 	                  _React2['default'].createElement(
@@ -22626,12 +22630,12 @@
 	                      'label',
 	                      null,
 	                      _React2['default'].createElement('input', { type: 'checkbox' }),
-	                      'Color $ Short name image'
+	                      l12n.color
 	                    ),
 	                    _React2['default'].createElement(
 	                      'label',
 	                      { className: 'blue' },
-	                      'Edit image color'
+	                      l12n.editImage
 	                    )
 	                  ),
 	                  _React2['default'].createElement(
@@ -22641,12 +22645,12 @@
 	                      'label',
 	                      null,
 	                      _React2['default'].createElement('input', { type: 'checkbox' }),
-	                      'Main Tag'
+	                      l12n.mainTag
 	                    ),
 	                    _React2['default'].createElement(
 	                      'label',
 	                      { className: 'blue' },
-	                      'Change tag'
+	                      l12n.changeTag
 	                    )
 	                  ),
 	                  _React2['default'].createElement(
@@ -22656,7 +22660,7 @@
 	                      'label',
 	                      { className: 'grey' },
 	                      _React2['default'].createElement('input', { type: 'checkbox' }),
-	                      'Delete Application'
+	                      l12n['delete']
 	                    )
 	                  )
 	                )
@@ -22667,12 +22671,12 @@
 	                _React2['default'].createElement(
 	                  'button',
 	                  { onClick: this.onSave.bind(this), type: 'button', className: 'btn btn-primary ' },
-	                  'Save'
+	                  l12n.save
 	                ),
 	                _React2['default'].createElement(
 	                  'button',
 	                  { type: 'button', className: 'btn btn-default ', 'data-dismiss': 'modal' },
-	                  'Cancel'
+	                  l12n.cancel
 	                )
 	              )
 	            )
@@ -22825,7 +22829,8 @@
 	          serviceProps = serviceData ? directory.getServicePropsByName(serviceData.name) : null,
 	          src = serviceProps ? serviceProps.img : '',
 	          title = serviceProps ? serviceProps.title : '',
-	          team = '';
+	          team = '',
+	          l12n = this.props.data.l12n.updateServiceWindow;
 
 	      if (serviceProps && serviceProps.hasTeam === true) {
 	        team = _React2['default'].createElement('input', {
@@ -22880,7 +22885,7 @@
 	                      'label',
 	                      null,
 	                      _React2['default'].createElement('input', { type: 'checkbox' }),
-	                      'Desktop Notifications'
+	                      l12n.desktopNotifications
 	                    )
 	                  ),
 	                  _React2['default'].createElement(
@@ -22890,17 +22895,17 @@
 	                      'label',
 	                      null,
 	                      _React2['default'].createElement('input', { type: 'checkbox' }),
-	                      'Local PIN password'
+	                      l12n.localPin
 	                    ),
 	                    _React2['default'].createElement(
 	                      'label',
 	                      { className: 'red' },
-	                      '10 min idle'
+	                      l12n.idle
 	                    ),
 	                    _React2['default'].createElement(
 	                      'label',
 	                      { className: 'blue' },
-	                      'Change PIN activation time'
+	                      l12n.changePin
 	                    )
 	                  ),
 	                  _React2['default'].createElement(
@@ -22910,17 +22915,17 @@
 	                      'label',
 	                      null,
 	                      _React2['default'].createElement('input', { type: 'checkbox' }),
-	                      'Application ShortCut'
+	                      l12n.appShortcut
 	                    ),
 	                    _React2['default'].createElement(
 	                      'label',
 	                      { className: 'grey' },
-	                      'cmd-1'
+	                      l12n.cmd
 	                    ),
 	                    _React2['default'].createElement(
 	                      'label',
 	                      { className: 'grey' },
-	                      'Change ShortCut'
+	                      l12n.changeShortcut
 	                    )
 	                  ),
 	                  _React2['default'].createElement(
@@ -22930,7 +22935,7 @@
 	                      'label',
 	                      null,
 	                      _React2['default'].createElement('input', { type: 'checkbox' }),
-	                      'Standart image'
+	                      l12n.standartImg
 	                    )
 	                  ),
 	                  _React2['default'].createElement(
@@ -22940,12 +22945,12 @@
 	                      'label',
 	                      null,
 	                      _React2['default'].createElement('input', { type: 'checkbox' }),
-	                      'Color $ Short name image'
+	                      l12n.color
 	                    ),
 	                    _React2['default'].createElement(
 	                      'label',
 	                      { className: 'blue' },
-	                      'Edit image color'
+	                      l12n.editImage
 	                    )
 	                  ),
 	                  _React2['default'].createElement(
@@ -22955,12 +22960,12 @@
 	                      'label',
 	                      null,
 	                      _React2['default'].createElement('input', { type: 'checkbox' }),
-	                      'Main Tag'
+	                      l12n.mainTag
 	                    ),
 	                    _React2['default'].createElement(
 	                      'label',
 	                      { className: 'blue' },
-	                      'Change tag'
+	                      l12n.changeTag
 	                    )
 	                  ),
 	                  _React2['default'].createElement(
@@ -22970,7 +22975,7 @@
 	                      'label',
 	                      { className: 'grey' },
 	                      _React2['default'].createElement('input', { type: 'checkbox' }),
-	                      'Delete Application'
+	                      l12n['delete']
 	                    )
 	                  )
 	                )
@@ -22981,12 +22986,12 @@
 	                _React2['default'].createElement(
 	                  'button',
 	                  { onClick: this.onSave.bind(this), type: 'button', className: 'btn btn-primary ' },
-	                  'Save'
+	                  l12n.save
 	                ),
 	                _React2['default'].createElement(
 	                  'button',
 	                  { type: 'button', className: 'btn btn-default ', 'data-dismiss': 'modal' },
-	                  'Cancel'
+	                  l12n.cancel
 	                )
 	              )
 	            )
@@ -23006,19 +23011,19 @@
 /* 189 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
-	var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
+	var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { 'default': obj }; };
 
-	var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
+	var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } };
 
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-	var _get = function get(object, property, receiver) { var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+	var _get = function get(object, property, receiver) { var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-	var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
+	var _inherits = function (subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
 
-	Object.defineProperty(exports, "__esModule", {
+	Object.defineProperty(exports, '__esModule', {
 	    value: true
 	});
 
@@ -23030,169 +23035,202 @@
 	    function OpiosModalSettings(props) {
 	        _classCallCheck(this, OpiosModalSettings);
 
-	        _get(Object.getPrototypeOf(OpiosModalSettings.prototype), "constructor", this).call(this, props);
+	        _get(Object.getPrototypeOf(OpiosModalSettings.prototype), 'constructor', this).call(this, props);
 	    }
 
 	    _inherits(OpiosModalSettings, _React$Component);
 
 	    _createClass(OpiosModalSettings, [{
-	        key: "render",
+	        key: 'changeLang',
+	        value: function changeLang(code) {
+
+	            this.props.store.dispatch({
+	                type: 'CHANGE_LANG',
+	                payload: { lang: code }
+	            });
+	        }
+	    }, {
+	        key: 'render',
 	        value: function render() {
 
-	            return _React2["default"].createElement(
-	                "div",
+	            var l12n = this.props.data.l12n.settingsWindow,
+	                langs = [],
+	                currentLang = '';
+
+	            if (l12n.languages.length) {
+	                for (var l in l12n.languages) {
+
+	                    langs.push(_React2['default'].createElement(
+	                        'li',
+	                        { key: l12n.languages[l].code, onClick: this.changeLang.bind(this, l12n.languages[l].code) },
+	                        _React2['default'].createElement(
+	                            'a',
+	                            { href: '#' },
+	                            l12n.languages[l].name
+	                        )
+	                    ));
+
+	                    if (l12n.languages[l].code === this.props.data.language) {
+	                        currentLang = l12n.languages[l].name;
+	                    }
+	                }
+	            }
+
+	            return _React2['default'].createElement(
+	                'div',
 	                null,
-	                _React2["default"].createElement(
-	                    "div",
-	                    { className: "modal fade opios-modal", id: "settingsModal", tabIndex: "-1", role: "dialog", "aria-labelledby": "myModalLabel" },
-	                    _React2["default"].createElement(
-	                        "div",
-	                        { className: "modal-dialog", role: "document" },
-	                        _React2["default"].createElement(
-	                            "div",
-	                            { className: "modal-content" },
-	                            _React2["default"].createElement(
-	                                "div",
-	                                { className: "modal-body" },
-	                                _React2["default"].createElement(
-	                                    "div",
-	                                    { className: "float-right" },
-	                                    _React2["default"].createElement("img", { width: "100px", src: "services/opios.svg" }),
-	                                    _React2["default"].createElement(
-	                                        "p",
-	                                        { className: "blue" },
-	                                        "Edit avatar"
+	                _React2['default'].createElement(
+	                    'div',
+	                    { className: 'modal fade opios-modal', id: 'settingsModal', tabIndex: '-1', role: 'dialog', 'aria-labelledby': 'myModalLabel' },
+	                    _React2['default'].createElement(
+	                        'div',
+	                        { className: 'modal-dialog', role: 'document' },
+	                        _React2['default'].createElement(
+	                            'div',
+	                            { className: 'modal-content' },
+	                            _React2['default'].createElement(
+	                                'div',
+	                                { className: 'modal-body' },
+	                                _React2['default'].createElement(
+	                                    'div',
+	                                    { className: 'float-right' },
+	                                    _React2['default'].createElement('img', { width: '100px', src: 'services/opios.svg' }),
+	                                    _React2['default'].createElement(
+	                                        'p',
+	                                        { className: 'blue' },
+	                                        l12n.editAvatar
 	                                    )
 	                                ),
-	                                _React2["default"].createElement(
-	                                    "h3",
+	                                _React2['default'].createElement(
+	                                    'h3',
 	                                    null,
-	                                    "Settings"
+	                                    l12n.settings
 	                                ),
-	                                _React2["default"].createElement(
-	                                    "span",
-	                                    { className: "grey" },
-	                                    "Ilia Shershnev"
+	                                _React2['default'].createElement(
+	                                    'span',
+	                                    { className: 'grey' },
+	                                    'Ilia Shershnev'
 	                                ),
-	                                _React2["default"].createElement(
-	                                    "div",
-	                                    { className: "group" },
-	                                    _React2["default"].createElement(
-	                                        "h4",
+	                                _React2['default'].createElement(
+	                                    'div',
+	                                    { className: 'group' },
+	                                    _React2['default'].createElement(
+	                                        'h4',
 	                                        null,
-	                                        "Notifications"
+	                                        l12n.notifications
 	                                    ),
-	                                    _React2["default"].createElement(
-	                                        "div",
-	                                        { className: "checkbox" },
-	                                        _React2["default"].createElement(
-	                                            "label",
+	                                    _React2['default'].createElement(
+	                                        'div',
+	                                        { className: 'checkbox' },
+	                                        _React2['default'].createElement(
+	                                            'label',
 	                                            null,
-	                                            _React2["default"].createElement("input", { type: "checkbox" }),
-	                                            "Desktop Notifications"
+	                                            _React2['default'].createElement('input', { type: 'checkbox' }),
+	                                            l12n.desktopNotifications
 	                                        )
 	                                    ),
-	                                    _React2["default"].createElement(
-	                                        "div",
-	                                        { className: "checkbox" },
-	                                        _React2["default"].createElement(
-	                                            "label",
+	                                    _React2['default'].createElement(
+	                                        'div',
+	                                        { className: 'checkbox' },
+	                                        _React2['default'].createElement(
+	                                            'label',
 	                                            null,
-	                                            _React2["default"].createElement("input", { type: "checkbox" }),
-	                                            "Play Sound"
+	                                            _React2['default'].createElement('input', { type: 'checkbox' }),
+	                                            l12n.playSound
 	                                        )
 	                                    )
 	                                ),
-	                                _React2["default"].createElement(
-	                                    "div",
-	                                    { className: "group" },
-	                                    _React2["default"].createElement(
-	                                        "h4",
+	                                _React2['default'].createElement(
+	                                    'div',
+	                                    { className: 'group' },
+	                                    _React2['default'].createElement(
+	                                        'h4',
 	                                        null,
-	                                        "General"
+	                                        l12n.general
 	                                    ),
-	                                    _React2["default"].createElement(
-	                                        "div",
-	                                        { className: "checkbox" },
-	                                        _React2["default"].createElement(
-	                                            "label",
+	                                    _React2['default'].createElement(
+	                                        'div',
+	                                        { className: 'checkbox' },
+	                                        _React2['default'].createElement(
+	                                            'label',
 	                                            null,
-	                                            _React2["default"].createElement("input", { type: "checkbox" }),
-	                                            "Auto update (version 0.10.10)"
+	                                            _React2['default'].createElement('input', { type: 'checkbox' }),
+	                                            l12n.autoUpdate
 	                                        ),
-	                                        _React2["default"].createElement(
-	                                            "label",
-	                                            { className: "blue" },
-	                                            "Check for updates"
+	                                        _React2['default'].createElement(
+	                                            'label',
+	                                            { className: 'blue' },
+	                                            l12n.checkForUpadtes
 	                                        )
 	                                    ),
-	                                    _React2["default"].createElement(
-	                                        "div",
-	                                        { className: "checkbox" },
-	                                        _React2["default"].createElement(
-	                                            "label",
+	                                    _React2['default'].createElement(
+	                                        'div',
+	                                        { className: 'checkbox' },
+	                                        _React2['default'].createElement(
+	                                            'label',
 	                                            null,
-	                                            _React2["default"].createElement("input", { type: "checkbox" }),
-	                                            "Tray icon"
+	                                            _React2['default'].createElement('input', { type: 'checkbox' }),
+	                                            l12n.trayIcon
 	                                        )
 	                                    ),
-	                                    _React2["default"].createElement(
-	                                        "div",
-	                                        { className: "checkbox" },
-	                                        _React2["default"].createElement(
-	                                            "label",
+	                                    _React2['default'].createElement(
+	                                        'div',
+	                                        { className: 'checkbox' },
+	                                        _React2['default'].createElement(
+	                                            'label',
 	                                            null,
-	                                            _React2["default"].createElement("input", { type: "checkbox" }),
-	                                            "Left tag menu"
+	                                            _React2['default'].createElement('input', { type: 'checkbox' }),
+	                                            l12n.leftTagMenu
 	                                        )
 	                                    ),
-	                                    _React2["default"].createElement(
-	                                        "div",
-	                                        { className: "checkbox" },
-	                                        _React2["default"].createElement(
-	                                            "label",
+	                                    _React2['default'].createElement(
+	                                        'div',
+	                                        { className: 'checkbox' },
+	                                        _React2['default'].createElement(
+	                                            'label',
 	                                            null,
-	                                            _React2["default"].createElement("input", { type: "checkbox" }),
-	                                            "Right tag menu"
+	                                            _React2['default'].createElement('input', { type: 'checkbox' }),
+	                                            l12n.rightTagMenu
 	                                        )
 	                                    )
 	                                ),
-	                                _React2["default"].createElement(
-	                                    "div",
-	                                    { className: "group" },
-	                                    _React2["default"].createElement(
-	                                        "h4",
+	                                _React2['default'].createElement(
+	                                    'div',
+	                                    { className: 'group' },
+	                                    _React2['default'].createElement(
+	                                        'h4',
 	                                        null,
-	                                        "Language"
+	                                        l12n.language
 	                                    )
 	                                ),
-	                                _React2["default"].createElement(
-	                                    "div",
-	                                    { className: "group" },
-	                                    _React2["default"].createElement(
-	                                        "h4",
-	                                        null,
-	                                        "English"
+	                                _React2['default'].createElement(
+	                                    'div',
+	                                    { className: 'dropdown' },
+	                                    _React2['default'].createElement(
+	                                        'span',
+	                                        { className: 'dropdown-toggle', id: 'dropdownMenu1', 'data-toggle': 'dropdown', 'aria-haspopup': 'true', 'aria-expanded': 'true' },
+	                                        currentLang
 	                                    ),
-	                                    _React2["default"].createElement(
-	                                        "span",
-	                                        { className: "blue" },
-	                                        "Change language"
+	                                    _React2['default'].createElement('span', { className: 'caret' }),
+	                                    _React2['default'].createElement(
+	                                        'ul',
+	                                        { className: 'dropdown-menu', 'aria-labelledby': 'dropdownMenu1' },
+	                                        langs
 	                                    )
 	                                )
 	                            ),
-	                            _React2["default"].createElement(
-	                                "div",
-	                                { className: "modal-footer" },
-	                                _React2["default"].createElement(
-	                                    "button",
-	                                    { type: "button", className: "btn btn-primary" },
-	                                    "Save"
+	                            _React2['default'].createElement(
+	                                'div',
+	                                { className: 'modal-footer' },
+	                                _React2['default'].createElement(
+	                                    'button',
+	                                    { type: 'button', className: 'btn btn-primary' },
+	                                    l12n.save
 	                                ),
-	                                _React2["default"].createElement(
-	                                    "button",
-	                                    { type: "button", className: "btn btn-default", "data-dismiss": "modal" },
-	                                    "Cancel"
+	                                _React2['default'].createElement(
+	                                    'button',
+	                                    { type: 'button', className: 'btn btn-default', 'data-dismiss': 'modal' },
+	                                    l12n.cancel
 	                                )
 	                            )
 	                        )
@@ -23203,10 +23241,10 @@
 	    }]);
 
 	    return OpiosModalSettings;
-	})(_React2["default"].Component);
+	})(_React2['default'].Component);
 
-	exports["default"] = OpiosModalSettings;
-	module.exports = exports["default"];
+	exports['default'] = OpiosModalSettings;
+	module.exports = exports['default'];
 
 /***/ },
 /* 190 */
@@ -23245,6 +23283,8 @@
 	        key: "render",
 	        value: function render() {
 
+	            var l12n = this.props.data.l12n.passwordWindow;
+
 	            return _React2["default"].createElement(
 	                "div",
 	                null,
@@ -23270,7 +23310,7 @@
 	                                        _React2["default"].createElement(
 	                                            "p",
 	                                            { className: "code-header-title" },
-	                                            "OPIOS ACCESS CODE"
+	                                            l12n.title
 	                                        )
 	                                    ),
 	                                    _React2["default"].createElement(
@@ -23291,7 +23331,7 @@
 	                                _React2["default"].createElement(
 	                                    "button",
 	                                    { type: "button", className: "btn btn-default", "data-dismiss": "modal" },
-	                                    "Start New"
+	                                    l12n.startNew
 	                                )
 	                            )
 	                        )
@@ -23368,6 +23408,8 @@
 	    key: 'render',
 	    value: function render() {
 
+	      var l12n = this.props.data.l12n.serviceContextMenu;
+
 	      return _React2['default'].createElement(
 	        'div',
 	        null,
@@ -23383,7 +23425,7 @@
 	              _React2['default'].createElement(
 	                'a',
 	                { tabIndex: '-1', href: '#' },
-	                'Редактировать'
+	                l12n.edit
 	              )
 	            ),
 	            _React2['default'].createElement(
@@ -23392,7 +23434,7 @@
 	              _React2['default'].createElement(
 	                'a',
 	                { tabIndex: '-1', href: '#' },
-	                'Удалить'
+	                l12n['delete']
 	              )
 	            )
 	          )
@@ -24660,6 +24702,15 @@
 
 	            break;
 
+	        case 'CHANGE_LANG':
+
+	            var l12n = ipcRenderer.sendSync('get-localization-data', action.payload.lang),
+	                language = action.payload.lang;
+
+	            newState = Object.assign({}, state, { l12n: l12n, language: language });
+
+	            break;
+
 	        default:
 	            newState = state;
 	            break;
@@ -24727,14 +24778,21 @@
 
 	State.prototype.getInitialStateTemplate = function () {
 
-		var data = {
+		var lang = navigator.language || 'en',
+		    l12nData,
+		    data;
+
+		l12nData = ipcRenderer.sendSync('get-localization-data', lang);
+
+		data = {
 			services: [],
 			settings: {},
 			modalCreate: {},
 			modalUpdate: {},
-			l12n: {},
 			tags: [],
-			contextMenu: {}
+			contextMenu: {},
+			language: lang,
+			l12n: l12nData
 		};
 
 		return data;

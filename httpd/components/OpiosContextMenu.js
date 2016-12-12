@@ -30,12 +30,14 @@ class OpiosContextMenu extends React.Component {
 
   render() {
 
+    var l12n = this.props.data.l12n.serviceContextMenu;
+
     return (
       <div>
         <div id="contextMenu" className="dropdown clearfix">
             <ul className="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style={{display:'block',position:'static',marginBottom:'5px'}}>
-                <li onClick={this.onUpdate.bind(this)}><a tabIndex="-1" href="#">Редактировать</a></li>
-                <li onClick={this.onDelete.bind(this)}><a tabIndex="-1" href="#">Удалить</a></li>
+                <li onClick={this.onUpdate.bind(this)}><a tabIndex="-1" href="#">{l12n.edit}</a></li>
+                <li onClick={this.onDelete.bind(this)}><a tabIndex="-1" href="#">{l12n.delete}</a></li>
             </ul>
         </div>
       </div>

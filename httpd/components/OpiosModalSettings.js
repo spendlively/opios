@@ -6,7 +6,36 @@ class OpiosModalSettings extends React.Component {
 	   super(props);
   }
 
+  changeLang (code) {
+
+    this.props.store.dispatch({
+       type: 'CHANGE_LANG',
+       payload: {lang: code}
+    });    
+  }
+
   render() {
+
+    var l12n = this.props.data.l12n.settingsWindow,
+        langs = [],
+        currentLang = '';
+
+
+    if(l12n.languages.length){
+        for(var l in l12n.languages){
+
+            langs.push(
+                <li key={l12n.languages[l]['code']} onClick={this.changeLang.bind(this, l12n.languages[l]['code'])}>
+                    <a href="#">{l12n.languages[l]['name']}</a>
+                </li>
+            );
+
+            if(l12n.languages[l]['code'] === this.props.data.language){
+                currentLang = l12n.languages[l]['name'];
+            }
+        }
+    }
+
 
     return (
       <div>
@@ -17,53 +46,61 @@ class OpiosModalSettings extends React.Component {
                 <div className="modal-body">
                     <div className="float-right">
                         <img width="100px" src="services/opios.svg" />
-                        <p className="blue">Edit avatar</p>
+                        <p className="blue">{l12n.editAvatar}</p>
                     </div>
 
-                    <h3>Settings</h3>
+                    <h3>{l12n.settings}</h3>
                     <span className="grey">Ilia Shershnev</span>
 
                     <div className="group">
-                        <h4>Notifications</h4>        
+                        <h4>{l12n.notifications}</h4>        
                         <div className="checkbox">
-                            <label><input type="checkbox"></input>Desktop Notifications</label>
+                            <label><input type="checkbox"></input>{l12n.desktopNotifications}</label>
                         </div>
                         <div className="checkbox">
-                            <label><input type="checkbox"></input>Play Sound</label>
+                            <label><input type="checkbox"></input>{l12n.playSound}</label>
                         </div>            
                     </div>
 
                     <div className="group">
-                        <h4>General</h4>        
+                        <h4>{l12n.general}</h4>        
                         <div className="checkbox">
-                            <label><input type="checkbox"></input>Auto update (version 0.10.10)</label>
-                            <label className="blue">Check for updates</label>
+                            <label><input type="checkbox"></input>{l12n.autoUpdate}</label>
+                            <label className="blue">{l12n.checkForUpadtes}</label>
                         </div>
                         <div className="checkbox">
-                            <label><input type="checkbox"></input>Tray icon</label>
+                            <label><input type="checkbox"></input>{l12n.trayIcon}</label>
                         </div>
                         <div className="checkbox">
-                            <label><input type="checkbox"></input>Left tag menu</label>
+                            <label><input type="checkbox"></input>{l12n.leftTagMenu}</label>
                         </div>
                         <div className="checkbox">
-                            <label><input type="checkbox"></input>Right tag menu</label>
+                            <label><input type="checkbox"></input>{l12n.rightTagMenu}</label>
                         </div>
                     </div>        
 
                     <div className="group">
-                        <h4>Language</h4>        
+                        <h4>{l12n.language}</h4>        
                     </div>    
 
-                    <div className="group">
-                        <h4>English</h4>        
-                        <span className="blue">Change language</span>        
-                    </div>            
+
+                    <div className="dropdown">
+                        <span className="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            {currentLang}
+                        </span>
+                        <span className="caret"></span>
+                      
+                      <ul className="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        {langs}
+                      </ul>
+                    </div>    
+
 
                 </div>
 
                 <div className="modal-footer">
-                    <button type="button" className="btn btn-primary">Save</button>
-                    <button type="button" className="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="button" className="btn btn-primary">{l12n.save}</button>
+                    <button type="button" className="btn btn-default" data-dismiss="modal">{l12n.cancel}</button>
                 </div>
 
             </div>

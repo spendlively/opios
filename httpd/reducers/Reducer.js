@@ -68,6 +68,16 @@ function Reducer (state, action){
 
             break;
 
+        case 'CHANGE_LANG':
+
+
+            var l12n = ipcRenderer.sendSync('get-localization-data', action.payload.lang),
+                language = action.payload.lang;
+
+            newState = Object.assign({}, state, {l12n: l12n, language: language});
+
+            break;
+
         default:
             newState = state;
             break;

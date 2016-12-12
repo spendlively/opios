@@ -1,0 +1,74 @@
+{
+	"servicesListWindow": {
+		"title": "Добавить Новый Сервис",
+		"all": "Все",
+		"messengers": "Мессенджеры",
+		"email": "E-mail",
+		"social": "Social Networks",
+		"data": "Data Storage",
+		"other": "Другие"
+	},
+	"addServiceWindow": {
+		"desktopNotifications": "Уведомления рабочего стола",
+		"localPin": "Пинкод",
+		"idle": "10 min idle",
+		"changePin": "Change PIN activation time",
+		"appShortcut": "Ярлык приложения",
+		"cmd": "cmd-1",
+		"changeShortcut": "Сменить ярлык",
+		"standartImg": "Standart image",
+		"color": "Color $ Short name image",
+		"editImage": "Edit image color",
+		"mainTag": "Main Tag",
+		"changeTag": "Change tag",
+		"delete": "Удалить приложение",
+		"save": "Сохранть",
+		"cancel": "Отмена"
+	},
+	"updateServiceWindow": {
+		"desktopNotifications": "Desktop Notifications",
+		"localPin": "Пинкод",
+		"idle": "10 min idle",
+		"changePin": "Change PIN activation time",
+		"appShortcut": "Ярлык приложения",
+		"cmd": "cmd-1",
+		"changeShortcut": "Сменить ярлык",
+		"standartImg": "Standart image",
+		"color": "Color $ Short name image",
+		"editImage": "Edit image color",
+		"mainTag": "Main Tag",
+		"changeTag": "Change tag",
+		"delete": "Удалить приложение",
+		"save": "Сохранть",
+		"cancel": "Отмена"	
+	},
+	"serviceContextMenu": {
+		"edit": "Редактировать",
+		"delete": "Удалить"
+	},
+	"settingsWindow": {
+		"settings": "Настройки",
+		"notifications": "Уведомления",
+		"desktopNotifications": "Desktop Notifications",
+		"playSound": "Play Sound",
+		"general": "Основные",
+		"autoUpdate": "Auto update (version 0.10.10)",
+		"checkForUpadtes": "Check for updates",
+		"trayIcon": "Tray icon",
+		"leftTagMenu": "Left tag menu",
+		"rightTagMenu": "Right tag menu",
+		"language": "Язык",
+		"languages": [
+			{"code": "en","name":"Английский"},
+			{"code": "ru","name":"Русский"}
+		],
+		"changeLanguage": "Сменить язык",
+		"editAvatar": "Сменить аватар",
+		"save": "Сохранить",
+		"cancel": "Отмена"	
+	},
+	"passwordWindow": {
+		"title": "OPIOS ACCESS CODE",
+		"startNew": "Start New"
+	}
+}

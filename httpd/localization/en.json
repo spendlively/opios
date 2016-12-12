@@ -1,0 +1,74 @@
+{
+	"servicesListWindow": {
+		"title": "Add New Service",
+		"all": "All",
+		"messengers": "Messengers",
+		"email": "E-mail",
+		"social": "Social Networks",
+		"data": "Data Storage",
+		"other": "Other"
+	},
+	"addServiceWindow": {
+		"desktopNotifications": "Desktop Notifications",
+		"localPin": "Local PIN password",
+		"idle": "10 min idle",
+		"changePin": "Change PIN activation time",
+		"appShortcut": "Application ShortCut",
+		"cmd": "cmd-1",
+		"changeShortcut": "Change ShortCut",
+		"standartImg": "Standart image",
+		"color": "Color $ Short name image",
+		"editImage": "Edit image color",
+		"mainTag": "Main Tag",
+		"changeTag": "Change tag",
+		"delete": "Delete Application",
+		"save": "Save",
+		"cancel": "Cancel"
+	},
+	"updateServiceWindow": {
+		"desktopNotifications": "Desktop Notifications",
+		"localPin": "Local PIN password",
+		"idle": "10 min idle",
+		"changePin": "Change PIN activation time",
+		"appShortcut": "Application ShortCut",
+		"cmd": "cmd-1",
+		"changeShortcut": "Change ShortCut",
+		"standartImg": "Standart image",
+		"color": "Color $ Short name image",
+		"editImage": "Edit image color",
+		"mainTag": "Main Tag",
+		"changeTag": "Change tag",
+		"delete": "Delete Application",
+		"save": "Save",
+		"cancel": "Cancel"		
+	},
+	"serviceContextMenu": {
+		"edit": "Edit",
+		"delete": "Delete"
+	},
+	"settingsWindow": {
+		"settings": "Settings",
+		"notifications": "Notifications",
+		"desktopNotifications": "Desktop Notifications",
+		"playSound": "Play Sound",
+		"general": "General",
+		"autoUpdate": "Auto update (version 0.10.10)",
+		"checkForUpadtes": "Check for updates",
+		"trayIcon": "Tray icon",
+		"leftTagMenu": "Left tag menu",
+		"rightTagMenu": "Right tag menu",
+		"language": "Language",
+		"languages": [
+			{"code": "en","name":"English"},
+			{"code": "ru","name":"Russian"}
+		],		
+		"changeLanguage": "Change language",
+		"editAvatar": "Edit avatar",
+		"save": "Save",
+		"cancel": "Cancel"	
+	},
+	"passwordWindow": {
+		"title": "OPIOS ACCESS CODE",
+		"startNew": "Start New"
+	}
+}

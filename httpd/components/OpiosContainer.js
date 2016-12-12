@@ -23,8 +23,8 @@ class OpiosContainer extends React.Component {
         <OpiosContent data={this.props.data} store={this.props.store} />
         <OpiosModalCreate data={this.props.data} store={this.props.store} />
         <OpiosModalUpdate data={this.props.data} store={this.props.store} />
-        <OpiosModalSettings />
-        <OpiosModalPassword />
+        <OpiosModalSettings data={this.props.data} store={this.props.store} />
+        <OpiosModalPassword data={this.props.data} />
         <OpiosContextMenu data={this.props.data} store={this.props.store} />
       </div>
     );
