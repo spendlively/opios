@@ -273,17 +273,25 @@ aside.aside-left{
 
 .opios-code-digit{
 	display: inline-block;
+	margin-right: 11px;
+}
+
+.opios-code-digit.last{
+	margin-right: 0px;
+}
+
+.opios-password-input{
+
+	border: 0;
+	-webkit-appearance: none;
+    text-align: center;
 	width: 36px;
 	height: 36px;
 	margin-right: 11px;
 	background: #FFFFFF;
 	border: 0px solid #979797;
 	box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.50);
-	border-radius: 5.76px;
-}
-
-.opios-code-digit.last{
-	margin-right: 0px;
+	border-radius: 5.76px;    
 }
 
 .opios-modal .close-wrapper{
@@ -401,12 +409,4 @@ input.modalInputText{
 .dropdown{
 	margin-top: 10px;
 }
-
-
-
-
-
-
-
-
 
