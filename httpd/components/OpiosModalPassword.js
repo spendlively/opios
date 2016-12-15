@@ -4,11 +4,57 @@ class OpiosModalPassword extends React.Component {
 
   constructor(props) {
 	   super(props);
+
+     this.count = 6;
+     this.pass = new Array(this.count);
+     this.inputIdTail = '-opios-code-digit';
+     this.password = '123456';
+  }
+
+  onChange(event) {
+
+    var id = event.target.id,
+        index = parseInt(id.charAt(0)),
+        value = event.target.value,
+        el = document.getElementById((index + 1) + this.inputIdTail);
+
+    this.pass[index] = value;
+    if(index === this.count){
+        this.enterPass(this.pass.join(''));
+    }
+    else if(el){
+      el.focus();
+    }
+  }
+
+  enterPass(password) {
+
+    if(password === this.password){
+      $('#codeModal').modal('hide');
+    }
+    this.resetInputs();
+  }
+
+  resetInputs() {
+
+    $('input.opios-password-input').val("");
+    var el = document.getElementById(1 + this.inputIdTail);
+    if(el) el.focus();
+  }
+
+  onFocus(event) {
+    event.target.value="";
   }
 
   render() {
 
-    var l12n = this.props.data.l12n.passwordWindow;
+    var l12n = this.props.data.l12n.passwordWindow,
+        inputs = [];
+
+    for(var i = 1; i <= this.count; i++){
+      var id = i + this.inputIdTail;
+      inputs.push(<div key={i} className="opios-code-digit"><input onFocus={this.onFocus.bind(this)} id={id} onChange={this.onChange.bind(this)} className="opios-password-input" type="password" maxLength="1" size="1"></input></div>);
+    }
     
     return (
       <div>
@@ -23,13 +69,9 @@ class OpiosModalPassword extends React.Component {
                             <p className="code-header-title">{l12n.title}</p>
                         </div>
                         <div className="opios-code-digits">
-                            <div className="opios-code-digit"></div>
-                            <div className="opios-code-digit"></div>
-                            <div className="opios-code-digit"></div>
-                            <div className="opios-code-digit"></div>
-                            <div className="opios-code-digit"></div>
-                            <div className="opios-code-digit"></div>
+                            {inputs}
                         </div>
+
                     </div>
                 </div>
                 <div className="modal-footer">

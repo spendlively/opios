@@ -3,6 +3,7 @@ import ReactDOM from '../node_modules/react-dom';
 import OpiosContainer from './components/OpiosContainer';
 import Launcher from './modules/Launcher';
 import store from './store/Store';
+import SleepManager from './modules/SleepManager';
 
 store.subscribe(function(){
 	ReactDOM.render(
@@ -22,10 +23,6 @@ setTimeout(function(){
 }, 2000);
 
 
+var sleepManager = new SleepManager();
+sleepManager.init();
 
-// setTimeout(function(){
-// 	store.dispatch({
-// 	    type: 'TEST',
-// 	    payload: {name: 'Ivan'}
-// 	});
-// }, 5000);

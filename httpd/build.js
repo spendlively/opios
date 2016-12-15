@@ -68,6 +68,10 @@
 
 	var _store2 = _interopRequireDefault(_store);
 
+	var _SleepManager = __webpack_require__(219);
+
+	var _SleepManager2 = _interopRequireDefault(_SleepManager);
+
 	_store2['default'].subscribe(function () {
 		_ReactDOM2['default'].render(_React2['default'].createElement(_OpiosContainer2['default'], { data: _store2['default'].getState(), store: _store2['default'] }), document.getElementById('container'));
 	});
@@ -79,14 +83,8 @@
 		launcher.init();
 	}, 2000);
 
-	// console.log('navigator.language', navigator.language);
-
-	// setTimeout(function(){
-	// 	store.dispatch({
-	// 	    type: 'TEST',
-	// 	    payload: {name: 'Ivan'}
-	// 	});
-	// }, 5000);
+	var sleepManager = new _SleepManager2['default']();
+	sleepManager.init();
 
 /***/ },
 /* 1 */
@@ -23250,20 +23248,20 @@
 /* 190 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
-	var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
+	var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { 'default': obj }; };
 
-	var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
+	var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } };
 
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-	var _get = function get(object, property, receiver) { var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+	var _get = function get(object, property, receiver) { var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-	var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
+	var _inherits = function (subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
 
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
 	});
 
 	var _React = __webpack_require__(1);
@@ -23271,81 +23269,129 @@
 	var _React2 = _interopRequireDefault(_React);
 
 	var OpiosModalPassword = (function (_React$Component) {
-	    function OpiosModalPassword(props) {
-	        _classCallCheck(this, OpiosModalPassword);
+	  function OpiosModalPassword(props) {
+	    _classCallCheck(this, OpiosModalPassword);
 
-	        _get(Object.getPrototypeOf(OpiosModalPassword.prototype), "constructor", this).call(this, props);
+	    _get(Object.getPrototypeOf(OpiosModalPassword.prototype), 'constructor', this).call(this, props);
+
+	    this.count = 6;
+	    this.pass = new Array(this.count);
+	    this.inputIdTail = '-opios-code-digit';
+	    this.password = '123456';
+	  }
+
+	  _inherits(OpiosModalPassword, _React$Component);
+
+	  _createClass(OpiosModalPassword, [{
+	    key: 'onChange',
+	    value: function onChange(event) {
+
+	      var id = event.target.id,
+	          index = parseInt(id.charAt(0)),
+	          value = event.target.value,
+	          el = document.getElementById(index + 1 + this.inputIdTail);
+
+	      this.pass[index] = value;
+	      if (index === this.count) {
+	        this.enterPass(this.pass.join(''));
+	      } else if (el) {
+	        el.focus();
+	      }
 	    }
+	  }, {
+	    key: 'enterPass',
+	    value: function enterPass(password) {
 
-	    _inherits(OpiosModalPassword, _React$Component);
+	      if (password === this.password) {
+	        $('#codeModal').modal('hide');
+	      }
+	      this.resetInputs();
+	    }
+	  }, {
+	    key: 'resetInputs',
+	    value: function resetInputs() {
 
-	    _createClass(OpiosModalPassword, [{
-	        key: "render",
-	        value: function render() {
+	      $('input.opios-password-input').val('');
+	      var el = document.getElementById(1 + this.inputIdTail);
+	      if (el) el.focus();
+	    }
+	  }, {
+	    key: 'onFocus',
+	    value: function onFocus(event) {
+	      event.target.value = '';
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
 
-	            var l12n = this.props.data.l12n.passwordWindow;
+	      var l12n = this.props.data.l12n.passwordWindow,
+	          inputs = [];
 
-	            return _React2["default"].createElement(
-	                "div",
-	                null,
-	                _React2["default"].createElement(
-	                    "div",
-	                    { className: "modal fade opios-modal", id: "codeModal", tabIndex: "-1", role: "dialog", "aria-labelledby": "myModalLabel1" },
-	                    _React2["default"].createElement(
-	                        "div",
-	                        { className: "modal-dialog", role: "document" },
-	                        _React2["default"].createElement(
-	                            "div",
-	                            { className: "modal-content" },
-	                            _React2["default"].createElement(
-	                                "div",
-	                                { className: "modal-body" },
-	                                _React2["default"].createElement(
-	                                    "div",
-	                                    { className: "modal-body-center" },
-	                                    _React2["default"].createElement(
-	                                        "div",
-	                                        { className: "opios-code-header" },
-	                                        _React2["default"].createElement("img", { width: "95px", src: "services/opios.svg" }),
-	                                        _React2["default"].createElement(
-	                                            "p",
-	                                            { className: "code-header-title" },
-	                                            l12n.title
-	                                        )
-	                                    ),
-	                                    _React2["default"].createElement(
-	                                        "div",
-	                                        { className: "opios-code-digits" },
-	                                        _React2["default"].createElement("div", { className: "opios-code-digit" }),
-	                                        _React2["default"].createElement("div", { className: "opios-code-digit" }),
-	                                        _React2["default"].createElement("div", { className: "opios-code-digit" }),
-	                                        _React2["default"].createElement("div", { className: "opios-code-digit" }),
-	                                        _React2["default"].createElement("div", { className: "opios-code-digit" }),
-	                                        _React2["default"].createElement("div", { className: "opios-code-digit" })
-	                                    )
-	                                )
-	                            ),
-	                            _React2["default"].createElement(
-	                                "div",
-	                                { className: "modal-footer" },
-	                                _React2["default"].createElement(
-	                                    "button",
-	                                    { type: "button", className: "btn btn-default", "data-dismiss": "modal" },
-	                                    l12n.startNew
-	                                )
-	                            )
-	                        )
+	      for (var i = 1; i <= this.count; i++) {
+	        var id = i + this.inputIdTail;
+	        inputs.push(_React2['default'].createElement(
+	          'div',
+	          { key: i, className: 'opios-code-digit' },
+	          _React2['default'].createElement('input', { onFocus: this.onFocus.bind(this), id: id, onChange: this.onChange.bind(this), className: 'opios-password-input', type: 'password', maxLength: '1', size: '1' })
+	        ));
+	      }
+
+	      return _React2['default'].createElement(
+	        'div',
+	        null,
+	        _React2['default'].createElement(
+	          'div',
+	          { className: 'modal fade opios-modal', id: 'codeModal', tabIndex: '-1', role: 'dialog', 'aria-labelledby': 'myModalLabel1' },
+	          _React2['default'].createElement(
+	            'div',
+	            { className: 'modal-dialog', role: 'document' },
+	            _React2['default'].createElement(
+	              'div',
+	              { className: 'modal-content' },
+	              _React2['default'].createElement(
+	                'div',
+	                { className: 'modal-body' },
+	                _React2['default'].createElement(
+	                  'div',
+	                  { className: 'modal-body-center' },
+	                  _React2['default'].createElement(
+	                    'div',
+	                    { className: 'opios-code-header' },
+	                    _React2['default'].createElement('img', { width: '95px', src: 'services/opios.svg' }),
+	                    _React2['default'].createElement(
+	                      'p',
+	                      { className: 'code-header-title' },
+	                      l12n.title
 	                    )
+	                  ),
+	                  _React2['default'].createElement(
+	                    'div',
+	                    { className: 'opios-code-digits' },
+	                    inputs
+	                  )
 	                )
-	            );
-	        }
-	    }]);
+	              ),
+	              _React2['default'].createElement(
+	                'div',
+	                { className: 'modal-footer' },
+	                _React2['default'].createElement(
+	                  'button',
+	                  { type: 'button', className: 'btn btn-default', 'data-dismiss': 'modal' },
+	                  l12n.startNew
+	                )
+	              )
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
 
-	    return OpiosModalPassword;
-	})(_React2["default"].Component);
+	  return OpiosModalPassword;
+	})(_React2['default'].Component);
 
-	exports["default"] = OpiosModalPassword;
-	module.exports = exports["default"];
+	exports['default'] = OpiosModalPassword;
+	module.exports = exports['default'];
 
 /***/ },
 /* 191 */
@@ -23484,10 +23530,10 @@
 
 		$(document).ready(function () {
 
-			//Открывание модального окна блокировки
-			$('#opios-phone').click(function () {
-				$('#codeModal').modal();
-			});
+			// //Открывание модального окна блокировки
+			// $('#opios-phone').click(function(){
+			// 	$('#codeModal').modal();
+			// });
 
 			//Открывание модального окна добавления сервиса
 			// $('.service-img-container').click(function(){
@@ -24818,6 +24864,62 @@
 	};
 
 	exports['default'] = State;
+	module.exports = exports['default'];
+
+/***/ },
+/* 219 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
+		value: true
+	});
+	var period = 20000;
+	var timer = null;
+
+	function SleepManager() {}
+
+	SleepManager.prototype.init = function () {
+
+		var me = this;
+
+		window.onblur = function () {
+			me.start();
+		};
+
+		window.onfocus = function () {
+			me.stop();
+		};
+
+		this.start();
+	};
+
+	SleepManager.prototype.start = function () {
+
+		var me = this;
+
+		timer = setTimeout(function () {
+
+			me.disable();
+		}, period);
+	};
+
+	SleepManager.prototype.stop = function () {
+
+		clearTimeout(timer);
+	};
+
+	SleepManager.prototype.disable = function () {
+
+		//Открывание модального окна блокировки
+		$('#codeModal').modal({
+			backdrop: 'static',
+			keyboard: true
+		});
+	};
+
+	exports['default'] = SleepManager;
 	module.exports = exports['default'];
 
 /***/ }
