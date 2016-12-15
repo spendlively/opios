@@ -27,7 +27,7 @@ class OpiosContent extends React.Component {
                     url: serviceProps['url']
                 };
 
-            webViewRows.push(<OpiosWebView data={data} key={services[d]['id']} />);
+            webViewRows.push(<OpiosWebView wvProps={data} key={services[d]['id']} store={this.props.store} />);
         }
     }    
 

@@ -22140,7 +22140,7 @@
 	                        url: serviceProps.url
 	                    };
 
-	                    webViewRows.push(_React2['default'].createElement(_OpiosWebView2['default'], { data: data, key: services[d].id }));
+	                    webViewRows.push(_React2['default'].createElement(_OpiosWebView2['default'], { wvProps: data, key: services[d].id, store: this.props.store }));
 	                }
 	            }
 
@@ -22311,15 +22311,54 @@
 	  _inherits(OpiosWebView, _React$Component);
 
 	  _createClass(OpiosWebView, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+
+	      var me = this,
+	          wv = document.getElementById(this.props.wvProps.id);
+
+	      //Отображение badges c количеством новых уведомлений
+	      // if(serviceTemplate['useTitle'] === true){
+	      wv.addEventListener('page-title-updated', function (event) {
+	        var count = me.findNewMessagesInTitle(event.title) || 0,
+	            store = me.props.store;
+
+	        store.dispatch({
+	          type: 'UPDATE_BADGES',
+	          payload: { id: me.props.wvProps.id, count: count }
+	        });
+	      });
+	      // }
+
+	      //Открытие ссылки в браузере по умолчанию
+	      wv.addEventListener('new-window', function (e) {
+	        e.preventDefault();
+	        __webpack_require__(217).shell.openExternal(e.url);
+	      });
+	    }
+	  }, {
+	    key: 'findNewMessagesInTitle',
+	    value: function findNewMessagesInTitle(title) {
+
+	      var re = /\(([0-9]+)\)/i;
+	      var results = re.exec(title) || [];
+
+	      if (results[1]) {
+	        return results[1];
+	      }
+
+	      return null;
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 
-	      var url = this.props.data.url,
-	          team = this.props.data.team || '';
+	      var url = this.props.wvProps.url,
+	          team = this.props.wvProps.team || '';
 
 	      url = url.replace('{teamId}', team);
 
-	      return _React2['default'].createElement('webview', { className: 'content-block opios-webview', id: this.props.data.id, src: url, style: { position: 'absolute', display: 'inline-flex', visibility: 'hidden', width: '100%', height: '600px' } });
+	      return _React2['default'].createElement('webview', { className: 'content-block opios-webview', id: this.props.wvProps.id, src: url, style: { position: 'absolute', display: 'inline-flex', visibility: 'hidden', width: '100%', height: '600px' } });
 	    }
 	  }]);
 
@@ -24754,6 +24793,23 @@
 	                language = action.payload.lang;
 
 	            newState = Object.assign({}, state, { l12n: l12n, language: language });
+
+	            break;
+
+	        case 'UPDATE_BADGES':
+
+	            var id = action.payload.id,
+	                count = action.payload.count;
+
+	            newState = Object.assign({}, state);
+
+	            if (newState.services.length) {
+	                for (var s in newState.services) {
+	                    if (newState.services[s].id === id) {
+	                        newState.services[s].badges = count;
+	                    }
+	                }
+	            }
 
 	            break;
 

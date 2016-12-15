@@ -78,6 +78,23 @@ function Reducer (state, action){
 
             break;
 
+        case 'UPDATE_BADGES':
+
+            var id = action.payload.id,
+                count = action.payload.count;
+
+            newState = Object.assign({}, state);
+
+            if(newState.services.length){
+                for(var s in newState.services){
+                    if(newState.services[s]['id'] === id){
+                        newState.services[s]['badges'] = count;
+                    }
+                }
+            }
+
+            break;
+
         default:
             newState = state;
             break;
