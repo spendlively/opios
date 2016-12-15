@@ -65,16 +65,15 @@ ipcMain.on('get-localization-data', function(event, lang){
   var l12nData = '',
     l12nFile = l12nPath + lang + ".json";
 
-  if (fs.existsSync(l12nFile)) {
-    var l12nEncoded = fs.readFileSync(l12nFile, 'utf8');
-    var l12nText = decodeURIComponent(l12nEncoded);
-    try{
-        l12nData = JSON.parse(l12nText);
-    } catch(e){}
+  if (!fs.existsSync(l12nFile)) {
+    l12nFile = l12nPath + "en.json";    
   }
-  else{
-    throw new Error("Localization file doesn't exists!");
-  }
+
+  var l12nEncoded = fs.readFileSync(l12nFile, 'utf8');
+  var l12nText = decodeURIComponent(l12nEncoded);
+  try{
+      l12nData = JSON.parse(l12nText);
+  } catch(e){}
 
   event.returnValue = l12nData;
 });
